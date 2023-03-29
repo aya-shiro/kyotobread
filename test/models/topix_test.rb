@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PanImageTest < ActiveSupport::TestCase
+class TopixTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
