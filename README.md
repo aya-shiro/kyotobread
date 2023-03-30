@@ -1,7 +1,6 @@
 # Kyoto Bread
 
-## サイト概要:
-京都府内のパンを検索・閲覧・投稿できるサイト
+## サイト概要:京都府内のパンを検索・閲覧・投稿できるサイト
 ### サイトテーマ:
 京都パン×レビュー
 
@@ -16,7 +15,7 @@
 京都に遊びに来た時、パン屋に行く前・行った後
 
 ## 設計書
-<...>
+ER図:  https://drive.google.com/file/d/10MoYkZfKBftPzszQn-l8291WkBOARBkY/view?usp=share_link
 
 ## 開発環境
 - OS：Linux(CentOS)
