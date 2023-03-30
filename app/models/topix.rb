@@ -1,2 +1,4 @@
 class Topix < ApplicationRecord
+  
+  
 end
