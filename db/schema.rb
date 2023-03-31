@@ -53,13 +53,16 @@ ActiveRecord::Schema.define(version: 2023_03_29_100412) do
   end
 
   create_table "breads", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.text "bread"
+    t.text "introduce"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "drinks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "shop_id"
+    t.integer "bread_id"
     t.text "drink"
     t.text "suggest"
     t.datetime "created_at", precision: 6, null: false
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 2023_03_29_100412) do
   end
 
   create_table "shops", force: :cascade do |t|
+    t.integer "topix_id"
     t.string "shop_name"
     t.string "postcode"
     t.text "address"
@@ -89,6 +93,8 @@ ActiveRecord::Schema.define(version: 2023_03_29_100412) do
   end
 
   create_table "topixes", force: :cascade do |t|
+    t.integer "bread_id"
+    t.integer "shop_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
@@ -98,10 +104,11 @@ ActiveRecord::Schema.define(version: 2023_03_29_100412) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
+    t.string "name", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_delete", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

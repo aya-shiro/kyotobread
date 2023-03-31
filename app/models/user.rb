@@ -3,12 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :bread, dependent: :destroy
-  has_many :drink, dependent: :destroy
-         
+
   has_one_attached :user_image
-  
+
   def get_user_image(width, height)
     unless user_image.attached?
       file_path = Rails.root.join('app/assets/images/bread_image.jpg')

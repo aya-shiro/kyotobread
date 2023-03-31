@@ -1,3 +1,3 @@
 class Online < ApplicationRecord
-  has_one :shop
+  belongs_to :shop
 end
