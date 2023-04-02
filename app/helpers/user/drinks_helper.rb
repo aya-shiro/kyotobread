@@ -1,0 +1,2 @@
+module User::DrinksHelper
+end

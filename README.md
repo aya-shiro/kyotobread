@@ -15,7 +15,7 @@
 京都に遊びに来た時、パン屋に行く前・行った後
 
 ## 設計書
-ER図:  https://drive.google.com/file/d/10MoYkZfKBftPzszQn-l8291WkBOARBkY/view?usp=share_link
+ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -25,5 +25,5 @@ ER図:  https://drive.google.com/file/d/10MoYkZfKBftPzszQn-l8291WkBOARBkY/view?u
 - IDE：Cloud9
 
 ## 使用素材
-- FontAwesome(ver.6.4.0):  https://fontawesome.com/ 
+- FontAwesome(ver.6.4.0):  https://fontawesome.com/
 - pixabay:  https://pixabay.com/ja/

@@ -14,7 +14,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand" href="/"><%= image_tag('test logo.png')%></a>
+          <a class="navbar-brand" href="/"><span>KyotoBread</span><%#= image_tag('OO.jpg')%></a>  <!--のちロゴ写真挿入-->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -26,50 +26,51 @@
               <!--会員がログインしている場合-->
               <li style="color:limegreen;" class="pt-2"><span>ようこそ<%= current_user.name %>さん</span></li>
                <li>
-                 <%= link_to customers_mypage_path, class: 'nav-link text-dark' do %>
-                   <i class="fas fa-user"></i> マイページ
+                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-user"></i> マイページ
                  <% end %>
                </li>
                <li>
-                 <%= link_to menus_path, class: 'nav-link text-dark' do %>
-                   <i class="fas fa-birthday-cake"></i> 商品一覧
+                 <%= link_to new_bread_path, class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-flatbread"></i> 投稿する
+                 <% end %>
+               </li>
+               <!--お気に入り一覧は後々実装-->
+               <li>
+                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-heart"></i> お気に入り
                  <% end %>
                </li>
                <li>
-                 <%= link_to cart_items_path, class: 'nav-link text-dark' do %>
-                   <i class="fas fa-shopping-cart"></i> カート
-                 <% end %>
-               </li>
-               <li>
-                <%= link_to destroy_customer_session_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-sign-out-alt"></i> Log out
+                <%= link_to destroy_user_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i> Log out
                 <% end %>
                </li>
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                <li>
-                 <%= link_to admin_menus_path, class: 'nav-link text-dark' do %>
-                 <i class="fas fa-birthday-cake"></i> 商品一覧
+                 <%= link_to admin_onlines_path, class: 'nav-link text-dark' do %>
+                 <i class="fa-solid fa-flatbread"></i> オンラインショップ一覧
                <% end %>
                </li>
               <li>
-                <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-user-circle"></i> 会員一覧
+                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-user-circle"></i> ユーザー一覧
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-clipboard-list"></i> 注文履歴一覧
+                <%= link_to admin_topics_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-regular fa-folder-open"></i> 特集一覧
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-link"></i> ジャンル一覧
+                <%= link_to admin_drinks_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-link"></i> ドリンク一覧
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-sign-out-alt"></i> Log out
+                  <i class="fa-solid fa-right-from-bracket"></i> Log out
                 <% end %>
               </li>
               <% else %>
@@ -80,17 +81,12 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to menus_path,class: 'nav-link text-dark' do %>
-                    <i class="fas fa-birthday-cake"></i> 商品一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+                  <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
                     <i class="fas fa-user-plus"></i> 新規登録
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_customer_session_path,  class: 'nav-link text-dark' do %>
+                  <%= link_to new_user_session_path,  class: 'nav-link text-dark' do %>
                     <i class="fas fa-sign-in-alt"></i> Log in
                   <% end %>
                 </li>
@@ -112,7 +108,7 @@
       <div class='container mt-5'>
         <div class='row'>
           <div class='mx-auto'>
-            <p>CopyRight Teamおべんとう.inc</p>
+            <p>CopyRight OO.inc</p>
           </div>
         </div>
       </div>

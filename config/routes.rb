@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
 
+  scope module: :user do
+    root to: 'homes#top'
+    get 'homes/about'
+    get 'users/mypage' => 'users#show'
+    get 'users/mypage/edit' => 'users#edit'
+    get 'users/mypage' => 'users#update'
+    resources:users, only: [:index, :edit, :destroy]
+
+    resources:breads, only: [:index, :new, :create, :show, :edit, :destroy] do
+      resources:comments, only: [:create]
+    end
+
+    resources:topics, only: [:index, :show]
+    resources:onlines, only: [:index, :show]
+    resources:shops, only: [:index, :show]
+    get 'drinks/index'
+  end
+
+  namespace :admin do
+    root to: 'homes#top'
+    resources:users, only: [:index, :show, :destroy]
+    resources:breads, only: [:index, :show, :destroy]
+    resources:topics, only: [:index, :new, :show, :edit, :destroy]
+    resources:onlines, only: [:index, :new, :edit, :destroy]
+    resources:shops, only: [:index, :new, :edit, :destroy]
+    resources:drinks, only: [:index, :new, :edit, :destroy]
+  end
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :user, controllers: {

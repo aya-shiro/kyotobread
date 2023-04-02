@@ -1,0 +1,25 @@
+<div class="container mt-5">
+
+<h3>Bread投稿フォーム</h3>
+
+<div class="col-md-6 offset-md-4">
+<%= form_with model:@bread, url: breads_path do |f| %>
+  <%= f.label :パン写真 %>
+  <%= f.file_field :image, placeholder: "画像を選択" %><br>
+  <%= f.label :パン名 %>
+  <%= f.text_field :bread %><br>
+  <%= f.label :紹介 %>
+  <%= f.text_area :introduce, class: 'form-control', placeholder: "味や感想を教えて！" %>
+
+  <%= f.radio_button :taste, 'sweet' %>
+  <%= f.label :甘い %>
+  <%= f.radio_button :taste, "solty" %>
+  <%= f.label :おかず系 %><br>
+
+  <%= f.label :おすすめドリンク %><br>
+  <%= f.radio_button :drink, 'coffee' %>
+  <i class="fa-solid fa-mug-saucer"></i>
+  <%= f.radio_button :drink, 'milk' %>
+  <span>milk</span>
+<% end %>
+</div>
