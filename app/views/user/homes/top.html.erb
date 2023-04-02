@@ -1,2 +1,27 @@
 <h1>User::Homes#top</h1>
 <p>Find me in app/views/user/homes/top.html.erb</p>
+
+<div class="container">
+  <div class="main col-md-7">
+
+    <div class="tab-all">
+      <% @breads.each do |bread| %>
+        <%= link_to bread_path do %>
+          <%= image_tag bread.get_bread_image(50, 50) %>
+        <% end %>
+        <%= bread.name %>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

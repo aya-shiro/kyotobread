@@ -2,8 +2,10 @@ class Bread < ApplicationRecord
 
   belongs_to :user
   belongs_to :shop
-  has_many :topix
-  has_one :drink
+  has_many :topic
+
+  belongs_to :drink
+
   has_many :comments, dependent: :destroy
 
 

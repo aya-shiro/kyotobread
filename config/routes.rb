@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources:topics, only: [:index, :new, :show, :edit, :destroy]
     resources:onlines, only: [:index, :new, :edit, :destroy]
     resources:shops, only: [:index, :new, :edit, :destroy]
-    resources:drinks, only: [:index, :new, :edit, :destroy]
+    resources:drinks, only: [:index, :new, :create, :edit, :destroy]
   end
 
   # 顧客用

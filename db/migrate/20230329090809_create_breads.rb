@@ -3,6 +3,7 @@ class CreateBreads < ActiveRecord::Migration[6.1]
     create_table :breads do |t|
       t.integer :user_id
       t.integer :shop_id
+      t.integer :drink_id
       t.text :bread, null: false
       t.text :introduce
       t.boolean :taste, null: false
