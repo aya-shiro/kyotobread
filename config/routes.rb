@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources:users, only: [:index, :show, :destroy]
     resources:breads, only: [:index, :show, :destroy]
-    resources:topics, only: [:index, :new, :show, :edit, :destroy]
-    resources:onlines, only: [:index, :new, :edit, :destroy]
-    resources:shops, only: [:index, :new, :edit, :destroy]
+    resources:topics, only: [:index, :new, :create, :show, :edit, :destroy]
+    resources:onlines, only: [:index, :new, :create, :edit, :destroy]
+    resources:shops, only: [:index, :new, :create, :edit, :destroy]
     resources:drinks, only: [:index, :new, :create, :edit, :destroy]
   end
 

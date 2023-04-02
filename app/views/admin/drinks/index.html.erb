@@ -1,12 +1,23 @@
 <h1>Admin::Drinks#index</h1>
 <p>Find me in app/views/admin/drinks/index.html.erb</p>
 
-
-<div class="container mt-5">
+<div class="container mt-5 mx-auto">
   <div class="col-md-6 mx-auto">
-    <h3>Drinkアイコン一覧と追加</h3>
-    <%= form_with model:@drink, url: admin_drinks_path do |f| %>
+
+    <p>Drinkアイコン一覧</p>
+    <% @drinks.each do |drink| %>
+      <%#= drink.get_drink_image(20, 20) %>
+      <%= drink.drink_name %>
+    <% end %>
+
+    <p>アイコンを追加する？</p>
+    <%= form_with model: @drink, url: admin_drinks_path, method: :post do |f| %>
       <%= f.label :ドリンク %>
-      <%= f.text_field :drink %>
+      <%#= f.file_field :drink_image %>
+      <%= f.text_field :drink_name %>
       <%= f.submit "登録する" %>
     <% end %>
+
+
+  </div>
+</div>

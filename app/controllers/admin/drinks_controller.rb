@@ -4,8 +4,10 @@ class Admin::DrinksController < ApplicationController
 
   def create
     @drink = Drink.new(drink_params)
-    @drink.save
-    redirect_to request.referer
+    if @drink.save
+      flash[:notice] = "新規登録完了しました"
+      redirect_to admin_drinks_path
+    end
   end
 
   def index
@@ -22,7 +24,7 @@ class Admin::DrinksController < ApplicationController
 
   private
   def drink_params
-    params.require(:drink).permit(:drink)
+    params.require(:drink).permit(:drink_name, :drink_image)
   end
 
 end

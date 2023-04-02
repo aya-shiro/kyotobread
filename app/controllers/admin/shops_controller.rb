@@ -1,5 +1,14 @@
 class Admin::ShopsController < ApplicationController
   def new
+    @shop = Shop.new
+  end
+
+  def create
+    @shop = Shop.new(shop_params)
+    if @shop.save
+      flash[:notice] = "新規登録完了しました"
+      redirect_to shops_path
+    end
   end
 
   def index
@@ -10,4 +19,11 @@ class Admin::ShopsController < ApplicationController
 
   def destroy
   end
+
+
+  private
+  def shop_params
+    params.require(:shop).permit(:shop_name, :postcode, :address, :nearest_station, :shop_url)
+  end
+
 end
