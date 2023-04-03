@@ -7,11 +7,12 @@ class Admin::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     if @shop.save
       flash[:notice] = "新規登録完了しました"
-      redirect_to shops_path
+      redirect_to admin_shops_path
     end
   end
 
   def index
+    @shops = Shop.all.order(created_at: :desc)
   end
 
   def edit

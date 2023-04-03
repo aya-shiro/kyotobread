@@ -18,10 +18,9 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="row collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+
               <% if user_signed_in? %>
               <!--会員がログインしている場合-->
               <li style="color:limegreen;" class="pt-2"><span>ようこそ<%= current_user.name %>さん</span></li>
