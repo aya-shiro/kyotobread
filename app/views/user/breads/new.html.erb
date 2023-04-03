@@ -20,8 +20,8 @@
         <%= b.label { b.radio_button + b.text } %>
       <% end %>
 
-      <%#= f.label :SHOP %>
-      <%#= f.collection_select(:shop_name, @shops, :id, :address) %>
+      <%= f.label :SHOP %>
+      <%= f.collection_select(:shop_name, Shop.all, :id, :address) %>
 
 
       <%= f.submit "投稿する" %>

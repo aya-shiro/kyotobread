@@ -1,2 +1,15 @@
-<h1>User::Users#edit</h1>
-<p>Find me in app/views/user/users/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="col-md-6 mx-auto">
+    <h3>プロフィール編集</h3>
+
+    <%= form_with model: @user, url: users_mypage_edit_path, method: :patch do |f| %>
+    
+      <%= f.label :ユーザーネーム %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :自己紹介 %><br>
+      <%= f.text_area :user_info %><br>
+      <%= f.submit "保存" %>
+    <% end %>
+
+  </div>
+</div>

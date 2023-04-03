@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     get 'users/mypage' => 'users#show'
     get 'users/mypage/edit' => 'users#edit'
-    get 'users/mypage' => 'users#update'
+    patch 'users/mypage/edit' => 'users#update'
     resources:users, only: [:index, :edit, :destroy]
 
     resources:breads, only: [:index, :new, :create, :show, :edit, :destroy] do
