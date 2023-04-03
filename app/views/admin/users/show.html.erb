@@ -1,2 +1,39 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container mt-10 mx-auto">
+
+  <div class="md-3">
+    <h5><%= @user.name %>さんのユーザー詳細 </h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <p>会員ID</p>
+      <p>ニックネーム</p>
+      <p>メールアドレス</p>
+      <p>現在のステータス</p>
+    </div>
+
+    <div class="col-md-6">
+      <p><%= @user.id %></p>
+      <p><%= @user.name %></p>
+      <p><%= @user.email %></p>
+      <% if @user.is_delete == false %>
+        <div  class="text-success">
+          有効
+        </div>
+      <% else %>
+        <div class="text-danger">
+          退会
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h5 class="mt-5">過去の投稿</h5>
+  <%= link_to admin_bread_path(@user.bread) do %>  <!--admin/breads/showへ遷移-->
+    <%= image_tag @user.get_bread_image(100, 100) %>
+  <% end %>
+  <p><%= @user.bread.name %></p>
+
+  <%= link_to "ユーザー一覧に戻る", admin_users_path %>
+
+</div>
