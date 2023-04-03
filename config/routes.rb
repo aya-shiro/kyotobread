@@ -22,10 +22,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources:users, only: [:index, :show, :destroy]
     resources:breads, only: [:index, :show, :destroy]
-    resources:topics, only: [:index, :new, :create, :show, :edit, :destroy]
-    resources:onlines, only: [:index, :new, :create, :edit, :destroy]
-    resources:shops, only: [:index, :new, :create, :edit, :destroy]
-    resources:drinks, only: [:index, :new, :create, :edit, :destroy]
+    resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources:onlines, only: [:index, :new, :create, :edit, :update,  :destroy]
+    resources:shops, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources:drinks, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   # 顧客用

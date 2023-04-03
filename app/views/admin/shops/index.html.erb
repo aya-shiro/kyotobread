@@ -1,4 +1,38 @@
-<h1>Admin::Shops#index</h1>
-<p>Find me in app/views/admin/shops/index.html.erb</p>
+<div class="container mt-5 mx-auto">
+  <div class="col-md-12s mx-auto">
 
-<h3>登録ショップ一覧</h3>
+    <%= flash[:notice] %>
+
+    <h3>登録ショップ一覧</h3>
+    <p>
+      <%= link_to "ショップ新規登録", new_admin_shop_path %>
+    </p>
+
+    <table class="table">
+      <tr>
+        <td>店名</td>
+        <td>郵便番号</td>
+        <td>住所</td>
+        <td>最寄り駅</td>
+        <td>ホームページ</td>
+        <td>登録日</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+
+      <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.shop_name %></td>
+        <td><%= shop.postcode %></td>
+        <td><%= shop.address %></td>
+        <td><%= shop.nearest_station %></td>
+        <td><%= shop.shop_url %></td>
+        <td><%= shop.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td>
+        <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

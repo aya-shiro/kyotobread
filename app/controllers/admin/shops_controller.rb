@@ -16,9 +16,23 @@ class Admin::ShopsController < ApplicationController
   end
 
   def edit
+    @shop = Shop.find(params[:id])
+  end
+
+  def update
+    @shop = Shop.find(params[:id])
+    if @shop.update(shop_params)
+      flash[:notice] = "編集しました"
+      redirect_to admin_shops_path
+    end
   end
 
   def destroy
+    shop = Shop.find(params[:id])
+    if shop.destroy
+      flash[:notice] = "削除しました"
+      redirect_to admin_shops_path
+    end
   end
 
 

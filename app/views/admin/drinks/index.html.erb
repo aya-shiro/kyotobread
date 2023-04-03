@@ -4,6 +4,8 @@
 <div class="container mt-5 mx-auto">
   <div class="col-md-6 mx-auto">
 
+  <%= flash[:notice] %>
+
     <p>Drinkアイコン一覧</p>
     <% @drinks.each do |drink| %>
       <%#= drink.get_drink_image(20, 20) %>

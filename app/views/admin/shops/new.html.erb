@@ -2,7 +2,7 @@
   <div class="col-md-6 mx-auto">
 
     <h3>ショップ登録</h3>
-    <%= form_with model: @shop do |f| %>
+    <%= form_with model: @shop, url: admin_shops_path do |f| %>
       <%= f.label :店名 %><br>
       <%= f.text_field :shop_name %><br>
       <%= f.label :アクセス %><br>
