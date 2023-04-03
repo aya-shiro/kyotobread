@@ -3,6 +3,7 @@ class User::BreadsController < ApplicationController
   end
 
   def show
+    @bread = Bread.find(params[:id])
   end
 
   def new
@@ -17,15 +18,27 @@ class User::BreadsController < ApplicationController
   end
 
   def edit
+    @bread = Bread.find(params[:id])
+  end
+
+  def update
+    @bread = Bread.find(params[:id])
+    if @bread.update(bread_params)
+      redirect_to bread_path
+    end
   end
 
   def destroy
+    bread = Bread.find(params[:id])
+    bread.destroy
+    redirect_to users_mypage_path
+
   end
 
 
   private
   def bread_params
-    params.require(:bread).permit(:bread, :introduce, :taste, :bread_image, :drink_id)
+    params.require(:bread).permit(:bread, :introduce, :taste, :bread_image, :drink_id, :shop_id)
   end
 
 

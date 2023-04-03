@@ -1,19 +1,30 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class="container mt-5">
+  <h5>マイページ</h5>
 
-<h3>マイページ</h3>
-<%= current_user.get_user_image(100, 100) %>
-<%= current_user.name %>
-<%= current_user.user_info %>
-<%= link_to "プロフィールの編集", users_mypage_edit_path(current_user.id) %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag current_user.get_user_image(200, 200) %>
+    </div>
+    <div class="col-md-6">
+      <%= current_user.name %><br>
+      <%= current_user.email %><br>
+      <%= current_user.user_info %><br>
+      <%= link_to "プロフィールの編集", users_mypage_edit_path(current_user.id), class:"mt-3 btn btn-sm btn-secondary" %>
+    </div>
+  </div>
 
-<h3>過去の投稿</h3>
-
-<% if @breads.exists? %>
-  <% @breads.each do |bread| %>
-    <%= bread.get_bread_image(50, 50) %>
-    <%= bread.name %>
+  <h5 class="mt-5">過去の投稿</h5>
+  <% if @breads.exists? %>
+    <% @breads.each do |bread| %>
+    <%= link_to bread_path(bread.id) do %>
+      <%= image_tag bread.get_bread_image(100, 100) %><br>
+    <% end %>
+      <%= bread.bread %>
+    <% end %>
+  <% else %>
+    <p>投稿はありません</p>
   <% end %>
-<% else %>
-  <p>投稿はありません</p>
-<% end %>
+
+
+
+</div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     patch 'users/mypage/edit' => 'users#update'
     resources:users, only: [:index, :edit, :destroy]
 
-    resources:breads, only: [:index, :new, :create, :show, :edit, :destroy] do
+    resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources:comments, only: [:create]
     end
 

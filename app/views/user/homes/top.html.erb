@@ -4,12 +4,12 @@
 <div class="container">
   <div class="main col-md-7">
 
-    <div class="tab-all">
+    <div>
       <% @breads.each do |bread| %>
-        <%= link_to bread_path do %>
+        <%= link_to bread_path(bread.id) do %>
           <%= image_tag bread.get_bread_image(50, 50) %>
         <% end %>
-        <%= bread.name %>
+        <%= bread.bread %>
       <% end %>
     </div>
 

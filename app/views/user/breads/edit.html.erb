@@ -1,2 +1,34 @@
-<h1>User::Breads#edit</h1>
-<p>Find me in app/views/user/breads/edit.html.erb</p>
+<div class="container mt-5">
+  <div class="col-md-6 mx-auto">
+    <h3>パンの編集</h3>
+
+    <!--後々部分テンプレートにする！！-->
+
+    <%= form_with model: @bread, url: bread_path do |f| %>
+      <%= f.label :パン写真 %>
+      <%= f.file_field :bread_image %><br>
+      <%= f.label :パン名 %>
+      <%= f.text_field :bread %><br>
+      <%= f.label :紹介 %>
+      <%= f.text_area :introduce, class: 'form-control' %>
+
+      <%= f.radio_button :taste, 'sweet' %>
+      <%= f.label :Sweet %>
+      <%= f.radio_button :taste, "solty" %>
+      <%= f.label :Solty %><br>
+
+      <%= f.label :ドリンク %><br>
+      <%= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
+        <%= b.label { b.radio_button + b.text } %>
+      <% end %>
+
+      <%= f.label :ショップ選択 %>
+      <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%>    <!--addressメソッドはshop.rbで定義-->
+
+
+      <%= f.submit "編集する" %>
+    <% end %>
+
+
+  </div>
+</div>

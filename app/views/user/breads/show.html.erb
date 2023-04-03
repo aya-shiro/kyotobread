@@ -1,2 +1,20 @@
-<h1>User::Breads#show</h1>
-<p>Find me in app/views/user/breads/show.html.erb</p>
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-md-3">
+    <%= image_tag @bread.get_bread_image(200, 200) %>
+    </div>
+
+    <div class="col-md-6">
+      <%= @bread.bread %><br>
+      <%= @bread.introduce %><br>
+      <%= @bread.drink.drink_name %><br>
+      <%= @bread.shop.address_display %><br>
+      <%= @bread.created_at.strftime("%Y/%m/%d") %><br>
+
+      <%= link_to "編集", edit_bread_path(@bread.id) %>
+      <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+
+  </div>
+</div>

@@ -2,7 +2,7 @@
   <div class="col-md-6 mx-auto">
     <h3>投稿フォーム</h3>
 
-    <%= form_with model:@bread, url: breads_path do |f| %>
+    <%= form_with model: @bread, url: breads_path do |f| %>
       <%= f.label :パン写真 %>
       <%= f.file_field :bread_image, placeholder: "画像を選択" %><br>
       <%= f.label :パン名 %>
@@ -20,8 +20,8 @@
         <%= b.label { b.radio_button + b.text } %>
       <% end %>
 
-      <%= f.label :SHOP %>
-      <%= f.collection_select(:shop_name, Shop.all, :id, :address) %>
+      <%= f.label :ショップ選択 %>
+      <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%>    <!--addressメソッドはshop.rbで定義-->
 
 
       <%= f.submit "投稿する" %>
