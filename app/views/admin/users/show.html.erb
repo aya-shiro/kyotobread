@@ -1,32 +1,61 @@
-<div class="container mt-10 mx-auto">
+<div class="container mt-4 mx-auto">
 
-  <div class="md-3">
-    <h5><%= @user.name %>さんのユーザー詳細 </h5>
+  <div class="row col-md-8">
+    <h5 class="mr-5"><%= @user.name %>さんのユーザー詳細 </h5>
+    <%= link_to "ユーザー一覧に戻る", admin_users_path, class:"btn btn-outline-primary btn-sm" %>
   </div>
 
   <div class="row">
-    <div class="col-md-3">
-      <p>会員ID</p>
-      <p>ニックネーム</p>
-      <p>メールアドレス</p>
-      <p>現在のステータス</p>
-    </div>
+    <div class="col-md-8 mt-4">
+      <table>
+        <tr>
+          <td class="py-3 mr-5">会員ID</td>
+          <td class="pl-4"><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td class="py-3">ニックネーム</td>
+          <td class="pl-4"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="py-3">メールアドレス</td>
+          <td class="pl-4"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td class="py-3">現在のステータス</td>
+          <td>
+            <% if @user.is_delete == false %>
+              <div class="text-success pl-4">
+                有効
+              </div>
+            <% else %>
+              <div class="text-danger pl-4">
+                退会
+              </div>
+            <% end %>
+          </td>
+        </tr>
 
-    <div class="col-md-6">
-      <p><%= @user.id %></p>
-      <p><%= @user.name %></p>
-      <p><%= @user.email %></p>
-      <% if @user.is_delete == false %>
-        <div  class="text-success">
-          有効
-        </div>
-      <% else %>
-        <div class="text-danger">
-          退会
-        </div>
-      <% end %>
-    </div>
-  </div>
+
+        <%= form_with model: @user, url:admin_user_path, method: :patch do |f| %>
+          <tr>
+            <td class="py-3">会員ステータス</td>
+            <td>
+              <% if @user.is_delete == false %>
+                <%= f.radio_button :is_delete, :false, checked: true, class:"ml-4" %>
+                 有効
+                <%= f.radio_button :is_delete, :true, class:'ml-4' %>
+                 退会
+              <% else %>
+                <%= f.radio_button :is_delete, :false %>
+                 有効
+                <%= f.radio_button :is_delete, :true, checked: true %>
+                 退会
+              <% end %>
+            </td>
+            <td><%= f.submit 'ステータスを変更する', "data-confirm" => "ステータスを変更します", class: 'btn btn-danger btn-sm' %></td>
+            </tr>
+        <% end %>
+      </table>
 
 
   <h5 class="mt-5"><%= @user.name %>さんの投稿一覧</h5>
@@ -35,7 +64,7 @@
       <% @breads.each do |bread| %>
         <td>
           <%= link_to admin_bread_path(bread.id) do %>
-            <%= image_tag bread.get_bread_image(100, 100) %><br>
+            <%= image_tag bread.get_bread_image(100, 100), class:"mr-3" %><br>
           <% end %>
           <%= bread.bread %>
         </td>
@@ -44,8 +73,5 @@
       <p>投稿はありません</p>
     <% end %>
   </table>
-
-
-  <%= link_to "ユーザー一覧に戻る", admin_users_path %>
 
 </div>
