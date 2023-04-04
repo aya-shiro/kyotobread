@@ -14,7 +14,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-user-image.jpg')
       bread_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    bread_image.variant(resize_to_limit: [width, height]).processed
+    bread_image.variant(resize_to_fill: [width, height]).processed  #写真をresize_to_fillでスクエアに
   end
 
 
@@ -25,6 +25,6 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-bread-image.jpg')
       user_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    user_image.variant(resize_to_limit: [width, height]).processed
+    user_image.variant(resize_to_fill: [width, height]).processed  #写真をresize_to_fillでスクエアに
   end
 end

@@ -17,7 +17,7 @@ class Bread < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-bread-image.jpg')
       bread_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    bread_image.variant(resize_to_limit: [width, height]).processed
+    bread_image.variant(resize_to_fill: [width, height]).processed   #写真をresize_to_fillでスクエアに
   end
 
 
