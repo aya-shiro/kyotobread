@@ -31,7 +31,7 @@
                </li>
                <li>
                  <%= link_to new_bread_path, class: 'nav-link text-dark' do %>
-                   <i class="fa-solid fa-flatbread"></i> 投稿する
+                   <i class="fas fa-plus"></i> 投稿する
                  <% end %>
                </li>
                <!--お気に入り一覧は後々実装-->
@@ -41,7 +41,7 @@
                  <% end %>
                </li>
                <li>
-                <%= link_to destroy_user_session_path, class: 'nav-link text-dark' do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
                   <i class="fa-solid fa-right-from-bracket"></i> Log out
                 <% end %>
                </li>
