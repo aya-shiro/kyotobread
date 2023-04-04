@@ -1,13 +1,10 @@
-<h1>Admin::Breads#show</h1>
-<p>Find me in app/views/admin/breads/show.html.erb</p>
-
 <!--user/breads/show.html.erbと部分テンプレートを検討-->
 
 <div class="container mt-5">
 
   <div class="row">
     <div class="col-md-3">
-    <%= image_tag @user.bread.get_bread_image(200, 200) %>
+    <%= image_tag @bread.get_bread_image(200, 200) %>
     </div>
 
     <div class="col-md-6">
@@ -17,8 +14,10 @@
       <%= @bread.shop.address_display %><br>
       <%= @bread.created_at.strftime("%Y/%m/%d") %><br>
 
-      <%#= link_to "編集", edit_bread_path(@bread.id) %>
-      <%#= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm mt-5" do %>
+        <%= current_user.name %>さんのこの投稿を削除する
+      <% end %>
+      <%= link_to "投稿一覧に戻る", admin_user_path(current_user.id)  %>
     </div>
 
   </div>

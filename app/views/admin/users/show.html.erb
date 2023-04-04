@@ -28,11 +28,23 @@
     </div>
   </div>
 
-  <h5 class="mt-5">過去の投稿</h5>
-  <%= link_to admin_bread_path(@user.bread) do %>  <!--admin/breads/showへ遷移-->
-    <%= image_tag @user.get_bread_image(100, 100) %>
-  <% end %>
-  <p><%= @user.bread.name %></p>
+
+  <h5 class="mt-5"><%= @user.name %>さんの投稿一覧</h5>
+  <table>
+    <% if @breads.exists? %>
+      <% @breads.each do |bread| %>
+        <td>
+          <%= link_to admin_bread_path(bread.id) do %>
+            <%= image_tag bread.get_bread_image(100, 100) %><br>
+          <% end %>
+          <%= bread.bread %>
+        </td>
+      <% end %>
+    <% else %>
+      <p>投稿はありません</p>
+    <% end %>
+  </table>
+
 
   <%= link_to "ユーザー一覧に戻る", admin_users_path %>
 

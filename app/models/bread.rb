@@ -14,7 +14,7 @@ class Bread < ApplicationRecord
 
   def get_bread_image(width, height)
     unless bread_image.attached?
-      file_path = Rails.root.join('app/assets/images/bread_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no-bread-image.jpg')
       bread_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     bread_image.variant(resize_to_limit: [width, height]).processed

@@ -13,18 +13,20 @@
     </div>
   </div>
 
-  <h5 class="mt-5">過去の投稿</h5>
-  <% if @breads.exists? %>
-    <% @breads.each do |bread| %>
-    <%= link_to bread_path(bread.id) do %>
-      <%= image_tag bread.get_bread_image(100, 100) %><br>
+  <h5 class="mt-5">自分の投稿一覧</h5>
+  <table>
+    <% if @breads.exists? %>
+      <% @breads.each do |bread| %>
+        <td>
+          <%= link_to bread_path(bread.id) do %>
+            <%= image_tag bread.get_bread_image(100, 100) %><br>
+          <% end %>
+          <%= bread.bread %>
+        </td>
+      <% end %>
+    <% else %>
+      <p>投稿はありません</p>
     <% end %>
-      <%= bread.bread %>
-    <% end %>
-  <% else %>
-    <p>投稿はありません</p>
-  <% end %>
-
-
+  </table>
 
 </div>
