@@ -4,8 +4,8 @@ class CreateBreads < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :shop_id
       t.integer :drink_id
-      t.text :bread, null: false
-      t.text :introduce
+      t.text :bread_name, null: false
+      t.text :introduce, null: false
       t.boolean :taste, null: false
       t.timestamps
     end

@@ -46,9 +46,9 @@
                 <%= f.radio_button :is_delete, :true, class:'ml-4' %>
                  退会
               <% else %>
-                <%= f.radio_button :is_delete, :false %>
+                <%= f.radio_button :is_delete, :false, class:"ml-4" %>
                  有効
-                <%= f.radio_button :is_delete, :true, checked: true %>
+                <%= f.radio_button :is_delete, :true, checked: true, class:"ml-4" %>
                  退会
               <% end %>
             </td>

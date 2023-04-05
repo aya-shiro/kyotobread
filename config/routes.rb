@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#show'
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/edit' => 'users#update'
+    get 'users/check'
+    patch 'users/withdraw'
     resources:users, only: [:index, :edit, :destroy]
 
     resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do

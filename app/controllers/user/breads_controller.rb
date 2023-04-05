@@ -38,7 +38,7 @@ class User::BreadsController < ApplicationController
 
   private
   def bread_params
-    params.require(:bread).permit(:bread, :introduce, :taste, :bread_image, :drink_id, :shop_id)
+    params.require(:bread).permit(:bread_name, :introduce, :taste, :bread_image, :drink_id, :shop_id)
   end
 
 

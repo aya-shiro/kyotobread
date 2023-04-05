@@ -15,9 +15,9 @@
       <%= @bread.created_at.strftime("%Y/%m/%d") %><br>
 
       <%= link_to bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm mt-5" do %>
-        <%= current_user.name %>さんのこの投稿を削除する
+        <%= @user.name %>さんのこの投稿を削除する
       <% end %>
-      <%= link_to "投稿一覧に戻る", admin_user_path(current_user.id)  %>
+      <%= link_to "投稿一覧に戻る", admin_user_path(@user.id), class:"mt-5 ml-3 btn btn-sm btn-outline-primary"  %>
     </div>
 
   </div>

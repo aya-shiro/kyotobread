@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2023_04_02_115307) do
     t.integer "user_id"
     t.integer "shop_id"
     t.integer "drink_id"
-    t.text "bread", null: false
-    t.text "introduce"
+    t.text "bread_name", null: false
+    t.text "introduce", null: false
     t.boolean "taste", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -13,8 +13,8 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:user][:is_delete] == "false"
-      @user.update(user_params)
+    # params[:user][:is_delete] == "false"
+    if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
       redirect_to admin_user_path(@user.id)
     else
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:is_status)
+    params.require(:user).permit(:is_delete)
   end
 
 end
