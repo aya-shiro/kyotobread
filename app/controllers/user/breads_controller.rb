@@ -1,5 +1,7 @@
 class User::BreadsController < ApplicationController
   def index
+    @user = current_user
+    @breads = Bread.all
   end
 
   def show

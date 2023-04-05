@@ -3,7 +3,7 @@ class User::UsersController < ApplicationController
   end
 
   def show
-    @breads = current_user.bread
+    @breads = current_user.bread.all.order(created_at: :desc)  #マイページの投稿一覧を新着順に
   end
 
   def edit

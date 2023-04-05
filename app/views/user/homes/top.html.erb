@@ -1,27 +1,30 @@
 <h1>User::Homes#top</h1>
 <p>Find me in app/views/user/homes/top.html.erb</p>
 
-<div class="container">
-  <div class="main col-md-7">
+<div class="container mt-4">
+  <div class="mx-auto">
+    <div class="row">
 
-    <div>
-      <% @breads.each do |bread| %>
-        <%= link_to bread_path(bread.id) do %>
-          <%= image_tag bread.get_bread_image(50, 50) %>
-        <% end %>
-        <%= bread.bread %>
-      <% end %>
+      <div class="col-md-3">
+        <p>ONLINE SHOP</p>
+        <%#=  %>
+      </div>
+
+      <div class="col-md-7">
+        <table>
+          <tr>
+            <% @breads.each do |bread| %>
+              <td>
+                <%= link_to bread_path(bread.id) do %>
+                  <%= image_tag bread.get_bread_image(200, 200) %>
+                <% end %>
+                <%= bread.bread_name %>
+              </td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+
     </div>
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </div>

@@ -1,20 +1,32 @@
-<div class="container mt-5">
+<div class="container mt-4">
 
     <div class="text-success">
       <%= flash[:notice] %>
     </div>
 
   <div class="row">
-    <div class="col-md-3">
-    <%= image_tag @bread.get_bread_image(200, 200) %>
+    <div class="col-md-5">
+      <%= image_tag @bread.get_bread_image(400, 400) %>
     </div>
 
     <div class="col-md-6">
-      <%= @bread.bread_name %><br>
-      <%= @bread.introduce %><br>
-      <%= @bread.drink.drink_name %><br>
-      <%= @bread.shop.address_display %><br>
-      <%= @bread.created_at.strftime("%Y/%m/%d") %><br>
+      <h5><%= @bread.bread_name %></h5>
+      <p><%= @bread.introduce %></p>
+
+      <table>
+        </tr>
+          <td class="py-2">おすすめドリンク</td>
+          <td><%= @bread.drink.drink_name %></td>
+        </tr>
+        <tr>
+          <td class="py-2">購入店名</td>
+          <td><%= @bread.shop.address_display %></td>
+        </tr>
+        <tr>
+          <td class="py-2">🕒</td>
+          <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+      </table>
 
       <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 btn btn-outline-secondary" %>
       <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>

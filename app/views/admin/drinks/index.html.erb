@@ -6,19 +6,31 @@
 
   <%= flash[:notice] %>
 
-    <p>Drinkアイコン一覧</p>
-    <% @drinks.each do |drink| %>
-      <%#= drink.get_drink_image(20, 20) %>
-      <%= drink.drink_name %>
-    <% end %>
+  <div class="row">
+    <div class="table">
+      <h5>Drinkアイコン一覧</h5>
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i></h1>
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i></h1>
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #f5f5f5;"></i></h1>
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i></h1>
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i></h1>
 
-    <p>アイコンを追加する？</p>
-    <%= form_with model: @drink, url: admin_drinks_path, method: :post do |f| %>
-      <%= f.label :ドリンク %>
-      <%#= f.file_field :drink_image %>
-      <%= f.text_field :drink_name %>
-      <%= f.submit "登録する" %>
-    <% end %>
+    <!--<p>Drinkアイコン一覧</p>-->
+    <%# @drinks.each do |drink| %>
+      <%#= drink.get_drink_image(20, 20) %>
+      <%#= drink.drink_name %>
+    <%# end %>
+    </div>
+
+    <p>Othersの選択肢を増やす</p>
+    <div class="row">
+      <h1><i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i></h1>
+
+      <%= form_with model: @drink, url: admin_drinks_path, method: :post do |f| %>
+        <%= f.text_field :drink_name %>
+        <%= f.submit "登録する" %>
+      <% end %>
+    </div>
 
 
   </div>
