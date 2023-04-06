@@ -25,7 +25,7 @@
               <!--会員がログインしている場合-->
               <li style="color:limegreen;" class="pt-2"><span>ようこそ<%= current_user.name %>さん</span></li>
                <li>
-                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                 <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
                    <i class="fa-solid fa-user"></i> マイページ
                  <% end %>
                </li>
@@ -34,10 +34,9 @@
                    <i class="fas fa-plus"></i> 投稿する
                  <% end %>
                </li>
-               <!--お気に入り一覧は後々実装-->
                <li>
-                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
-                   <i class="fa-solid fa-heart"></i> お気に入り
+                 <%= link_to users_path, class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-heart"></i> ユーザー一覧
                  <% end %>
                </li>
                <li>

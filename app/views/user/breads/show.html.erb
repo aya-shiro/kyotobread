@@ -28,8 +28,24 @@
         </tr>
       </table>
 
-      <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 btn btn-outline-secondary" %>
-      <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>
+      <% if @bread.user == current_user %>
+        <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 btn btn-outline-secondary" %>
+        <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>
+      <% end %>
+
+      <% if @bread.favorite_by?(current_user) %>
+        <p>
+          <%= link_to bread_favorites_path(@bread.id), method: :delete do %>
+            ♥<%= @bread.favorites.count %>いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to bread_favorites_path(@bread.id), method: :post do %>
+            ♡<%= @bread.favorites.count %>いいね
+          <% end %>
+        </p>
+      <% end %>
     </div>
 
   </div>

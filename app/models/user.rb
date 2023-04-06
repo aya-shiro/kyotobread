@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :bread, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :bread_image  #ユーザー詳細でパン写真表示のため記述
 

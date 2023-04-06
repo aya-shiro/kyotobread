@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   scope module: :user do
     root to: 'homes#top'
     get 'homes/about'
-    get 'users/mypage' => 'users#show'
+   # get 'users/mypage' => 'users#show'
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/edit' => 'users#update'
     get 'users/check'
     patch 'users/withdraw'
-    resources:users, only: [:index, :edit, :destroy]
+    resources:users, only: [:index, :show, :edit, :destroy]
 
     resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources:comments, only: [:create]
+      resource :favorites, only: [:create, :destroy]
     end
 
     resources:topics, only: [:index, :show]

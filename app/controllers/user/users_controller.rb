@@ -5,10 +5,11 @@ class User::UsersController < ApplicationController
 
   def show
     @breads = current_user.bread.all.order(created_at: :desc)  #マイページの投稿一覧を新着順に
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def update
