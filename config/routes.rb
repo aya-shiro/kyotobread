@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   scope module: :user do
     root to: 'homes#top'
     get 'homes/about'
-   # get 'users/mypage' => 'users#show'
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/edit' => 'users#update'
     get 'users/check'
     patch 'users/withdraw'
     resources:users, only: [:index, :show, :edit, :destroy]
 
-    resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+    get 'breads/index/:id' => 'breads#index', as:"breads_index"
+
+    resources:breads, only: [:new, :create, :show, :edit, :update, :destroy] do    # resourcesから:index削除
       resources:comments, only: [:create]
       resource :favorites, only: [:create, :destroy]
     end

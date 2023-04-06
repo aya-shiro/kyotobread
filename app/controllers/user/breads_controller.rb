@@ -1,7 +1,7 @@
 class User::BreadsController < ApplicationController
   def index
-    @user = current_user
-    @breads = Bread.all
+    @user = User.find(params[:id])
+    @breads = @user.bread
   end
 
   def show
