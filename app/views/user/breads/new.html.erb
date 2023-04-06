@@ -16,14 +16,19 @@
       <%= f.label :Solty %><br>
 
       <%= f.label :ドリンク %><br>
-      <%= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
-        <%= b.label { b.radio_button + b.text } %>
-      <% end %>
+      <%#= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
+        <%#= b.label { b.radio_button + b.text } %>
+      <%# end %>
+
+      <button type="button">
+        <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i><br>
+        coffee
+      </button>
 
       <%= f.label :ショップ選択 %>
       <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%>    <!--addressメソッドはshop.rbで定義-->
 
-
+      <%= form.hidden_field :drink_name %>
       <%= f.submit "投稿する" %>
     <% end %>
 

@@ -5,7 +5,7 @@ class Admin::DrinksController < ApplicationController
   def create
     @drink = Drink.new(drink_params)
     if @drink.save
-      flash[:notice] = "新規登録完了しました"
+      flash[:notice] = "追加登録が完了しました"
       redirect_to admin_drinks_path
     end
   end
