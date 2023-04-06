@@ -34,28 +34,22 @@
             <% end %>
           </td>
         </tr>
-
-
-        <%= form_with model: @user, url:admin_user_path, method: :patch do |f| %>
-          <tr>
-            <td class="py-3">会員ステータス</td>
-            <td>
-              <% if @user.is_delete == false %>
-                <%= f.radio_button :is_delete, :false, checked: true, class:"ml-4" %>
-                 有効
-                <%= f.radio_button :is_delete, :true, class:'ml-4' %>
-                 退会
-              <% else %>
-                <%= f.radio_button :is_delete, :false, class:"ml-4" %>
-                 有効
-                <%= f.radio_button :is_delete, :true, checked: true, class:"ml-4" %>
-                 退会
-              <% end %>
-            </td>
-            <td><%= f.submit 'ステータスを変更する', "data-confirm" => "ステータスを変更します", class: 'btn btn-danger btn-sm' %></td>
-            </tr>
-        <% end %>
       </table>
+
+      <%= form_with model: @user, url:admin_user_path, method: :patch do |f| %>
+            <% if @user.is_delete == false %>
+              <%= f.radio_button :is_delete, :false, checked: true, class:"ml-4" %>
+               有効
+              <%= f.radio_button :is_delete, :true, class:'ml-4' %>
+               退会
+            <% else %>
+              <%= f.radio_button :is_delete, :false, class:"ml-4" %>
+               有効
+              <%= f.radio_button :is_delete, :true, checked: true, class:"ml-4" %>
+               退会
+            <% end %>
+          <%= f.submit 'ステータスを変更する', "data-confirm" => "ステータスを変更します", class: 'ml-3 btn btn-danger btn-sm' %>
+      <% end %>
 
 
   <h5 class="mt-5"><%= @user.name %>さんの投稿一覧</h5>
@@ -66,7 +60,7 @@
           <%= link_to admin_bread_path(bread.id) do %>
             <%= image_tag bread.get_bread_image(100, 100), class:"mr-3" %><br>
           <% end %>
-          <%= bread.bread %>
+          <%= bread.bread_name %>
         </td>
       <% end %>
     <% else %>

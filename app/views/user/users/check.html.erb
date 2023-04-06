@@ -5,13 +5,16 @@
     <p class="mt-4">
       本当に退会しますか？<br>
       退会処理後は同じアカウントのご利用ができなくなります。<br>
-      退会処理を行った場合、コメント機能やお気に入り機能が使用不可となります。
-
+      退会処理を行った場合、投稿機能・いいねとコメント機能が使用不可となります。<br>
     </p>
+
+    <div class="text-danger">
+      <%= flash.now[:alert] %>
+    </div>
 
     <%= form_with model: @user, url: users_withdraw_path, method: :patch do |f| %>
       <%= f.check_box :agreement %>
-      <%= f.label :agreement, "上記の内容に同意する" %><br>
+      <%= f.label :agreement, "上記に同意する" %><br>
       <%= f.submit "退会する", class:"mt-3 btn btn-danger btn-sm" %>
     <% end %>
 

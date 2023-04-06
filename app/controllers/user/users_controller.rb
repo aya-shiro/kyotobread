@@ -1,5 +1,6 @@
 class User::UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def show
@@ -29,8 +30,9 @@ class User::UsersController < ApplicationController
       flash[:notice] = "退会処理を実行いたしました"
       redirect_to root_path
     else
-      flash.now[:alert] = "利用規約に同意していません"
-      render :edit
+      flash.now[:alert] = "退会には「上記に同意する」へのチェックが必要です"
+      @user = current_user
+      render :check
     end
   end
 

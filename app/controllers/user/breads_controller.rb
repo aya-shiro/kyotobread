@@ -15,8 +15,14 @@ class User::BreadsController < ApplicationController
   def create
     @bread = Bread.new(bread_params)
     @bread.user_id = current_user.id
-    @bread.save
-    redirect_to users_mypage_path
+    @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
+    # @drink = Drink.find_or_create_by(drink_name: params[:bread][:drink_name])
+
+    @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
+
+    if @bread.save
+      redirect_to users_mypage_path
+    end
   end
 
   def edit
@@ -40,9 +46,8 @@ class User::BreadsController < ApplicationController
 
   private
   def bread_params
-    params.require(:bread).permit(:bread_name, :introduce, :taste, :bread_image, :drink_id, :shop_id)
+    params.require(:bread).permit(:bread_name, :introduce, :taste, :bread_image, :shop_id, drink_attributes: [:drink_name])
   end
-
 
 
 end

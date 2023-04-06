@@ -5,6 +5,8 @@ class Bread < ApplicationRecord
   has_many :topic
 
   belongs_to :drink
+  accepts_nested_attributes_for :drink
+
 
   has_many :comments, dependent: :destroy
 
