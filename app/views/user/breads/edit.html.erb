@@ -13,9 +13,9 @@
       <%= f.text_area :introduce, rows: 5, class: 'form-control', placeholder: "味や感想を教えて！" %>
 
       <%= f.radio_button :taste, 'sweet' %>
-      <%= f.label :Sweet %>
+      <%= f.label :甘い系 %>
       <%= f.radio_button :taste, "solty" %>
-      <%= f.label :Solty %><br>
+      <%= f.label :塩味系 %><br>
 
       <%= f.label :一緒に飲むなら？, class:"mt-2" %><br>
       <%#= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
@@ -61,10 +61,10 @@
       <%= f.select :drink_name, options_from_collection_for_select(Drink.all, :id, :drink_name) %><br>
 
 
-      <%= f.label :ショップ選択, class:"mt-4" %>
+      <%= f.label :購入店名選択, class:"mt-4" %>
       <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%><br>    <!--addressメソッドはshop.rbで定義-->
 
-      <%= f.submit "編集する", class:"mt-4 btn btn-secondary" %>
+      <%= f.submit "更新する", class:"mt-4 btn btn-secondary" %>
     <% end %>
 
 

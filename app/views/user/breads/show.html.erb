@@ -5,16 +5,18 @@
   </div>
 
   <div class="row mb-5">
-    <div class="col-1">
-      <%= link_to user_path(@user.id) do %>
-        <%= image_tag @user.get_user_image(80, 80) %>
-      <% end %>
-    </div>
-    <div class="col-4">
-      <%= link_to user_path(@user.id) do %>
-        <p><%= @user.name %></p>
-      <% end %>
-    </div>
+    <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
+      <div class="col-1">
+        <%= link_to user_path(@user.id) do %>
+          <%= image_tag @user.get_user_image(80, 80) %>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <%= link_to user_path(@user.id) do %>
+          <p><%= @user.name %></p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row">
@@ -29,10 +31,16 @@
       <table>
         </tr>
           <td class="py-2">ジャンル</td>
-          <td><%= @bread.taste %></td>
+          <td>
+            <% if @bread.taste == true %>
+              甘い系
+            <% else %>
+              塩味系
+            <% end %>
+          </td>
         </tr>
         </tr>
-          <td class="py-2">おすすめドリンク</td>
+          <td class="py-2">一緒に飲むなら？</td>
           <td><%= @bread.drink.drink_name %></td>
         </tr>
         <tr>
@@ -44,8 +52,8 @@
           <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
 
-        <% if @bread.created_at != @bread.updated_at %>    <!--投稿後に編集された場合-->
-          <tr>
+        <% if @bread.created_at != @bread.updated_at %>    <!--投稿後に編集された場合のみaudated_atを表示したい-->
+          <tr style="color: gray;">
             <td class="py-2">(最終更新</td>
             <td><%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</td>    <!--東京時間のhour/minutesまで表示-->
           </tr>
@@ -76,24 +84,33 @@
     </div>
   </div>
 
+
+  <!--レイアウト調整する-->
   <div class="row">
-    <div class="col-10">
+    <div class="col-10 mt-3">
       <table>
-        <% @bread.comments.each do |comment| %>
-          <tr>
-            <td>
-              <%= image_tag comment.user.get_user_image(20, 20) %>
-              <%= comment.user.name %>
-              <span style="font-size: 3px; color: gray;">
-                <%= comment.created_at.strftime("%Y/%m/%d") %>
-              </span><br>
-              <%= comment.comment %>
-            </td>
-          </tr>
+        <% if @bread.comments.exists? %>
+          <% @bread.comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= image_tag comment.user.get_user_image(50, 50) %>
+                <%= comment.user.name %>
+                <span style="font-size: 3px; color: gray;">
+                  <%= comment.created_at.strftime("%Y/%m/%d") %>
+                </span><br>
+                <%= comment.comment %>
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", bread_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-secondary" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <td>コメントを書く</td>
         <% end %>
         <tr>
         <%= form_with model:[@bread, @comment] do |f| %>
-          <td><%= f.text_area :comment,rows: 1,cols: 70, class:"mt-3 form-control" %></td>
+          <td><%= f.text_area :comment, placeholder:"コメントをどうぞ", rows: 1,cols: 70, class:"mt-3 form-control" %></td>
           <td><%= f.submit "送信する", class:"mt-2 btn btn-sm btn-secondary" %></td>
         <% end %>
         </tr>

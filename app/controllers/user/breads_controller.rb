@@ -18,9 +18,20 @@ class User::BreadsController < ApplicationController
     @bread = Bread.new(bread_params)
     @bread.user_id = current_user.id
     @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
-    # @drink = Drink.find_or_create_by(drink_name: params[:bread][:drink_name])
-
-    @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
+    # @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
+    if params[:bread][:drink_name] == "1"
+      @drink.drink_name = "coffee"
+    elsif params[:bread][:drink_name] == "2"
+      @drink.drink_name = "tea"
+    elsif params[:bread][:drink_name] == "3"
+      @drink.drink_name = "milk1"
+    elsif params[:bread][:drink_name] == "4"
+      @drink.drink_name = "milk2"
+    elsif params[:bread][:drink_name] == "5"
+      @drink.drink_name = "tya"
+    else
+      @drink = Drink.find(params[:id])
+    end
 
     if @bread.save
       redirect_to user_path(current_user)

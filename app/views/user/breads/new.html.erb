@@ -11,16 +11,16 @@
       <%= f.text_area :introduce, rows: 5, class: 'form-control', placeholder: "味や感想を教えて！" %>
 
       <%= f.radio_button :taste, 'sweet' %>
-      <%= f.label :Sweet %>
+      <%= f.label :甘い系 %>
       <%= f.radio_button :taste, "solty" %>
-      <%= f.label :Solty %><br>
+      <%= f.label :塩味系 %><br>
 
       <%= f.label :一緒に飲むなら？, class:"mt-2" %><br>
       <%#= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
         <%#= b.label { b.radio_button + b.text } %>
       <%# end %>
 
-      <%= f.radio_button :drink_name, "coffee" %>
+      <%= f.radio_button :drink_name, 1 %>
       <div class="btn">
         <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>
         <%= f.label :drink_name, "coffee" %>

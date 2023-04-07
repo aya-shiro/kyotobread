@@ -8,8 +8,9 @@ class User::CommentsController < ApplicationController
   end
 
   def destroy
-    Bread.find(params[:id]).destroy
-    redirect_to bread_path(bread.id)
+    comment = Comment.find(params[:bread_id])
+    comment.destroy
+    redirect_to bread_path(params[:bread_id])
 
   end
 
