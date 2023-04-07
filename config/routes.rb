@@ -9,12 +9,12 @@ Rails.application.routes.draw do
     patch 'users/withdraw'
     resources:users, only: [:index, :show, :edit, :destroy]
 
-    get 'breads/index/:id' => 'breads#index', as:"breads_index"
-
-    resources:breads, only: [:new, :create, :show, :edit, :update, :destroy] do    # resourcesから:index削除
+    resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources:comments, only: [:create]
       resource :favorites, only: [:create, :destroy]
     end
+
+    get 'favorites/show'
 
     resources:topics, only: [:index, :show]
     resources:onlines, only: [:index, :show]

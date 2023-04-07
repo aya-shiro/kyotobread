@@ -1,6 +1,5 @@
 <div class="container mt-4">
 
-
   <div class="row">
     <div class="col-md-3">
       <%= image_tag @user.get_user_image(200, 200) %>
@@ -10,39 +9,35 @@
       <%= @user.email %><br>
       <%= @user.user_info %><br>
       <% if @user == current_user %>
-        <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"mt-3 btn btn-sm btn-outline-secondary" %>
-      <% end %>
-      <%#= link_to oo_path, class:"btn btn-sm btn-outline-secondary" do  %>
-        いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
-      <%# end %>
+        <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"mt-3 btn btn-sm btn-outline-secondary" %><br>
+        <%= link_to favorites_show_path, class:"mt-3 btn btn-sm btn-outline-secondary" do  %>
+          いいね<i class="fa-solid fa-heart" style="color: #ff0088;"></i>
+        <% end %>
+       <% end %>
     </div>
   </div>
 
-  <h5 class="mt-5">投稿一覧</h5>
+  <h5 class="mt-5">
+    <i class="fa-solid fa-bread-slice" style="color: #b4660e;"></i> <%= @user.bread.count %> posts
+  </h5>
 
-  <table>
-  <% if @breads.exists? %>
-    <tbody>
-      <% @breads.each_with_index do |bread, index| %>
-        <% if index < 8 %>
+  <div class="row">
+    <div class="col-6">
+      <table>
+        <% if @breads.exists? %>
+          <% @breads.each do |bread| %>
           <td>
             <%= link_to bread_path(bread.id) do %>
-              <%= image_tag bread.get_bread_image(100, 100), class:"mr-2" %><br>
+              <%= image_tag bread.get_bread_image(200, 200) %>
             <% end %>
             <%= bread.bread_name %>
           </td>
+          <% end %>
+        <% else %>
+          <p>投稿はありません</p>
         <% end %>
-      <% end %>
-
-      <% if @breads.count > 8 %>
-            <td colspan="4">
-              <%= link_to "more>", breads_index_path(@user.id), class:"ml-5 mb-4 btn btn-outline-primary" %>
-            </td>
-      <% end %>
-    </tbody>
-  <% else %>
-    <p>投稿はありません</p>
-  <% end %>
-</table>
+      </table>
+    </div>
+  </div>
 
 </div>

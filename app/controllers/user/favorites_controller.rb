@@ -13,4 +13,10 @@ class User::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to bread_path(bread.id)
   end
+
+  def show
+    @favorites = current_user.favorites.includes(:bread)
+    # current_userの、Breadモデルのデータを含むfavorites(つまりいいね)を取得する。
+    # @bread = Bread.find(params[:id])
+  end
 end
