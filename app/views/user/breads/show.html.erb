@@ -1,8 +1,21 @@
 <div class="container mt-4">
 
-    <div class="text-success">
-      <%= flash[:notice] %>
+  <div class="text-success">
+    <%= flash[:notice] %>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-1">
+      <%= link_to user_path(@user.id) do %>
+        <%= image_tag @user.get_user_image(80, 80) %>
+      <% end %>
     </div>
+    <div class="col-4">
+      <%= link_to user_path(@user.id) do %>
+        <p><%= @user.name %></p>
+      <% end %>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-md-5">
@@ -15,6 +28,10 @@
 
       <table>
         </tr>
+          <td class="py-2">ジャンル</td>
+          <td><%= @bread.taste %></td>
+        </tr>
+        </tr>
           <td class="py-2">おすすめドリンク</td>
           <td><%= @bread.drink.drink_name %></td>
         </tr>
@@ -23,30 +40,67 @@
           <td><%= @bread.shop.address_display %></td>
         </tr>
         <tr>
-          <td class="py-2">🕒</td>
+          <td class="py-2">投稿日</td>
           <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
+
+        <% if @bread.created_at != @bread.updated_at %>    <!--投稿後に編集された場合-->
+          <tr>
+            <td class="py-2">(最終更新</td>
+            <td><%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</td>    <!--東京時間のhour/minutesまで表示-->
+          </tr>
+        <% end %>
       </table>
 
-      <% if @bread.user == current_user %>
-        <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 btn btn-outline-secondary" %>
-        <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>
+      <% if @bread.favorite_by?(current_user) %>
+        <span class="mt-3">
+          <%= link_to bread_favorites_path(@bread.id), method: :delete do %>
+            <i class="fa-solid fa-heart" style="color: #e40101;"></i> <%= @bread.favorites.count %>
+          <% end %>
+        </span>
+      <% else %>
+        <span class="mt-3">
+          <%= link_to bread_favorites_path(@bread.id), method: :post do %>
+            <i class="fa-regular fa-heart" style="color: #e40101;"></i> <%= @bread.favorites.count %>
+          <% end %>
+        </span>
       <% end %>
 
-      <% if @bread.favorite_by?(current_user) %>
-        <p>
-          <%= link_to bread_favorites_path(@bread.id), method: :delete do %>
-            ♥<%= @bread.favorites.count %>いいね
-          <% end %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to bread_favorites_path(@bread.id), method: :post do %>
-            ♡<%= @bread.favorites.count %>いいね
-          <% end %>
-        </p>
+      <span class="ml-3"><i class="far fa-comment-dots fa-flip-horizontal"></i> <%= @bread.comments.count %></span>
+
+
+      <% if @bread.user == current_user %>
+        <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 ml-5 btn btn-outline-secondary" %>
+        <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>
       <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10">
+      <table>
+        <% @bread.comments.each do |comment| %>
+          <tr>
+            <td>
+              <%= image_tag comment.user.get_user_image(20, 20) %>
+              <%= comment.user.name %>
+              <span style="font-size: 3px; color: gray;">
+                <%= comment.created_at.strftime("%Y/%m/%d") %>
+              </span><br>
+              <%= comment.comment %>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+        <%= form_with model:[@bread, @comment] do |f| %>
+          <td><%= f.text_area :comment,rows: 1,cols: 70, class:"mt-3 form-control" %></td>
+          <td><%= f.submit "送信する", class:"mt-2 btn btn-sm btn-secondary" %></td>
+        <% end %>
+        </tr>
+      </table>
     </div>
 
   </div>
+
+
 </div>

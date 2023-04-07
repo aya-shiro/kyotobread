@@ -6,6 +6,8 @@ class User::BreadsController < ApplicationController
 
   def show
     @bread = Bread.find(params[:id])
+    @user = @bread.user
+    @comment = Comment.new
   end
 
   def new
@@ -21,7 +23,7 @@ class User::BreadsController < ApplicationController
     @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
 
     if @bread.save
-      redirect_to users_mypage_path
+      redirect_to user_path(current_user)
     end
   end
 

@@ -4,18 +4,26 @@
 
 
 <% @users.each do |user| %>
-  <div class="row mt-5">
+  <div class="row mt-5 border">
     <div class="col-md-2">
       <%= link_to user_path(user.id) do %>
-        <%= image_tag user.get_user_image(100, 100), class:"mb-3" %>
+        <%= image_tag user.get_user_image(100, 100), class:"my-4 ml-3" %>
       <% end %>
     </div>
-    <div class="col-md-6">
-    <%= link_to user_path(user.id) do %>
-      <h5><%= user.name %></h5>
-    <% end %>
-      <%= user.bread.count %> posts
+    <div class="col-md-6 my-5">
+      <%= link_to user_path(user.id) do %>
+        <h5><%= user.name %></h5>
+      <% end %>
+        <%= user.bread.count %> posts
     </div>
+  </div>
+
+  <!--いいね総カウント数 動いてないので後々確認-->
+  <div>
+    <% @my_breads_with_count.each do |bread| %>
+      <%#= bread.bread_name %>: <%#= bread.favorites_count %>
+      いいね総カウント数: <%= bread.favorites_count %>
+    <% end %>
   </div>
 <% end %>
 
