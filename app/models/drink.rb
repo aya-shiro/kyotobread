@@ -5,6 +5,9 @@ class Drink < ApplicationRecord
   # drinkはadminでアイコン化にする
   has_one_attached :drink_image
 
+  scope :default, -> { where(default_select: true) }
+  scope :not_default, -> { where(default_select: false) }
+
   def get_drink_image(width, height)
     unless drink_image.attached?
       file_path = Rails.root.join('app/assets/images/bread_image.jpg')

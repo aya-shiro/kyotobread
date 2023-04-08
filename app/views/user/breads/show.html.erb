@@ -33,7 +33,7 @@
         </tr>
           <td class="py-2">ジャンル</td>
           <td>
-            <% if @bread.taste == 'sweet' %>
+            <% if @bread.taste %>
               甘い系
             <% else %>
               塩味系
@@ -42,7 +42,7 @@
         </tr>
         </tr>
           <td class="py-2">一緒に飲むなら？</td>
-          <td><%= @bread.drink %></td>
+          <td><%= @bread.drink.drink_name %></td>
         </tr>
         <tr>
           <td class="py-2">購入店名</td>

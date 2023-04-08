@@ -48,23 +48,15 @@ class User::BreadsController < ApplicationController
   def update
     @bread = Bread.find(params[:id])
 
-    if params[:bread][:drink_name] == "1"
-      # @drink.drink_name = "coffee"
-      @drink = Drink.new(drink_name: "coffee")
-    elsif params[:bread][:drink_name] == "2"
-      @drink = Drink.new(drink_name: "tea")
-    elsif params[:bread][:drink_name] == "3"
-      @drink = Drink.new(drink_name: "milk1")
-    elsif params[:bread][:drink_name] == "4"
-      @drink = Drink.new(drink_name: "milk2")
-    elsif params[:bread][:drink_name] == "5"
-      @drink = Drink.new(drink_name: "tya")
+    if params[:bread][:drink_name] == "other"
+      drink_id = params[:bread][:other_drink_name]
     else
-      # @drink = Drink.find(params[:id])
-      @drink.drink_name = "other"
+      drink_id = params[:bread][:drink_name]
     end
 
-    @bread.drink = @drink
+    drink = Drink.find(drink_id)
+
+    @bread.drink = drink
     if @bread.update(bread_params)
       redirect_to bread_path
     end
@@ -80,7 +72,7 @@ class User::BreadsController < ApplicationController
 
   private
   def bread_params
-    params.require(:bread).permit(:bread_name, :introduce, :taste, :bread_image, :shop_id, drink_attributes: [:drink_name])
+    params.require(:bread).permit(:bread_name, :introduce, :taste, :bread_image, :shop_id, drink_attributes: [:drink_name, :other_drink_name])
   end
 
 

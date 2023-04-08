@@ -12,44 +12,37 @@
       <%= f.label :紹介 %>
       <%= f.text_area :introduce, rows: 5, class: 'form-control', placeholder: "味や感想を教えて！" %>
 
-      <%= f.radio_button :taste, 'sweet' %>
+      <%= f.radio_button :taste, true %>
       <%= f.label :甘い系 %>
-      <%= f.radio_button :taste, "solty" %>
+      <%= f.radio_button :taste, false %>
       <%= f.label :塩味系 %><br>
 
       <%= f.label :一緒に飲むなら？, class:"mt-2" %><br>
 
-      <div class="btn">
-        <%= f.radio_button :drink_name, 1 %>
-        <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>
-        <%= f.label :drink_name, "コーヒー" %>
-      </div>
+      <% Drink.default.each do |drink| %>
+        <div class="btn">
+          <%= f.radio_button :drink_name, drink.id %>
+          <% case drink.drink_name
+          when "コーヒー" %>
+            <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>
+          <% when "紅茶" %>
+            <i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i>
+          <% when "牛乳" %>
+      　　　　  <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i>
+          <% when "お茶" %>
+     　　　　   <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>
+          <% end %>
+          <%= f.label :drink_name, drink.drink_name %>
+        </div>
+      <% end %>
 
       <div class="btn">
-        <%= f.radio_button :drink_name, 2 %>
-        <i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i>
-        <%= f.label :drink_name, "紅茶" %>
-      </div>
-
-      <div class="btn">
-        <%= f.radio_button :drink_name, 3 %>
-        <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i>
-        <%= f.label :drink_name, "牛乳" %>
-      </div>
-
-      <div class="btn">
-        <%= f.radio_button :drink_name, 4 %>
-        <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>
-        <%= f.label :drink_name, "お茶" %>
-      </div>
-
-      <div class="btn">
-        <%= f.radio_button :drink_name, 5 %>
+        <%= f.radio_button :drink_name, "other" %>
         <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
         <%= f.label :drink_name, "その他" %>
       </div>
-      <%= f.select :drink_name, options_from_collection_for_select(Drink.all, :id, :drink_name) %><br>
-
+      <%= f.select :other_drink_name, options_from_collection_for_select(Drink.not_default, :id, :drink_name) %><br>
+      <!--other_drink_nameのはnot_default、つまりadminでdrink_name登録式を採用している方-->
 
       <%= f.label :購入店名選択, class:"mt-4" %>
       <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%><br>    <!--addressメソッドはshop.rbで定義-->
