@@ -17,27 +17,23 @@
     </div>
   </div>
 
-  <h5 class="mt-5">
+  <h5 class="mt-5 mb-3">
     <%= @user.bread.count %> posts
   </h5>
 
   <div class="row">
-    <div class="col-6">
-      <table>
-        <% if @breads.exists? %>
-          <% @breads.each do |bread| %>
-          <td>
-            <%= link_to bread_path(bread.id) do %>
-              <%= image_tag bread.get_bread_image(200, 200) %>
-            <% end %>
-            <%= bread.bread_name %>
-          </td>
-          <% end %>
-        <% else %>
-          <p>投稿はありません</p>
+    <ul class="row" style="list-style: none;">
+      <% @breads.each do |bread| %>
+      <li class="col-2">
+        <!--<div>-->
+        <%= link_to bread_path(bread.id) do %>
+          <div><%= image_tag bread.get_bread_image(200, 200) %></div>
+          <p class="text-center"><%= bread.bread_name %></p>
         <% end %>
-      </table>
-    </div>
+        <!--</div>-->
+      </li>
+      <% end %>
+    </ul>
   </div>
 
 </div>
