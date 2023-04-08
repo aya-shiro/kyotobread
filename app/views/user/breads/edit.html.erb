@@ -18,45 +18,35 @@
       <%= f.label :塩味系 %><br>
 
       <%= f.label :一緒に飲むなら？, class:"mt-2" %><br>
-      <%#= f.collection_radio_buttons(:drink_id, Drink.all, :id, :drink_name) do |b| %>
-        <%#= b.label { b.radio_button + b.text } %>
-      <%# end %>
 
-      <%= f.radio_button :drink_name, "coffee" %>
       <div class="btn">
+        <%= f.radio_button :drink_name, 1 %>
         <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>
-        <%= f.label :drink_name, "coffee" %>
+        <%= f.label :drink_name, "コーヒー" %>
       </div>
 
-
-      <%= f.radio_button :drink_name, 2 %>
       <div class="btn">
+        <%= f.radio_button :drink_name, 2 %>
         <i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i>
-        <%= f.label :drink_name, "tea" %>
+        <%= f.label :drink_name, "紅茶" %>
       </div>
 
-      <%= f.radio_button :drink_name, 3 %>
       <div class="btn">
+        <%= f.radio_button :drink_name, 3 %>
         <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i>
-        <%= f.label :drink_name, "milk1" %>
+        <%= f.label :drink_name, "牛乳" %>
       </div>
 
-      <%= f.radio_button :drink_name, 4 %>
       <div class="btn">
-        <i class="fa-solid fa-mug-saucer" style="color: #f5f5f5;"></i>
-        <%= f.label :drink_name, "milk2" %>
-      </div>
-
-      <%= f.radio_button :drink_name, 5 %>
-      <div class="btn">
+        <%= f.radio_button :drink_name, 4 %>
         <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>
-        <%= f.label :drink_name, "tya" %>
+        <%= f.label :drink_name, "お茶" %>
       </div>
 
-      <%= f.radio_button :drink_name, 6 %>
       <div class="btn">
+        <%= f.radio_button :drink_name, 5 %>
         <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
-        <%= f.label :drink_name, "other" %>
+        <%= f.label :drink_name, "その他" %>
       </div>
       <%= f.select :drink_name, options_from_collection_for_select(Drink.all, :id, :drink_name) %><br>
 

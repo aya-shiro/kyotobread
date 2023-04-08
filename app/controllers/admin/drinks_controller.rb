@@ -19,6 +19,9 @@ class Admin::DrinksController < ApplicationController
   end
 
   def destroy
+    drink = Drink.find(params[:id])
+    drink.destroy
+    redirect_to admin_drinks_path
   end
 
 

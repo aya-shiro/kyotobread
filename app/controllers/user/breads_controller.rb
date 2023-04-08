@@ -8,6 +8,7 @@ class User::BreadsController < ApplicationController
     @bread = Bread.find(params[:id])
     @user = @bread.user
     @comment = Comment.new
+    # @drink = Drink.find(params[:drink_id])
   end
 
   def new
@@ -18,26 +19,25 @@ class User::BreadsController < ApplicationController
     @bread = Bread.new(bread_params)
     @bread.user_id = current_user.id
     @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
-    # @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
     if params[:bread][:drink_name] == "1"
       # @drink.drink_name = "coffee"
       @drink = Drink.new(drink_name: "coffee")
     elsif params[:bread][:drink_name] == "2"
       @drink = Drink.new(drink_name: "tea")
     elsif params[:bread][:drink_name] == "3"
-      @drink = Drink.new(drink_name: "milk1")
+      @drink = Drink.new(drink_name: "milk")
     elsif params[:bread][:drink_name] == "4"
-      @drink = Drink.new(drink_name: "milk2")
-    elsif params[:bread][:drink_name] == "5"
       @drink = Drink.new(drink_name: "tya")
     else
-      # @drink = Drink.find(params[:id])
-      @drink.drink_name = "other"
+      @drink = Drink.new(params[:drink_name])
+      # @drink.drink_name = "other"
     end
 
     @bread.drink = @drink
+     # @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
+
     if @bread.save
-      redirect_to user_path(current_user)
+      redirect_to bread_path(@bread.id)
     end
   end
 
@@ -73,7 +73,7 @@ class User::BreadsController < ApplicationController
   def destroy
     bread = Bread.find(params[:id])
     bread.destroy
-    redirect_to users_mypage_path
+    redirect_to user_path(current_user)
 
   end
 
