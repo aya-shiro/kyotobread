@@ -4,8 +4,9 @@
     <%= flash[:notice] %>
   </div>
 
-  <div class="row mb-5">
-    <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
+  <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
+    <div class="row mb-5">
+
       <div class="col-1">
         <%= link_to user_path(@user.id) do %>
           <%= image_tag @user.get_user_image(80, 80) %>
@@ -16,8 +17,8 @@
           <p><%= @user.name %></p>
         <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="col-md-5">
@@ -32,7 +33,7 @@
         </tr>
           <td class="py-2">ジャンル</td>
           <td>
-            <% if @bread.taste == true %>
+            <% if @bread.taste == "sweet" %>
               甘い系
             <% else %>
               塩味系

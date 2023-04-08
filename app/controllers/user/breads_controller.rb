@@ -20,19 +20,22 @@ class User::BreadsController < ApplicationController
     @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
     # @bread.drink = @drink  #@drinkを@breadと一緒にsaveできるようにする
     if params[:bread][:drink_name] == "1"
-      @drink.drink_name = "coffee"
+      # @drink.drink_name = "coffee"
+      @drink = Drink.new(drink_name: "coffee")
     elsif params[:bread][:drink_name] == "2"
-      @drink.drink_name = "tea"
+      @drink = Drink.new(drink_name: "tea")
     elsif params[:bread][:drink_name] == "3"
-      @drink.drink_name = "milk1"
+      @drink = Drink.new(drink_name: "milk1")
     elsif params[:bread][:drink_name] == "4"
-      @drink.drink_name = "milk2"
+      @drink = Drink.new(drink_name: "milk2")
     elsif params[:bread][:drink_name] == "5"
-      @drink.drink_name = "tya"
+      @drink = Drink.new(drink_name: "tya")
     else
-      @drink = Drink.find(params[:id])
+      # @drink = Drink.find(params[:id])
+      @drink.drink_name = "other"
     end
 
+    @bread.drink = @drink
     if @bread.save
       redirect_to user_path(current_user)
     end
@@ -44,6 +47,24 @@ class User::BreadsController < ApplicationController
 
   def update
     @bread = Bread.find(params[:id])
+
+    if params[:bread][:drink_name] == "1"
+      # @drink.drink_name = "coffee"
+      @drink = Drink.new(drink_name: "coffee")
+    elsif params[:bread][:drink_name] == "2"
+      @drink = Drink.new(drink_name: "tea")
+    elsif params[:bread][:drink_name] == "3"
+      @drink = Drink.new(drink_name: "milk1")
+    elsif params[:bread][:drink_name] == "4"
+      @drink = Drink.new(drink_name: "milk2")
+    elsif params[:bread][:drink_name] == "5"
+      @drink = Drink.new(drink_name: "tya")
+    else
+      # @drink = Drink.find(params[:id])
+      @drink.drink_name = "other"
+    end
+
+    @bread.drink = @drink
     if @bread.update(bread_params)
       redirect_to bread_path
     end
