@@ -18,19 +18,22 @@ class User::BreadsController < ApplicationController
   def create
     @bread = Bread.new(bread_params)
     @bread.user_id = current_user.id
-    @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
-    if params[:bread][:drink_name] == "1"
-      # @drink.drink_name = "coffee"
-      @drink = Drink.new(drink_name: "coffee")
-    elsif params[:bread][:drink_name] == "2"
-      @drink = Drink.new(drink_name: "tea")
-    elsif params[:bread][:drink_name] == "3"
-      @drink = Drink.new(drink_name: "milk")
-    elsif params[:bread][:drink_name] == "4"
-      @drink = Drink.new(drink_name: "tya")
+    # @drink = Drink.find_by(drink_name: params[:bread][:drink_name])
+
+    if params[:bread][:drink_name] == "other"
+      # drink_id = params[:bread][:other_drink_name]
+      drink_id = params[:bread][:other_drink_name]
     else
-      @drink = Drink.new(params[:drink_name])
-      # @drink.drink_name = "other"
+      # drink_id = params[:bread][:drink_name]
+      drink_id = params[:bread][:drink_name]
+    end
+
+    drink = Drink.find_by(id: drink_id)
+    # drink = Bread .find(drink_id)
+
+    @bread.drink = drink
+    if @bread.update(bread_params)
+      redirect_to bread_path
     end
 
     @bread.drink = @drink
