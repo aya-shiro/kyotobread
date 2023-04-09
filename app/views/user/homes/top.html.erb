@@ -1,29 +1,41 @@
-<h1>User::Homes#top</h1>
-<p>Find me in app/views/user/homes/top.html.erb</p>
-
 <div class="container mt-4">
   <div class="mx-auto">
     <div class="row">
 
-      <div class="col-md-3">
-        <p>ONLINE SHOP</p>
-        <%#=  %>
+      <div class="col-3">
+        <h5>探す</h5>
+        <p>ジャンル</p>
+        <p>ランキング</p>
+        <h5>ONLINE SHOP</h5>
+          <%#=  %>
+
+        <h5>特集</h5>
+      <% @topics.each do |topic| %>
+        <%= link_to admin_topic_path(topic.id) do %>
+          <p>
+            <%= topic.title %>
+            <%= topic.created_at.strftime('%Y/%m/%d') %>
+          </p>
+        <% end %>
+      <% end %>
       </div>
 
-      <div class="col-md-7">
-        <table>
-          <tr>
-            <% @breads.each do |bread| %>
-              <td>
-                <%= link_to bread_path(bread.id) do %>
-                  <%= image_tag bread.get_bread_image(200, 200) %>
-                <% end %>
-                <%= bread.bread_name %>
-              </td>
-            <% end %>
-          </tr>
-        </table>
+    <!--<div class="row">-->
+      <div class="col-9">
+        <ul class="row" style="list-style: none; text-align: right;">
+          <% @breads.each do |bread| %>
+            <li class="mr-1">
+              <div>
+              <%= link_to bread_path(bread.id) do %>
+                <%= image_tag bread.get_bread_image(180, 180) %><br>
+              <% end %>
+              <%= bread.bread_name %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
+    </div>
 
     </div>
   </div>

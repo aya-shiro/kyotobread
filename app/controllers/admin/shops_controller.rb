@@ -5,14 +5,21 @@ class Admin::ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    # @shop.build_online
+    # @online = @shop.online
+
+    # binding.pry
     if @shop.save
       flash[:notice] = "新規登録完了しました"
       redirect_to admin_shops_path
+    else
+      render :new
     end
   end
 
   def index
     @shops = Shop.all.order(created_at: :desc)
+
   end
 
   def edit
@@ -38,7 +45,7 @@ class Admin::ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:shop_name, :postcode, :address, :nearest_station, :shop_url)
+    params.require(:shop).permit(:shop_name, :postcode, :address, :nearest_station, :shop_url, online_attributes: [:online_url])
   end
 
 end

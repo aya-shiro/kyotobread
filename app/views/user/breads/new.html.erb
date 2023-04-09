@@ -2,13 +2,13 @@
   <div class="col-md-6 mx-auto">
     <h3>投稿フォーム</h3>
 
-      <%= form_with model: @bread, url: breads_path do |f| %>
+    <%= form_with model: @bread, url: breads_path do |f| %>
       <%= f.label :パン写真 %>
       <%= f.file_field :bread_image, placeholder: "画像を選択" %><br>
       <%= f.label :パン名 %>
-      <%= f.text_field :bread_name, class: 'form-control' %><br>
+      <%= f.text_field :bread_name, class:'form-control' %><br>
       <%= f.label :紹介 %>
-      <%= f.text_area :introduce, rows: 5, class: 'form-control', placeholder: "味や感想を教えて！" %>
+      <%= f.text_area :introduce, rows: 5, class:'form-control', placeholder: "味や感想を教えて！" %>
 
       <%= f.radio_button :taste, 'sweet' %>
       <%= f.label :甘い系 %>

@@ -3,22 +3,22 @@
   <h5>いいね一覧</h5>
 
   <div class="mt-3 row">
-    <div class="col-10">
-      <table>
+    <div>
+      <ul class="row" style="list-style: none;">
         <% if @favorites.exists? %>
           <% @favorites.each do |favorite| %>
-            <td>
+            <li class="mr-1">
               <%= link_to bread_path(favorite.bread.id) do %>
                 <%= image_tag favorite.bread.get_bread_image(200, 200) %><br>
               <% end %>
               <%= favorite.bread.bread_name %>
-            </td>
+            </li>
           <% end %>
         <% else %>
           <p>いいねした投稿はありません</p>
-          <%= link_to "投稿を見に行く", root_path %>
+          <%= link_to "投稿を見に行く", root_path, class:"btn btn-sm btn-outline-secondary" %>
         <% end %>
-      </table>
+      </ul>
     </div>
   </div>
 

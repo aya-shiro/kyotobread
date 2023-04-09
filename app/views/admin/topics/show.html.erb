@@ -1,0 +1,12 @@
+<!--特集詳細ページ-->
+<div class="container mt-4">
+  <div class="col-md-6 mx-auto">
+
+    <h3><%= @topic.title %></h3>
+    <p><%= @topic.body %></p>
+    <%= image_tag @topic.get_bread_image(200, 200) %>
+    <p><%= link_to "特集一覧ページに戻る", admin_topics_path, class:"mt-5 btn btn-sm btn-outline-secondary" %></p>
+
+
+  </div>
+</div>

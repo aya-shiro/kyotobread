@@ -1,11 +1,11 @@
-<div class="container mt-5 mx-auto">
+<div class="container mt-4 mx-auto">
   <div class="col-md-12s mx-auto">
 
     <%= flash[:notice] %>
 
     <h3>登録ショップ一覧</h3>
     <p>
-      <%= link_to "ショップ新規登録", new_admin_shop_path %>
+      <%= link_to "ショップ新規登録", new_admin_shop_path, class:"btn btn-sm btn-secondary mt-3" %>
     </p>
 
     <table class="table">
@@ -15,23 +15,24 @@
         <td>住所</td>
         <td>最寄り駅</td>
         <td>ホームページ</td>
-        <td>登録日</td>
+        <!--<td>登録日</td>-->
+        <td>online</td>
         <td></td>
         <td></td>
       </tr>
-
 
       <% @shops.each do |shop| %>
-      <tr>
-        <td><%= shop.shop_name %></td>
-        <td><%= shop.postcode %></td>
-        <td><%= shop.address %></td>
-        <td><%= shop.nearest_station %></td>
-        <td><%= shop.shop_url %></td>
-        <td><%= shop.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= link_to "編集", edit_admin_shop_path(shop.id) %></td>
-        <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-      </tr>
+        <tr>
+          <td><%= shop.shop_name %></td>
+          <td><%= shop.postcode %></td>
+          <td><%= shop.address %></td>
+          <td><%= shop.nearest_station %></td>
+          <td><%= shop.shop_url %></td>
+          <td><%#= shop.online_url %></td>
+          <td><%#= shop.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to "編集", edit_admin_shop_path(shop.id), class:"btn btn-sm btn-secondary" %></td>
+          <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-secondary" %></td>
+        </tr>
       <% end %>
     </table>
   </div>

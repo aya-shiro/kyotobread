@@ -24,13 +24,14 @@
   <div class="row">
     <ul class="row" style="list-style: none;">
       <% @breads.each do |bread| %>
-      <li class="col-2">
-        <!--<div>-->
+      <!--<li class="col-2">-->
+      <li class="mr-1">
+        <div>
         <%= link_to bread_path(bread.id) do %>
-          <div><%= image_tag bread.get_bread_image(200, 200) %></div>
-          <p class="text-center"><%= bread.bread_name %></p>
+          <div><%= image_tag bread.get_bread_image(220, 220) %></div>
+          <p><%= bread.bread_name %></p>
         <% end %>
-        <!--</div>-->
+        </div>
       </li>
       <% end %>
     </ul>
