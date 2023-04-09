@@ -28,8 +28,13 @@
           <td><%= shop.address %></td>
           <td><%= shop.nearest_station %></td>
           <td><%= shop.shop_url %></td>
-          <td><%#= shop.online_url %></td>
-          <td><%#= shop.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+          <% if shop.online.present? %>
+            <%= shop.online.online_url %>
+          <% end %>
+          </td>
+
+          <td><%= shop.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= link_to "編集", edit_admin_shop_path(shop.id), class:"btn btn-sm btn-secondary" %></td>
           <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-secondary" %></td>
         </tr>

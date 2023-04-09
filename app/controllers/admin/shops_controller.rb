@@ -45,7 +45,7 @@ class Admin::ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:shop_name, :postcode, :address, :nearest_station, :shop_url, online_attributes: [:online_url])
+    params.require(:shop).permit(:shop_name, :postcode, :address, :nearest_station, :shop_url, online_attributes: [:online_url, :id])
   end
 
 end
