@@ -3,13 +3,28 @@
     <div class="row">
 
       <div class="col-3">
+        <div class="border p-3" >
         <h5>探す</h5>
-        <p>ジャンル</p>
-        <p>ランキング</p>
-        <h5>ONLINE SHOP</h5>
-          <%#=  %>
+        <p>ジャンルで探す</p>
+        <p>ランキングから探す</p>
+      </div>
 
-        <div class="border p-3">
+        <div class="border p-3 mt-3">
+          <h5>ONLINE SHOP</h5>
+          <ul>
+            <% @shops.each do |shop| %>
+              <% if shop.online_url.present? %>
+                <li style="list-style: none;">
+                  <%= link_to shop_path(shop.id) do %>
+                    <%= shop.shop_name %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="border p-3 mt-3">
         <h5>特集</h5>
         <% @topics.each do |topic| %>
           <%= link_to admin_topic_path(topic.id) do %>

@@ -1,7 +1,7 @@
 class User::UsersController < ApplicationController
   def index
     @users = User.all
-    
+
     # @my_breads = current_user.bread
     # @my_breads_with_count = @my_breads.left_joins(:favorites).select('breads.*, COUNT(favorites.id) AS favorites_count').group('breads.id')
     # いいね総カウント
@@ -20,7 +20,7 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to users_mypage_path
+      redirect_to user_path(@user.id)
     end
   end
 
