@@ -1,0 +1,74 @@
+<div class="container mt-4 mx-auto">
+  <div class="col-md-12">
+    <h4 class="mr-5"><%= @shop.shop_name %></h4>
+    <span><%= link_to "ショップ一覧に戻る", admin_shops_path, class:"btn btn-outline-primary btn-sm" %></span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <table>
+        <tr>
+          <td class="py-2 mr-5">登録ID</td>
+          <td class="pl-4"><%= @shop.id %></td>
+        </tr>
+        <tr>
+          <td class="py-2">店名</td>
+          <td class="pl-4"><%= @shop.shop_name %></td>
+        </tr>
+        <tr>
+          <td class="py-2">郵便番号</td>
+          <td class="pl-4">〒<%= @shop.postcode %></td>
+        </tr>
+        <tr>
+          <td class="py-2">住所</td>
+          <td class="pl-4"><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <td class="py-2">ホームページ</td>
+          <td class="pl-4"><%= @shop.shop_url %></td>
+        </tr>
+        <tr>
+          <td class="py-2">オンラインショップ</td>
+          <td class="pl-4"><%= @shop.online_url %></td>
+        </tr>
+        <tr>
+          <td class="py-2">登録日</td>
+          <td class="pl-4"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

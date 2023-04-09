@@ -47,8 +47,8 @@
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                <li>
-                 <%= link_to admin_onlines_path, class: 'nav-link text-dark' do %>
-                 <i class="fa-solid fa-flatbread"></i> オンラインショップ一覧
+                 <%= link_to admin_shops_path, class: 'nav-link text-dark' do %>
+                 <i class="fa-solid fa-store"></i> ショップ一覧
                <% end %>
                </li>
               <li>
@@ -63,11 +63,11 @@
               </li>
               <li>
                 <%= link_to admin_drinks_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-link"></i> ドリンク一覧
+                  <i class="fa-solid fa-mug-saucer"></i> ドリンク一覧
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' do %>
+                <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark' do %>
                   <i class="fa-solid fa-right-from-bracket"></i> Log out
                 <% end %>
               </li>

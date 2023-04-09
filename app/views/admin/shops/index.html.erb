@@ -1,22 +1,22 @@
 <div class="container mt-4 mx-auto">
-  <div class="col-md-12s mx-auto">
+  <div class="col-md-12">
 
     <%= flash[:notice] %>
 
-    <h3>登録ショップ一覧</h3>
+    <h5>登録ショップ一覧</h5>
     <p>
       <%= link_to "ショップ新規登録", new_admin_shop_path, class:"btn btn-sm btn-secondary mt-3" %>
     </p>
 
     <table class="table">
       <tr>
-        <td>店名</td>
-        <td>郵便番号</td>
-        <td>住所</td>
-        <td>最寄り駅</td>
-        <td>ホームページ</td>
-        <!--<td>登録日</td>-->
-        <td>online</td>
+        <th>店名</th>
+        <!--<th>郵便番号</th>-->
+        <th>住所</th>
+        <!--<th>最寄り駅</th>-->
+        <th>ホームページ</th>
+        <th>登録日</th>
+        <!--<th>online</td>-->
         <td></td>
         <td></td>
       </tr>
@@ -24,19 +24,21 @@
       <% @shops.each do |shop| %>
         <tr>
           <td><%= shop.shop_name %></td>
-          <td><%= shop.postcode %></td>
+          <%#= shop.postcode %>
           <td><%= shop.address %></td>
-          <td><%= shop.nearest_station %></td>
+          <%#= shop.nearest_station %>
           <td><%= shop.shop_url %></td>
-          <td>
-          <% if shop.online_url.present? %>
-            <%= shop.online_url %>
-          <% end %>
-          </td>
+
+          <!--<td>-->
+            <%# if shop.online_url.present? %>
+              <%#= shop.online_url %>
+            <%# end %>
+          <!--</td>-->
 
           <td><%= shop.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%= link_to "編集", edit_admin_shop_path(shop.id), class:"btn btn-sm btn-secondary" %></td>
-          <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-secondary" %></td>
+          <td><%= link_to "詳細", admin_shop_path(shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
+          <td><%= link_to "編集", edit_admin_shop_path(shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
+          <td><%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger" %></td>
         </tr>
       <% end %>
     </table>

@@ -27,9 +27,8 @@ class User::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])     #入力されたemailからアカウントを1件取得
 
     return if !@user  #@userが取得できなかった場合はそこで終了(returnで切る)
-    if @user.valid_password?(params[:user][:password])    #@userが取得できた場合、passwordが取得したemailのアカウントと一致しているかか確認
-      #一致したので処理記述不要
-    else
+    if @user.valid_password?(params[:user][:password]) && @user.is_delete   #@userが取得できた場合、passwordが取得したemailのアカウントと一致しているかか確認
+    # else
       flash[:alert] = "メールアドレスとパスワードが一致しません。"
       redirect_to new_user_registration_path
     end
