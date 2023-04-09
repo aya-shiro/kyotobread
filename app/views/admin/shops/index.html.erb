@@ -29,8 +29,8 @@
           <td><%= shop.nearest_station %></td>
           <td><%= shop.shop_url %></td>
           <td>
-          <% if shop.online.present? %>
-            <%= shop.online.online_url %>
+          <% if shop.online_url.present? %>
+            <%= shop.online_url %>
           <% end %>
           </td>
 

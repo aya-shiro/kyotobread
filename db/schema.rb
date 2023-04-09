@@ -85,13 +85,6 @@ ActiveRecord::Schema.define(version: 2023_04_08_053338) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "onlines", force: :cascade do |t|
-    t.integer "shop_id"
-    t.string "online_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "shop_topics", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "topic_id"
@@ -105,6 +98,7 @@ ActiveRecord::Schema.define(version: 2023_04_08_053338) do
     t.text "address"
     t.text "nearest_station"
     t.text "shop_url"
+    t.text "online_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

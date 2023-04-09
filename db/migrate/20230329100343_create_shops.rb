@@ -6,6 +6,7 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.text :address
       t.text :nearest_station
       t.text :shop_url
+      t.text :online_url
       t.timestamps
     end
   end
