@@ -111,15 +111,6 @@ ActiveRecord::Schema.define(version: 2023_04_08_053338) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "topixes", force: :cascade do |t|
-    t.integer "bread_id"
-    t.integer "shop_id"
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

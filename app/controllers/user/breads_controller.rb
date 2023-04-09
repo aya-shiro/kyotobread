@@ -26,7 +26,6 @@ class User::BreadsController < ApplicationController
     end
 
     drink = Drink.find_by(id: drink_id)
-
     @bread.drink_id = drink.id
 
     if @bread.save

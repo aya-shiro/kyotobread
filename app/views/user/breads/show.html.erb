@@ -53,7 +53,8 @@
           <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
 
-        <% if @bread.created_at != @bread.updated_at %>    <!--投稿後に編集された場合のみaudated_atを表示したい-->
+        <!--投稿5分経過後に更新された場合、更新日時を表示する-->
+        <% if @bread.updated_at - @bread.created_at > 5.minutes %>
           <tr style="color: gray;">
             <td class="py-2">(最終更新</td>
             <td><%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</td>    <!--東京時間のhour/minutesまで表示-->

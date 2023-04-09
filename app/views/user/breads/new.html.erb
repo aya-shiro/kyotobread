@@ -20,7 +20,7 @@
 
 
       <% Drink.default.each do |drink| %>
-        <div class="btn">
+        <span class="btn">
           <%= f.radio_button :drink_name, drink.id %>
           <% case drink.drink_name
           when "コーヒー" %>
@@ -33,7 +33,7 @@
      　　　　   <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>
           <% end %>
           <%= f.label :drink_name, drink.drink_name %>
-        </div>
+        </span>
       <% end %>
 
 
