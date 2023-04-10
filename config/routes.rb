@@ -35,7 +35,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
-
     get 'favorites/show'
 
     resources:topics, only: [:index, :show]
@@ -46,7 +45,11 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources:users, only: [:index, :show, :edit, :update, :destroy]
-    resources:breads, only: [:index, :show, :destroy]
+
+    resources:breads, only: [:index, :show, :destroy] do
+      resources:comments, only: [:create, :destroy]
+    end
+
     resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:shops, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:drinks, only: [:index, :new, :create, :edit, :update, :destroy]

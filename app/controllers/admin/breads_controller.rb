@@ -9,5 +9,11 @@ class Admin::BreadsController < ApplicationController
   end
 
   def destroy
+    bread = Bread.find(params[:id])
+    user_id = bread.user.id
+    
+    bread.destroy
+    redirect_to admin_user_path(user_id)
+
   end
 end

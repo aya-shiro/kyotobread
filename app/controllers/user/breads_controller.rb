@@ -55,7 +55,6 @@ class User::BreadsController < ApplicationController
   end
 
   def destroy
-    # コメント一件ずつ消えるか確認！
     bread = Bread.find(params[:id])
     bread.destroy
     redirect_to user_path(current_user)
