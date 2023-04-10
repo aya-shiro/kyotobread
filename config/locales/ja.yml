@@ -1,0 +1,7 @@
+  ja:
+    enums:
+      bread:
+        taste_select:
+          plain: "プレーン"
+          sweet: "甘い系"
+          salt: "塩味系"

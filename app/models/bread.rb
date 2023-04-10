@@ -15,6 +15,7 @@ class Bread < ApplicationRecord
     user.present? && favorites.exists?(user_id: user.id)
   end
 
+  enum taste_selects: { plain: 0, sweet: 1, salt: 2 }
 
 
 
