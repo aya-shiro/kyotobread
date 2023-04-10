@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
+
     get 'favorites/show'
 
     resources:topics, only: [:index, :show]

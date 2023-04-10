@@ -25,7 +25,7 @@
       <%= image_tag @bread.get_bread_image(400, 400) %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-7">
       <h5><%= @bread.bread_name %></h5>
       <p><%= @bread.introduce %></p>
 
@@ -89,36 +89,30 @@
 
   <!--レイアウト調整する-->
   <div class="row">
-    <div class="col-10 mt-3">
-      <table>
+    <div class="col-8 mt-3">
         <% if @bread.comments.exists? %>
           <% @bread.comments.each do |comment| %>
-            <tr>
-              <td>
-                <%= image_tag comment.user.get_user_image(50, 50) %>
-                <%= comment.user.name %>
-                <span style="font-size: 3px; color: gray;">
-                  <%= comment.created_at.strftime("%Y/%m/%d") %>
-                </span><br>
-                <%= comment.comment %>
-                <% if comment.user == current_user %>
-                  <%= link_to "削除", bread_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-secondary" %>
-                <% end %>
-              </td>
-            </tr>
+            <%= image_tag comment.user.get_user_image(50, 50) %>
+            <%= comment.user.name %>
+            <span style="font-size: 3px; color: gray;">
+              <%= comment.created_at.strftime("%Y/%m/%d") %><br>
+            </span>
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+              <%= link_to "削除", bread_comment_path(comment.id), method: :delete, class:"btn btn-sm btn-outline-secondary" %><br>
+            <% end %>
           <% end %>
         <% else %>
-          <td>コメントを書く</td>
+            <span>コメントを書く</span>
         <% end %>
-        <tr>
-        <%= form_with model:[@bread, @comment] do |f| %>
-          <td><%= f.text_area :comment, placeholder:"コメントをどうぞ", rows: 1,cols: 70, class:"mt-3 form-control" %></td>
-          <td><%= f.submit "送信する", class:"mt-2 btn btn-sm btn-secondary" %></td>
-        <% end %>
-        </tr>
-      </table>
-    </div>
 
+          <%= form_with model:[@bread, @comment] do |f| %>
+            <span>
+              <%= f.text_area :comment, placeholder:"コメントをどうぞ", rows: 1, class:"mt-3 form-control" %>
+              <%= f.submit "送信する", class:"mt-2 btn btn-sm btn-secondary" %>
+            </span>
+          <% end %>
+    </div>
   </div>
 
 

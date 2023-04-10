@@ -6,10 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
-   email: 'fromkyoto@gmail.com',
-   password: 'fromkyoto'
-)
+# Admin.create!(
+#    email: 'fromkyoto@gmail.com',
+#    password: 'fromkyoto'
+# )
+
+unless Admin.exists?(email: 'fromkyoto@gmail.com')
+  Admin.create!(
+     email: 'fromkyoto@gmail.com',
+     password: 'fromkyoto'
+  )
+end
 
 Drink.create!([
    { drink_name: 'コーヒー', default_select: true},

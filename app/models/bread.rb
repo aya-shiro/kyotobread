@@ -11,7 +11,8 @@ class Bread < ApplicationRecord
 
   has_many :favorites, dependent: :destroy  #いいね機能
   def favorite_by?(user)
-    favorites.exists?(user_id: user.id)
+    # favorites.exists?(user_id: user.id)
+    user.present? && favorites.exists?(user_id: user.id)
   end
 
 

@@ -13,7 +13,7 @@
           <h5>ONLINE SHOP</h5>
           <ul>
             <% @shops.each do |shop| %>
-              <% if shop.online_url.present? %>
+              <% if shop.online_url.present? %>    <!--online_shopがある店名のみ表示-->
                 <li style="list-style: none;">
                   <%= link_to shop_path(shop.id) do %>
                     <%= shop.shop_name %>
