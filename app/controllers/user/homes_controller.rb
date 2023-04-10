@@ -4,4 +4,7 @@ class User::HomesController < ApplicationController
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
   end
+
+  
 end
+

@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def self.guest
+    find_or_create_by(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64  #ランダムパスワード生成
+      # user.skip_confirmation!  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+      user.name = "ゲスト"
+    end
+  end
+
   has_many :bread, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
