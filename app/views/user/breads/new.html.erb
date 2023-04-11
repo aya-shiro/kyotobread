@@ -16,9 +16,6 @@
       <%= f.label :塩味系 %><br>
 
       <%= f.label :一緒に飲むなら？, class:"mt-2" %><br>
-
-
-
       <% Drink.default.each do |drink| %>
         <span class="btn">
           <%= f.radio_button :drink_name, drink.id %>

@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     resources:breads, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources:comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      collection do
+        get 'search'
+      end
     end
 
     get 'favorites/show'

@@ -1,7 +1,29 @@
 class User::BreadsController < ApplicationController
+
+  def search
+    if params[:keyword].present?
+      @breads = Bread.where('bread_name LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+
+      @shops = Shop.all.order(created_at: :desc)
+      @topics = Topic.all.order(created_at: :desc)
+    end
+  end
+
+
   def index
-    @user = User.find(params[:id])
-    @breads = @user.bread
+    # @drinks = Drink.all
+    @drink = Drink.where('drink_name LIKE ?', "%#{params[:drink_name]}%")
+    # @coffee_breads = Bread.find(params[:drink_name])
+    @coffee_breads = Drink.find_by(drink_name: "コーヒー").breads.where(drink_id: params[:drink_name])
+    @tea_breads = Drink.find_by(drink_name: "紅茶").breads.where(drink_id: params[:drink_name])
+    @milk_breads = Drink.find_by(drink_name: "牛乳").breads.where(drink_id: params[:drink_name])
+    @tya_breads = Drink.find_by(drink_name: "お茶").breads.where(drink_id: params[:drink_name])
+    @other_breads = Drink.where(drink_id: params[:other_drink_name])
+
+
+    # if @drink == "コーヒー"
+
   end
 
   def show
