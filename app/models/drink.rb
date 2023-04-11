@@ -1,8 +1,5 @@
 class Drink < ApplicationRecord
   has_many :breads
-
-  # has_one_attached :drink_image
-  # drinkはadminでアイコン化にする
   has_one_attached :drink_image
 
   scope :default, -> { where(default_select: true) }

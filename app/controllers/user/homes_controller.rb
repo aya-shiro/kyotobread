@@ -8,8 +8,9 @@ class User::HomesController < ApplicationController
     @tea = Drink.find_by(drink_name: "紅茶")
     @milk = Drink.find_by(drink_name: "牛乳")
     @tya = Drink.find_by(drink_name: "お茶")
-    
 
+    @sweet_breads = Bread.where(taste: true)
+    @solty_breads = Bread.where(taste: false)
   end
 
 
