@@ -1,71 +1,19 @@
 <div class="container mt-4">
   <div class="row mx-auto">
     <div class="col-10">
-
-        <% if @coffee_breads.present? %>
-          <h5>コーヒーにおすすめのパン</h5>
-          <ul class="row" style="list-style: none; text-align: right;">
-            <% @coffee_breads.each do |coffee| %>
-              <li class="mr-1">
-                <div>
-                  <%= link_to bread_path(coffee.id) do %>
-                    <%= image_tag coffee.get_bread_image(200, 200) %><br>
-                  <% end %>
-                  <%= coffee.bread_name %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
+      <h5><%= @drink.drink_name %>におすすめのパン</h5>
+      <ul class="row" style="list-style: none; text-align: right;">
+        <% @breads.each do |bread| %>
+          <li class="mr-1">
+            <div>
+              <%= link_to bread_path(bread.id) do %>
+                <%= image_tag bread.get_bread_image(200, 200) %><br>
+              <% end %>
+              <%= bread.bread_name %>
+            </div>
+          </li>
         <% end %>
-
-        <% if @tea_breads.present? %>
-          <h5>紅茶におすすめのパン</h5>
-          <ul class="row" style="list-style: none; text-align: right;">
-            <% @tea_breads.each do |tea| %>
-              <li class="mr-1">
-                <div>
-                  <%= link_to bread_path(tea.id) do %>
-                    <%= image_tag tea.get_bread_image(200, 200) %><br>
-                  <% end %>
-                  <%= tea.bread_name %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <% if @milk_breads.present? %>
-          <h5>牛乳におすすめのパン</h5>
-          <ul class="row" style="list-style: none; text-align: right;">
-            <% @milk_breads.each do |milk| %>
-              <li class="mr-1">
-                <div>
-                  <%= link_to bread_path(milk.id) do %>
-                    <%= image_tag milk.get_bread_image(200, 200) %><br>
-                  <% end %>
-                  <%= milk.bread_name %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <% if @tya_breads.present? %>
-          <h5>お茶におすすめのパン</h5>
-          <ul class="row" style="list-style: none; text-align: right;">
-            <% @tya_breads.each do |tya| %>
-              <li class="mr-1">
-                <div>
-                  <%= link_to bread_path(tya.id) do %>
-                    <%= image_tag tya.get_bread_image(200, 200) %><br>
-                  <% end %>
-                  <%= tya.bread_name %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
+      </ul>
     </div>
   </div>
 </div>

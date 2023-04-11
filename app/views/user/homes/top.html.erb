@@ -7,16 +7,23 @@
         <h5>探す</h5>
         <p>おすすめドリンクから探す</p>
      　  <span class="btn">
+     　    <!--drink_idに":"をつけることでどのdrink_nameを参照するか区別できる-->
+     　    <%= link_to breads_path(drink_id: @coffee.id), method: :get  do %>
+     　       <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>コーヒー<br>
+     　    <% end %>
+       　  <%= link_to breads_path(drink_id: @tea.id), method: :get do %>
+       　     <i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i>紅茶<br>
+       　  <% end %>
+     　    <%= link_to breads_path(drink_id: @milk.id), method: :get do %>
+     　   　　  <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i>牛乳<br>
+     　    <% end %>
+     　    <%= link_to breads_path(drink_id: @tya.id), method: :get do %>
+     　   　   <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>お茶<br>
+     　    <% end %>
           <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
-            <%#= f.submit "コーヒー", :drink_name => "drink_name" %>
-            <%#= f.submit "紅茶", :drink_name => "drink_name" %>
-            <%#= f.submit "牛乳", :drink_name => "drink_name" %>
-            <%#= f.submit "お茶", :drink_name => "drink_name" %>
-            <%#= f.submit "その他", :drink_name => "drink_name" %>
-            <%= f.select :drink_name, options_from_collection_for_select(Drink.default, :id, :drink_name) %>
-            <%#= f.select :drink_name, options_from_collection_for_select(Drink.default, Drink.not_default :id, :drink_name, :other_drink_name) %>
+            <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
+            <%= f.select :drink_id, options_from_collection_for_select(Drink.not_default.order(id: :desc), :id, :drink_name) %>
             <%= f.submit "探す" %>
-            <%#= f.hidden_field :drink_name %>
           <% end %>
         </span>
         <p>人気パン(いいねが多い順)</p>

@@ -10,20 +10,9 @@ class User::BreadsController < ApplicationController
     end
   end
 
-
   def index
-    # @drinks = Drink.all
-    @drink = Drink.where('drink_name LIKE ?', "%#{params[:drink_name]}%")
-    # @coffee_breads = Bread.find(params[:drink_name])
-    @coffee_breads = Drink.find_by(drink_name: "コーヒー").breads.where(drink_id: params[:drink_name])
-    @tea_breads = Drink.find_by(drink_name: "紅茶").breads.where(drink_id: params[:drink_name])
-    @milk_breads = Drink.find_by(drink_name: "牛乳").breads.where(drink_id: params[:drink_name])
-    @tya_breads = Drink.find_by(drink_name: "お茶").breads.where(drink_id: params[:drink_name])
-    @other_breads = Drink.where(drink_id: params[:other_drink_name])
-
-
-    # if @drink == "コーヒー"
-
+    @drink = Drink.find_by(id: params[:drink_id])
+    @breads = @drink.breads
   end
 
   def show
