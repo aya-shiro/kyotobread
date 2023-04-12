@@ -1,5 +1,5 @@
 <!--vies/user/breads/show.html.erbから切り取り-->
-  <% @bread.comments.each do |comment| %>
+  <% bread.comments.each do |comment| %>
     <%= image_tag comment.user.get_user_image(50, 50) %>
     <%= comment.user.name %>
     <span style="font-size: 3px; color: gray;">
@@ -7,6 +7,6 @@
     </span>
     <%= comment.comment %>
     <% if comment.user == current_user %>
-      <%= link_to "削除", bread_comment_path(comment.id), method: :delete, remote: true, class:"btn btn-sm btn-outline-secondary" %><br>
+      <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, class:"btn btn-sm btn-outline-secondary" %><br>
     <% end %>
   <% end %>

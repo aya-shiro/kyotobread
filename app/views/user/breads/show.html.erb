@@ -62,7 +62,7 @@
         <% end %>
       </table>
 
-      <!--いいね機能非同期化→favorites/_favorite_btn.html.erb-->
+      <!--いいね機能非同期化→favorites/_favorite-btn.html.erb-->
       <span id="favorite-btn_<%= @bread.id %>">
         <%= render 'user/favorites/favorite-btn', bread: @bread %>
       </span>
@@ -83,15 +83,17 @@
       <% if @bread.comments.exists? %>
 
       <!--コメント一覧非同期化-->
-      <div id="comment">
-      <%= render 'user/breads/comment-index', bread: @bread  %>
-
+        <div id="comment-index">
+          <%= render 'user/breads/comment-index', bread: @bread  %>
+        </div>
       <% else %>
-          <span>コメントを書く</span>
+         <span>コメントを書く</span>
       <% end %>
 
       <!--コメントフォーム非同期化-->
-      <%= render 'user/breads/comment-form', bread: @bread %>
+      <div id="comment-form">
+        <%= render 'user/breads/comment-form', bread: @bread, comment: @comment %>
+      </div>
 
     </div>
   </div>
