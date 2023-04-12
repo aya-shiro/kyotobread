@@ -5,7 +5,7 @@ class User::CommentsController < ApplicationController
     comment.bread_id = bread.id
 
     comment.save
-    redirect_to bread_path(bread)
+    # redirect_to bread_path(bread)
   end
 
   def destroy
@@ -13,7 +13,7 @@ class User::CommentsController < ApplicationController
     bread = comment.bread
 
     comment.destroy
-    redirect_to bread_path(bread.id)
+    # redirect_to bread_path(bread.id)
   end
 
   private

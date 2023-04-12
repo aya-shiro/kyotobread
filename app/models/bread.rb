@@ -8,8 +8,9 @@ class Bread < ApplicationRecord
   accepts_nested_attributes_for :drink
 
   has_many :comments, dependent: :destroy
-
   has_many :favorites, dependent: :destroy  #いいね機能
+  has_many :favorited_users, through: :favorites, source: :user    #いいね順
+
   def favorite_by?(user)
     # favorites.exists?(user_id: user.id)
     user.present? && favorites.exists?(user_id: user.id)
