@@ -57,4 +57,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem "enum_help"    # enum導入
+# gem "enum_help"    # enum導入
+gem 'rails-i18n'    # エラーメッセージ日本語対応

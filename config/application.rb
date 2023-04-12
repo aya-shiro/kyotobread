@@ -11,7 +11,9 @@ module Kyotobread
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    config.i18n.default_locale = :ja    # enum日本語対応
+    config.i18n.default_locale = :ja    # 日本語対応
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
+
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -14,7 +14,7 @@
     <header>
 
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container fixed-top" style="background-color: white;">    <!--fixed-topでヘッダー固定-->
 
           <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
             <%= f.text_field :keyword %>
@@ -108,15 +108,17 @@
 
     </header>
 
-
-
     <main>
+
+      <p class="notice"><%= notice %></p>   <!--devise用-->
+      <p class="alert"><%= alert %></p>    <!--devise用-->
+
     <%= yield %>
     </main>
 
     <footer>
       <div class='container mt-5'>
-        <div class='row'>
+        <div class='row' style:"color:gray;">
           <div class='mx-auto'>
             <p>CopyRight OO.inc</p>
           </div>

@@ -41,6 +41,8 @@ class User::BreadsController < ApplicationController
 
     if @bread.save
       redirect_to bread_path(@bread.id)
+    else
+      render :new
     end
   end
 
@@ -62,6 +64,8 @@ class User::BreadsController < ApplicationController
     @bread.drink = drink
     if @bread.update(bread_params)
       redirect_to bread_path
+    else
+      render :edit
     end
   end
 

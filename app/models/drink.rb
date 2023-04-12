@@ -2,6 +2,9 @@ class Drink < ApplicationRecord
   has_many :breads
   has_one_attached :drink_image
 
+  validates :drink_name, presence: true
+
+
   scope :default, -> { where(default_select: true) }
   scope :not_default, -> { where(default_select: false) }
 

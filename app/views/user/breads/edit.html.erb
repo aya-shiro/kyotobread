@@ -2,6 +2,9 @@
   <div class="col-md-6 mx-auto">
     <h5>パンの編集</h5>
 
+    <%= render 'layouts/errors', obj: @bread %>
+
+
     <!--後々部分テンプレートにする??-->
 
     <%= form_with model: @bread, url: bread_path do |f| %>
