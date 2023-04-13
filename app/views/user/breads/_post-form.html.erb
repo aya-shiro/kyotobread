@@ -1,0 +1,50 @@
+    <!--user/breads/new & showで使用しているパン投稿フォーム-->
+
+    <%= render 'layouts/errors', obj: bread %>
+
+    <%= form_with model: bread, url: breads_path do |f| %>
+      <%= f.label :パン写真 %><br>
+      <%= f.file_field :bread_image, placeholder: "画像を選択" %><br>
+      <%= f.label :パン名, class:"mt-4" %>
+      <%= f.text_field :bread_name, class:'form-control' %>
+
+      <%= f.radio_button :taste, 'sweet' %>
+      <%= f.label :甘い系 %>
+      <%= f.radio_button :taste, 'solty' %>
+      <%= f.label :塩味系 %><br>
+
+      <%= f.label :紹介, class:"mt-2" %>
+      <%= f.text_area :introduce, rows: 5, class:'form-control', placeholder: "味や感想を教えて！" %>
+
+      <%= f.label :一緒に飲むなら？, class:"mt-4" %><br>
+      <!--seed.rbで設定済みのデフォルトドリンク4種-->
+      <% Drink.default.each do |drink| %>
+        <span class="btn">
+          <%= f.radio_button :drink_name, drink.id %>
+          <% case drink.drink_name
+          when "コーヒー" %>
+            <i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i>
+          <% when "紅茶" %>
+            <i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i>
+          <% when "牛乳" %>
+             <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i>
+          <% when "お茶" %>
+             <i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i>
+          <% end %>
+          <%= f.label :drink_name, drink.drink_name %>
+        </span>
+      <% end %>
+
+      <div class="btn">
+        <%= f.radio_button :drink_name, "other" %>
+        <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
+        <%= f.label :drink_name, "その他" %>
+      </div>
+      <%= f.select :other_drink_name, options_from_collection_for_select(Drink.not_default, :id, :drink_name) %><br>
+      <!--other_drink_nameのはnot_default、つまりadminでdrink_name登録式を採用している方-->
+
+      <%= f.label :ショップ選択, class:"mt-2" %>
+      <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display)%><br>    <!--addressメソッドはshop.rbで定義-->
+
+      <%= f.submit class:"mt-4 btn btn-secondary" %>
+    <% end %>

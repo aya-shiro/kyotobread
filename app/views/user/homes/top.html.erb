@@ -5,32 +5,32 @@
       <div class="col-3">
         <div class="border p-3" >
         <p>ドリンクから探す</p>
-     　  <ul>
-     　    <!--drink_idに":"をつけることで、どのdrink_nameを参照するか区別できる-->
-   　      <li class="btn btn-sm">
-   　        <%= link_to breads_path(drink_id: @coffee.id), method: :get  do %>
-   　　　        <span><i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i></span>
-   　　 　       <div style="font-size: 5px;">コーヒー</div>
-   　　　　　    <% end %>
-   　　     </li>
-     　    <li class="btn btn-sm">
-         　  <%= link_to breads_path(drink_id: @tea.id), method: :get do %>
-          　   <span><i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i></span>
-          　   <div style="font-size: 5px;">紅茶</div>
-         　  <% end %>
+        <ul>
+          <!--drink_idに":"をつけることで、どのdrink_nameを参照するか区別できる-->
+          <li class="btn btn-sm">
+            <%= link_to breads_path(drink_id: @coffee.id), method: :get do %>
+              <span><i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i></span>
+              <div style="font-size: 5px;">コーヒー</div>
+            <% end %>
           </li>
-       　  <li class="btn btn-sm">
-       　    <%= link_to breads_path(drink_id: @milk.id), method: :get do %>
-       　   　    <span> <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i></span>
-       　    　   <div style="font-size: 5px;">牛乳</div>
-       　    <% end %>
-       　  </li>
-       　  <li class="btn btn-sm">
-       　    <%= link_to breads_path(drink_id: @tya.id), method: :get do %>
-           　  <span><i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i></span>
+          <li class="btn btn-sm">
+            <%= link_to breads_path(drink_id: @tea.id), method: :get do %>
+              <span><i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i></span>
+              <div style="font-size: 5px;">紅茶</div>
+            <% end %>
+          </li>
+          <li class="btn btn-sm">
+            <%= link_to breads_path(drink_id: @milk.id), method: :get do %>
+              <span> <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i></span>
+              <div style="font-size: 5px;">牛乳</div>
+            <% end %>
+          </li>
+          <li class="btn btn-sm">
+            <%= link_to breads_path(drink_id: @tya.id), method: :get do %>
+              <span><i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i></span>
               <div style="font-size: 5px;">お茶</div>
-       　    <% end %>
-        　</li>
+            <% end %>
+          </li>
           <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
             <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
             <%= f.submit "探す", class:"mb-1 btn btn-sm btn-secondary" %>
