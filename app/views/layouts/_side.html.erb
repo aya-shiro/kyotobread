@@ -4,41 +4,13 @@
   <div class="border p-3" >
   <h5>ドリンクから探す</h5>
   <ul>
-
-      <% @defaults.each do |default| %>
-          <li class="px-1 my-1" >
-
+    <% @defaults.each do |default| %>
+      <li class="px-1 my-1" >
         <%= link_to breads_path(drink_id: default.id), method: :get do %>
           <div class="my-2" style="color: black;"><%= default.drink_name %></div>
         <% end %>
-          </li>
-      <% end %>
-
-    <!--drink_idに":"をつけることで、どのdrink_nameを参照するか区別できる-->
-    <!--<li class="btn px-1 my-1", style="background-color: #f5f5f5;">-->
-      <%#= link_to breads_path(drink_id: @coffee.id), method: :get do %>
-        <!--<div><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #240a0a;"></i></div>-->
-        <!--<div style="color: black;">コーヒー</div>-->
-      <%# end %>
-    <!--</li>-->
-    <!--<li class="btn px-1 my-1", style="background-color: #f5f5f5;">-->
-      <%#= link_to breads_path(drink_id: @tea.id), method: :get do %>
-        <!--<span><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #d70f0f;"></i></span>-->
-        <!--<div style="color: black;">　紅茶　</div>-->
-      <%# end %>
-    <!--</li>-->
-    <!--<li class="btn px-1 my-1", style="background-color: #f5f5f5;">-->
-      <%#= link_to breads_path(drink_id: @milk.id), method: :get do %>
-        <!--<span> <i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #3fabd9;"></i></span>-->
-        <!--<div style="color: black;">　牛乳　</div>-->
-      <%# end %>
-    <!--</li>-->
-    <!--<li class="btn px-1 my-1", style="background-color: #f5f5f5;">-->
-      <%#= link_to breads_path(drink_id: @tya.id), method: :get do %>
-        <!--<span><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #239c21;"></i></span>-->
-        <!--<div style="color: black;">　お茶　</div>-->
-      <%# end %>
-    <!--</li>-->
+      </li>
+    <% end %>
 
     <div class="mt-4">
     <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
@@ -62,13 +34,14 @@
         </li>
       <% end %>
     <% end %>
+    <%= link_to "もっとみる>", shops_onlines_path %>
   </ul>
 </div>
 
 <div class="border p-3 mt-3">
   <h5>特集</h5>
   <% @topics.each do |topic| %>
-    <%= link_to admin_topic_path(topic.id) do %>
+    <%= link_to topic_path(topic.id) do %>
     <ul>
       <li style="color: black;"><%= topic.title %></li>
       <li style="color: gray; font-size: 12px; list-style: none;">(<%= topic.created_at.strftime('%Y/%m/%d') %>)</li>

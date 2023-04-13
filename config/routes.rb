@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'favorites/show'
 
     resources:topics, only: [:index, :show]
+    get 'shops/onlines'
     resources:shops, only: [:index, :show]
     get 'drinks/index'
   end
