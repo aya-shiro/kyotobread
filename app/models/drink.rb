@@ -5,8 +5,8 @@ class Drink < ApplicationRecord
   validates :drink_name, presence: true
 
 
-  scope :default, -> { where(default_select: true) }
-  scope :not_default, -> { where(default_select: false) }
+  scope :default, -> { where(default_select: true) }    # あらかじめ設定したデフォルトドリンク
+  scope :not_default, -> { where(default_select: false) }    # admin/drinksで登録できるドリンク
 
   def get_drink_image(width, height)
     unless drink_image.attached?

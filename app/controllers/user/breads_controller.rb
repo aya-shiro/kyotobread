@@ -7,12 +7,20 @@ class User::BreadsController < ApplicationController
 
       @shops = Shop.all.order(created_at: :desc)
       @topics = Topic.all.order(created_at: :desc)
+      @defaults = Drink.default.where(default_select: true)
+      # views/layouts/_side.html.erbに必要な記述
     end
   end
 
   def index
     @drink = Drink.find_by(id: params[:drink_id])
     @breads = @drink.breads
+
+    @shops = Shop.all.order(created_at: :desc)
+    @topics = Topic.all.order(created_at: :desc)
+    @defaults = Drink.default.where(default_select: true)
+    # views/layouts/_side.html.erbに必要な記述
+
   end
 
   def show

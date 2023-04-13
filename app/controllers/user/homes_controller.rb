@@ -4,10 +4,11 @@ class User::HomesController < ApplicationController
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
 
-    @coffee = Drink.find_by(drink_name: "コーヒー")
-    @tea = Drink.find_by(drink_name: "紅茶")
-    @milk = Drink.find_by(drink_name: "牛乳")
-    @tya = Drink.find_by(drink_name: "お茶")
+    # @coffee = Drink.find_by(drink_name: "コーヒー")
+    # @tea = Drink.find_by(drink_name: "紅茶")
+    # @milk = Drink.find_by(drink_name: "牛乳")
+    # @tya = Drink.find_by(drink_name: "お茶")
+    @defaults = Drink.default.where(default_select: true)
 
     @sweet_breads = @breads.where(taste: true)
     @salty_breads = @breads.where(taste: false)

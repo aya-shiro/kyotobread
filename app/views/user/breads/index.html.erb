@@ -1,21 +1,27 @@
 <!--ドリンク別のおすすめパン、homes/topより遷移-->
-
 <div class="container mt-4">
-  <div class="row mx-auto">
-    <div class="col-10">
-      <h5><%= @drink.drink_name %>におすすめのパン</h5>
-      <ul class="row" style="list-style: none; text-align: right;">
-        <% @breads.each do |bread| %>
-          <li class="mr-1">
-            <div>
-              <%= link_to bread_path(bread.id) do %>
-                <%= image_tag bread.get_bread_image(200, 200) %><br>
-              <% end %>
-              <%= bread.bread_name %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+  <div class="mx-auto">
+    <div class="row">
+
+      <%#= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, coffee: @coffee, tea: @tea, milk: @milk, tya: @tya %>
+      <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+
+      <div class="col-9">
+        <h5 class="mb-4"><%= @drink.drink_name %>におすすめのパン</h5>
+        <ul class="row" style="list-style: none; text-align: right;">
+          <% @breads.each do |bread| %>
+            <li class="mr-1">
+              <div>
+                <%= link_to bread_path(bread.id) do %>
+                  <%= image_tag bread.get_bread_image(200, 200) %><br>
+                <% end %>
+                <%= bread.bread_name %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
