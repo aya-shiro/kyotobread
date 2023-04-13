@@ -2,9 +2,6 @@ class User::UsersController < ApplicationController
   def index
     @users = User.all
 
-    # @my_breads = current_user.bread
-    # @my_breads_with_count = @my_breads.left_joins(:favorites).select('breads.*, COUNT(favorites.id) AS favorites_count').group('breads.id')
-    # いいね総カウント
   end
 
   def show

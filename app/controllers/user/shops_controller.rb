@@ -4,5 +4,6 @@ class User::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @breads = @shop.breads
   end
 end

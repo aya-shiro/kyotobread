@@ -41,8 +41,12 @@
 
   <div class="row mt-5">
     <%= @shop.shop_name %> のパン一覧
-    <%#= @shop.bread.get_bread_image(200, 200) %>
-    <%#= @shop.bread.bread_name %>
+    <% @breads.each do |bread| %>
+      <%= link_to admin_bread_path(bread.id) do %>
+        <%= image_tag bread.get_bread_image(200, 200) %>
+      <% end %>
+      <%= bread.bread_name %>
+    <% end %>
   </div>
 
 </div>

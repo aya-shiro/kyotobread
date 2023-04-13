@@ -2,7 +2,7 @@
 
     <%= render 'layouts/errors', obj: bread %>
 
-    <%= form_with model: bread, url: breads_path do |f| %>
+    <%= form_with model: bread do |f| %>
       <%= f.label :パン写真 %><br>
       <%= f.file_field :bread_image, placeholder: "画像を選択" %><br>
       <%= f.label :パン名, class:"mt-4" %>

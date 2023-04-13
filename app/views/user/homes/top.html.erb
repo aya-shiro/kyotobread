@@ -4,38 +4,40 @@
 
       <div class="col-3">
         <div class="border p-3" >
-        <p>ドリンクから探す</p>
+        <h5>ドリンクから探す</h5>
         <ul>
           <!--drink_idに":"をつけることで、どのdrink_nameを参照するか区別できる-->
-          <li class="btn btn-sm">
+          <li class="btn px-1 my-1", style="background-color: #f5f5f5;">
             <%= link_to breads_path(drink_id: @coffee.id), method: :get do %>
-              <span><i class="fa-solid fa-mug-saucer" style="color: #240a0a;"></i></span>
-              <div style="font-size: 5px;">コーヒー</div>
+              <div><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #240a0a;"></i></div>
+              <div style="color: black;">コーヒー</div>
             <% end %>
           </li>
-          <li class="btn btn-sm">
+          <li class="btn px-1 my-1", style="background-color: #f5f5f5;">
             <%= link_to breads_path(drink_id: @tea.id), method: :get do %>
-              <span><i class="fa-solid fa-mug-saucer" style="color: #d70f0f;"></i></span>
-              <div style="font-size: 5px;">紅茶</div>
+              <span><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #d70f0f;"></i></span>
+              <div style="color: black;">　紅茶　</div>
             <% end %>
           </li>
-          <li class="btn btn-sm">
+          <li class="btn px-1 my-1", style="background-color: #f5f5f5;">
             <%= link_to breads_path(drink_id: @milk.id), method: :get do %>
-              <span> <i class="fa-solid fa-mug-saucer" style="color: #3fabd9;"></i></span>
-              <div style="font-size: 5px;">牛乳</div>
+              <span> <i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #3fabd9;"></i></span>
+              <div style="color: black;">　牛乳　</div>
             <% end %>
           </li>
-          <li class="btn btn-sm">
+          <li class="btn px-1 my-1", style="background-color: #f5f5f5;">
             <%= link_to breads_path(drink_id: @tya.id), method: :get do %>
-              <span><i class="fa-solid fa-mug-saucer" style="color: #239c21;"></i></span>
-              <div style="font-size: 5px;">お茶</div>
+              <span><i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #239c21;"></i></span>
+              <div style="color: black;">　お茶　</div>
             <% end %>
           </li>
+          <div class="mt-4">
           <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
-            <i class="fa-solid fa-mug-saucer" style="color: #f9f110;"></i>
-            <%= f.submit "探す", class:"mb-1 btn btn-sm btn-secondary" %>
+            <i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #f9f110;"></i>
+            <%= f.submit "探す", class:"mb-2 ml-3 btn btn-sm btn-secondary" %>
             <%= f.select :drink_id, options_from_collection_for_select(Drink.not_default.order(id: :desc), :id, :drink_name) %>
           <% end %>
+          </div>
         </ul>
       </div>
 
@@ -69,18 +71,17 @@
       </div>
 
     <!--app/assets/stylesheets/user/homes.scss併用-->
-    <div class="wrap">
-      <ul id="tab-menu">
-        <li><a href="#tab1" class="active">ALL</a></li>
-        <li><a href="#tab2" class="">SWEET</a></li>
-        <li><a href="#tab3" class="">SALT</a></li>
-        <li><a href="#tab4" class="">いいね順</a></li>
-      </ul>
+      <div class="wrap">
+        <ul id="tab-menu">
+          <li><a href="#tab1" class="active">ALL</a></li>
+          <li><a href="#tab2" class="">SWEET</a></li>
+          <li><a href="#tab3" class="">SALT</a></li>
+          <li><a href="#tab4" class="">いいね順</a></li>
+        </ul>
 
-      <div id="tab-contents">
-        <div id="tab1" class="tab">
-          <h3>タブ1　ALL</h3>
-          <div class="col-9">
+        <div id="tab-contents">
+          <div id="tab1" class="tab">
+            <h3>タブ1　ALL</h3>
             <ul class="row" style="list-style: none; text-align: right;">
               <% @breads.each do |bread| %>
                 <li class="mr-1">
@@ -94,11 +95,9 @@
               <% end %>
             </ul>
           </div>
-        </div>
 
-        <div id="tab2" class="tab">
-          <h3>タブ2　SWEET</h3>
-          <div class="col-9">
+          <div id="tab2" class="tab">
+            <h3>タブ2　SWEET</h3>
             <ul class="row" style="list-style: none; text-align: right;">
               <% @sweet_breads.each do |sweet_bread| %>
                 <li class="mr-1">
@@ -113,11 +112,8 @@
             </ul>
           </div>
 
-        </div>
-
-        <div id="tab3" class="tab">
-          <h3>タブ3　SALTY</h3>
-          <div class="col-9">
+          <div id="tab3" class="tab">
+            <h3>タブ3　SALTY</h3>
             <ul class="row" style="list-style: none; text-align: right;">
               <% @salty_breads.each do |salty_bread| %>
                 <li class="mr-1">
@@ -131,12 +127,10 @@
               <% end %>
             </ul>
           </div>
-        </div>
 
-        <div id="tab4" class="tab">
-          <h3>いいねが多い順に一覧表示</h3>
-          <div class="col-9">
-            <ul class="row" style="list-style: none; text-align: right;">
+          <div id="tab4" class="tab">
+            <h3>いいねが多い順</h3>
+            <ul class="row" style="list-style: none;">
               <% @favorite_breads.each do |favorite_bread| %>
                 <li class="mr-1">
                   <div>
@@ -149,13 +143,12 @@
               <% end %>
             </ul>
           </div>
+
         </div>
-
       </div>
-    </div>
 
-    <script src="/javascript/packs/jquery.min.js"></script>    <!-- jQueryを読み込む -->
-    <script src="/javascript/packs/kyotobread.js"></script>    <!-- kyotobread.jsを読み込む -->
+      <script src="/javascript/packs/jquery.min.js"></script>    <!-- jQueryを読み込む -->
+      <script src="/javascript/packs/kyotobread.js"></script>    <!-- kyotobread.jsを読み込む -->
 
     </div>
   </div>
