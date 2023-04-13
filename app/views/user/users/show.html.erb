@@ -20,14 +20,15 @@
   <div class="row">
     <h5 class="mt-5 mb-3"><%= @user.bread.count %> posts</h5>
   </div>
+  <div>
     <ul class="row" style="list-style: none;">
       <% @breads.each do |bread| %>
-      <li class="mr-1">
-        <%= link_to bread_path(bread.id) do %>
-          <div><%= image_tag bread.get_bread_image(220, 220) %></div>
-          <p><%= bread.bread_name %></p>
-        <% end %>
-      </li>
+        <li class="mr-1">
+          <%= link_to bread_path(bread.id) do %>
+            <div><%= image_tag bread.get_bread_image(220, 220) %></div>
+            <p><%= bread.bread_name %></p>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -1,5 +1,6 @@
 class User::ShopsController < ApplicationController
   def index
+    @shops = Shop.all
   end
 
   def show
@@ -8,6 +9,6 @@ class User::ShopsController < ApplicationController
   end
 
   def onlines
-    # @onlines = Shop.where(:online_url)
+    @shops = Shop.all
   end
 end

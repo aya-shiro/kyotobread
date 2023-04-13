@@ -1,7 +1,6 @@
 <div class="container mt-4 mx-auto">
   <div class="col-md-12">
     <h4 class="mr-5"><%= @shop.shop_name %></h4>
-    <span><%= link_to "トップに戻る", root_path, class:"btn btn-outline-primary btn-sm" %></span>
   </div>
 
   <div class="row">
@@ -39,14 +38,23 @@
     </div>
   </div>
 
-  <div class="row mt-5">
+  <h5 class="row mt-5">
     <%= @shop.shop_name %> のパン一覧
-    <% @breads.each do |bread| %>
-      <%= link_to admin_bread_path(bread.id) do %>
-        <%= image_tag bread.get_bread_image(200, 200) %>
+  </h5>
+  <div>
+    <ul class="row" style="list-style: none;">
+      <% @breads.each do |bread| %>
+        <li class="mr-1">
+          <%= link_to bread_path(bread.id) do %>
+            <div><%= image_tag bread.get_bread_image(220, 220) %></div>
+            <p style="color: black;"><%= bread.bread_name %></p>
+          <% end %>
+        </li>
       <% end %>
-      <%= bread.bread_name %>
-    <% end %>
+    </ul>
   </div>
+
+  <span><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></span>
+
 
 </div>

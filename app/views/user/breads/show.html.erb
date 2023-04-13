@@ -1,11 +1,11 @@
 <div class="container mt-4">
 
-  <div class="text-success">
-    <%= flash[:notice] %>
-  </div>
+  <!--<div class="text-success">-->
+    <%#= flash[:notice] %>
+  <!--</div>-->
 
   <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
-    <div class="row mb-5">
+    <div class="row mb-3">
 
       <div class="col-1">
         <%= link_to user_path(@user.id) do %>
@@ -27,12 +27,12 @@
 
     <div class="col-md-7">
       <h5><%= @bread.bread_name %></h5>
-      <p><%= @bread.introduce %></p>
+      <p style="height: 160px;"><%= @bread.introduce %></p>
 
       <table>
         </tr>
-          <td class="py-2">ジャンル</td>
-          <td>
+          <td class="pb-2">ジャンル</td>
+          <td class="pl-2 pb-2">
             <% if @bread.taste %>
               甘い系
             <% else %>
@@ -42,15 +42,19 @@
         </tr>
         </tr>
           <td class="py-2">一緒に飲むなら？</td>
-          <td><%= @bread.drink.drink_name %></td>
+          <td class="pl-2"><%= @bread.drink.drink_name %></td>
         </tr>
         <tr>
-          <td class="py-2">購入店名</td>
-          <td><%= @bread.shop.address_display %></td>
+          <td>購入店名</td>
+          <%#= @bread.shop.address_display %>
+          <td class="pl-2">
+            〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %><br>
+            <%= @bread.shop.shop_name %>
+          </td>
         </tr>
         <tr>
           <td class="py-2">投稿日</td>
-          <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
+          <td class="pl-2"><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
         </tr>
 
         <!--投稿5分経過後に更新された場合、更新日時を表示する-->

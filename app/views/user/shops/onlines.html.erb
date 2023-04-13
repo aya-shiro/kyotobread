@@ -1,22 +1,24 @@
 <div class="container mt-4 mx-auto">
   <div class="col-md-12s mx-auto">
 
-    <h5>ショップ一覧</h5>
+    <h5>オンラインショップ一覧</h5>
 
     <table class="table">
       <tr>
         <td>店名</td>
-        <td>ショップ</td>
+        <td>オンラインショップ</td>
         <td></td>
       </tr>
 
       <% @shops.each do |shop| %>
+        <% if shop.online_url.present? %>    <!--online_shopがある店名のみ表示-->
           <tr>
             <td><%= shop.shop_name %></td>
             <td><%= shop.online_url %></td>
             <td><%= shop.shop_url %></td>
             <td><%= link_to "店舗詳細", shop_path(shop.id), class:"btn btn-sm btn-secondary" %></td>
           </tr>
+        <% end %>
       <% end %>
 
     </table>
