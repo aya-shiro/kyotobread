@@ -4,11 +4,11 @@
 
   <div class="border p-3" >
     <h5>ドリンクから探す</h5>
-    <ul class="ml-4">
+    <ul class="" style="list-style: none;">
       <% @defaults.each do |default| %>
         <li class="px-1 my-1" >
           <%= link_to breads_path(drink_id: default.id), method: :get do %>
-            <div class="my-2" style="color: black;"><%= default.drink_name %></div>
+            <div class="my-2" style="color: black;">#<%= default.drink_name %></div>
           <% end %>
         </li>
       <% end %>
