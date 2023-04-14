@@ -1,17 +1,18 @@
-<div class="container mt-4">
+<div class="container pt-5">
   <div class="col-md-10 mx-auto">
     <h5>ショップ一覧</h5>
 
     <% @shops.each do |shop| %>
       <div class="row mt-3 border p-3">
-        <div class="col-md-1 border py-2"style="color: black;">
+        <div class="col-md-1 py-2" style="color: black;">
           <%= link_to shop_path(shop.id) do %>
-          <h1 class=""><i class="fa-solid fa-store"></i></h1>
+          <h2 class="" style="color: gray;"><i class="fa-solid fa-store"></i></h2>
           <% end %>
         </div>
         <div class="col-md-6 mt-4">
           <%= link_to shop_path(shop.id) do %>
             <h5 style="color: black;"><%= shop.shop_name %><h5>
+            <p style="color: black;"><%= shop.breads.count %>posts</p>
             <!--<p style="color: black;">公式リンク：<%#= shop.online_url %></p><br>-->
           <% end %>
         </div>
@@ -26,21 +27,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--上と下どっちか選ぶ-->
 <div class="container mt-4">
   <div class="col-md-10 mx-auto">
     <h5>ショップ一覧</h5>

@@ -4,8 +4,6 @@ class User::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     # comment.bread_id = @bread.id
     comment.save
-    # @bread = Bread.find(params[:bread_id])
-    # @comment = Comment.new
     # redirect_to bread_path(bread)
   end
 
