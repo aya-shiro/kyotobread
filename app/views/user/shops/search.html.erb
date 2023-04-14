@@ -1,0 +1,39 @@
+<!--ショップの検索結果を表示する-->
+<div class="container mt-4">
+  <div class="mx-auto">
+    <div class="row">
+
+    <%#= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, coffee: @coffee, tea: @tea, milk: @milk, tya: @tya %>
+    <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+
+    <div class="col-9">
+      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @shops.count %>件</h5>
+
+      <% if @keyword.present? %>
+        <table class="table">
+          <tr>
+            <td>店名</td>
+            <td>住所</td>
+            <td></td>
+          </tr>
+          <% @shops.each do |shop| %>
+            <tr>
+              <td>
+                <%= link_to shop_path(shop.id) do %>
+                  <%= shop.shop_name %><br>
+                <% end %>
+              </td>
+              <td>
+                〒<%= shop.postcode %><br>
+                <%= shop.address %>
+              </td>
+              <td><%= shop.breads.count %>posts</td>
+            </tr>
+          <% end %>
+      </table>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -17,7 +17,7 @@
         <div class="container fixed-top" style="background-color: white;">    <!--fixed-topでヘッダー固定-->
 
           <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
-            <%= f.text_field :keyword %>
+            <%= f.text_field :keyword, placeholder: "パン名を入力" %>
             <%= f.submit "検索", class:"btn btn-sm btn-secondary" %>
           <% end %>
 
@@ -111,7 +111,7 @@
     <main>
 
       <p class="notice"><%= notice %></p>   <!--devise用-->
-      <p class="alert"><%= alert %></p>    <!--devise用-->
+      <p class="alert"><%= alert %></p>   <!--devise用-->
 
     <%= yield %>
     </main>
@@ -120,7 +120,7 @@
       <div class='container mt-5'>
         <div class='row' style:"color:gray;">
           <div class='mx-auto'>
-            <p>copyright_AyakaIchinose</p>
+            <p>copyright_KyotoBread</p>
           </div>
         </div>
       </div>

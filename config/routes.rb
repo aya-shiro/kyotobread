@@ -42,7 +42,13 @@ Rails.application.routes.draw do
 
     resources:topics, only: [:index, :show]
     get 'shops/onlines'
-    resources:shops, only: [:index, :show]
+
+    resources:shops, only: [:index, :show] do
+      collection do
+        get 'search'
+      end
+    end
+
     get 'drinks/index'
   end
 

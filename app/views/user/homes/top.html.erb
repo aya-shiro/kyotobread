@@ -17,9 +17,10 @@
         <div id="tab-contents">
           <div id="tab1" class="tab">
             <h3>タブ1　ALL</h3>
-            <ul class="row" style="list-style: none; text-align: right;">
+            <ul class="row" style="list-style: none;">
               <% @breads.each do |bread| %>
-                <li class="mr-1">
+                <!--<li class="mr-1">-->
+                <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
                   <div>
                     <%= link_to bread_path(bread.id) do %>
                       <%= image_tag bread.get_bread_image(180, 180) %><br>
@@ -33,9 +34,10 @@
 
           <div id="tab2" class="tab">
             <h3>タブ2　SWEET</h3>
-            <ul class="row" style="list-style: none; text-align: right;">
+            <ul class="row" style="list-style: none;">
               <% @sweet_breads.each do |sweet_bread| %>
-                <li class="mr-1">
+                <!--<li class="mr-1">-->
+                <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
                   <div>
                     <%= link_to bread_path(sweet_bread.id) do %>
                       <%= image_tag sweet_bread.get_bread_image(180, 180) %><br>
@@ -49,9 +51,10 @@
 
           <div id="tab3" class="tab">
             <h3>タブ3　SALTY</h3>
-            <ul class="row" style="list-style: none; text-align: right;">
+            <ul class="row" style="list-style: none;">
               <% @salty_breads.each do |salty_bread| %>
-                <li class="mr-1">
+                <!--<li class="mr-1">-->
+                <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
                   <div>
                     <%= link_to bread_path(salty_bread.id) do %>
                       <%= image_tag salty_bread.get_bread_image(180, 180) %><br>
@@ -67,7 +70,9 @@
             <h3>いいねが多い順</h3>
             <ul class="row" style="list-style: none;">
               <% @favorite_breads.each do |favorite_bread| %>
-                <li class="mr-1">
+                <!--<li class="mr-1">-->
+                <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
+
                   <div>
                     <%= link_to bread_path(favorite_bread.id) do %>
                       <%= image_tag favorite_bread.get_bread_image(180, 180) %><br>

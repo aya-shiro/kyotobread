@@ -1,15 +1,14 @@
 <div class="container mt-4 mx-auto">
-  <div class="col-md-12">
-    <h4 class="mr-5"><%= @shop.shop_name %></h4>
+
+  <div class="row pt-3">
+    <div class="col-md-8">
+      <h4 class="mr-5"><%= @shop.shop_name %></h4>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-8 mt-4">
+    <div class="col-md-8 mt-3">
       <table>
-        <tr>
-          <td class="py-2 mr-5">登録ID</td>
-          <td class="pl-4"><%= @shop.id %></td>
-        </tr>
         <tr>
           <td class="py-2">店名</td>
           <td class="pl-4"><%= @shop.shop_name %></td>
@@ -23,7 +22,7 @@
           <td class="pl-4"><%= @shop.address %></td>
         </tr>
         <tr>
-          <td class="py-2">ホームページ</td>
+          <td class="py-2">公式リンク</td>
           <td class="pl-4"><%= @shop.shop_url %></td>
         </tr>
         <tr>
@@ -34,17 +33,22 @@
           <td class="py-2">登録日</td>
           <td class="pl-4"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
+        <td class="pt-4"><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></td>
+
       </table>
     </div>
   </div>
 
-  <h5 class="row mt-5">
-    <%= @shop.shop_name %> のパン一覧
-  </h5>
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h5><%= @shop.shop_name %> のパン一覧<h5>
+    </div>
+  </div>
+
   <div>
     <ul class="row" style="list-style: none;">
       <% @breads.each do |bread| %>
-        <li class="mr-1">
+        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
           <%= link_to bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(220, 220) %></div>
             <p style="color: black;"><%= bread.bread_name %></p>
@@ -53,8 +57,5 @@
       <% end %>
     </ul>
   </div>
-
-  <span><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></span>
-
 
 </div>
