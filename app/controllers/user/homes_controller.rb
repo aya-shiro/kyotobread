@@ -16,6 +16,8 @@ class User::HomesController < ApplicationController
       sort_by {|x|
         x.favorited_users.includes(:favorites).where(created_at: from...to).size
       }.reverse
+
+    @users = User.all
   end
 
 

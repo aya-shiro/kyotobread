@@ -1,2 +1,32 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container pt-5">
+
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <!--<h5 class="mb-3">管理者ページ</h5>-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <p>現在の登録ユーザー：　<%= User.count %> users</p>
+      <p>現在の投稿パン　　：　<%= Bread.count %>posts</p>
+    </div>
+  </div>
+
+  <div>
+    <h5>新着投稿一覧</h5>
+    <ul class="row" style="list-style: none;">
+      <% @breads.each do |bread| %>
+        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+          <%= link_to admin_bread_path(bread.id) do %>
+            <div><%= image_tag bread.get_bread_image(100, 100) %></div>
+            <p style="color: black;"><%= bread.bread_name %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+
+</div>

@@ -22,7 +22,7 @@ class Bread < ApplicationRecord
   validates :bread_image, presence: true
   validates :bread_name, presence: true, length:{maximum:20}
   validates :introduce, presence: true, length:{maximum:80}
-  # validates :taste, presence: true
+  validates :taste, inclusion: {in: [true, false]}
 
 
   has_one_attached :bread_image

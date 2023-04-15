@@ -44,17 +44,24 @@
     <h5>
       <i class="fa-solid fa-store"></i> ショップ一覧
     </h5>
-    <% @shops.each do |shop| %>
-      <ul class="ml-4">
-        <%= link_to shop_path(shop.id) do %>
-          <li style="color: black;"><%= shop.shop_name %></li>
-        <% end %>
-      </ul>
+    <% @shops.each_with_index do |shop, index| %>
+      <% if index < 3 %>
+        <ul class="ml-4">
+          <%= link_to shop_path(shop.id) do %>
+            <li style="color: black;"><%= shop.shop_name %></li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
-    <div class="text-right">
-      <%= link_to "もっとみる>", shops_path %>
-    </div>
+    <% if @shops.count > 3 %>
+      <div class="text-right">
+        <%= link_to "もっとみる>", shops_path %>
+      </div>
+    <% end %>
   </div>
+
+
+
 
   <div class="border p-3 mt-3">
     <%= link_to "オンラインショップはこちら", shops_onlines_path %>
