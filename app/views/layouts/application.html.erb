@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KyotoBread</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container fixed-top" style="background-color: white;">    <!--fixed-topでヘッダー固定-->
+
+          <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
+            <%= f.text_field :keyword, placeholder: "パン名を入力" %>
+            <%= f.submit "検索", class:"btn btn-sm btn-secondary" %>
+          <% end %>
+
+          <a class="navbar-brand" href="/"><%= image_tag('logo_image300.jpg')%></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="row collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+
+              <% if user_signed_in? %>
+              <!--会員がログインしている場合-->
+              <li style="color:limegreen;" class="pt-2"><span>ようこそ<%= current_user.name %>さん</span></li>
+               <li>
+                 <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-user"></i> マイページ
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to new_bread_path, class: 'nav-link text-dark' do %>
+                   <i class="fas fa-plus"></i> 投稿する
+                 <% end %>
+               </li>
+               <li>
+                 <%= link_to users_path, class: 'nav-link text-dark' do %>
+                   <i class="fa-solid fa-users"></i>ユーザー一覧
+                 <% end %>
+               </li>
+               <li>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i> Log out
+                <% end %>
+               </li>
+              <% elsif  admin_signed_in? %>
+              <!--管理者がログインしている場合-->
+               <li>
+                 <%= link_to admin_shops_path, class: 'nav-link text-dark' do %>
+                 <i class="fa-solid fa-store"></i> ショップ一覧
+               <% end %>
+               </li>
+              <li>
+                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                  <i class="fas fa-user-circle"></i> ユーザー一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_topics_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-regular fa-folder-open"></i> 特集一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_drinks_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-mug-saucer"></i> ドリンク一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i> Log out
+                <% end %>
+              </li>
+              <% else %>
+              <!--ログインしていない状態-->
+                <li>
+                  <%= link_to user_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-user"></i> ゲストログイン(閲覧用)
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to homes_about_path,class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-bread-slice"></i> About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+                    <i class="fas fa-user-plus"></i> 新規登録
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path,  class: 'nav-link text-dark' do %>
+                    <i class="fas fa-sign-in-alt"></i> Log in
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+    <main>
+
+      <p class="notice"><%= notice %></p>   <!--devise用-->
+      <p class="alert"><%= alert %></p>   <!--devise用-->
+
+    <%= yield %>
+    </main>
+
+    <footer>
+      <div class='container mt-5'>
+        <div class='row' style:"color:gray;">
+          <div class='mx-auto'>
+            <p>copyright_KyotoBread</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  </body>
+</html>
