@@ -1,14 +1,16 @@
-<div class="container mt-5 mx-auto">
-  <div class="col-md-12">
+<div class="container pt-5">
+
+  <div class="col-md-10">
 
     <h5>ユーザー一覧</h5>
 
     <table class="table mt-4">
       <tr>
-        <td>ID</td>
-        <td>ニックネーム</td>
-        <td>メールアドレス</td>
-        <td>ステータス</td>
+        <th>ID</th>
+        <th>ユーザーネーム</th>
+        <th>メールアドレス</th>
+        <th>投稿</th>
+        <th>ステータス</th>
       </tr>
 
         <% @users.each do |user| %>
@@ -20,6 +22,7 @@
           <% end %>
         </td>
         <td><%= user.email %></td>
+        <td><%= user.bread.count %> posts</td>
         <td>
           <% if user.is_delete == false %>
            有効

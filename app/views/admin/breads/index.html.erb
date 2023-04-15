@@ -1,2 +1,17 @@
-<h1>Admin::Breads#index</h1>
-<p>Find me in app/views/admin/breads/index.html.erb</p>
+<div class="container pt-5">
+
+  <h5>新着投稿一覧</h5>
+  <ul class="row col-md-12 mx-auto" style="list-style: none;">
+      <% @breads.each do |bread| %>
+          <li class="mr-1 mb-3" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+            <%= link_to admin_bread_path(bread.id) do %>
+              <div><%= image_tag bread.get_bread_image(100, 100) %></div>
+              <p style="color: black;"><%= bread.bread_name %></p>
+            <% end %>
+              <p style="font-size: 5px;">
+                <%= bread.updated_at.strftime('%Y/%m/%d') %>  <!--最終更新日-->
+              </p>
+          </li>
+      <% end %>
+    </ul>
+  </div>

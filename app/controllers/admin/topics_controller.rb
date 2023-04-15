@@ -6,8 +6,10 @@ class Admin::TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      flash[:notice] = "特集登録完了しました"
-      redirect_to admin_topics_path
+      flash[:notice] = "特集の登録が完了しました"
+      redirect_to admin_topic_path(@topic.id)
+    else
+      render :new
     end
   end
 
@@ -26,13 +28,15 @@ class Admin::TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      redirect_to admin_topics_path
+      flash[:notice] = "特集を更新しました"
+      redirect_to admin_topic_path(@topic.id)
     end
   end
 
   def destroy
     @topic = Topic.find(params[:id])
     if @topic.delete
+      flash[:notice] = "特集を削除しました"
       redirect_to admin_topics_path
     end
   end

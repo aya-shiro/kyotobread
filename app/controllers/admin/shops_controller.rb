@@ -20,6 +20,7 @@ class Admin::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @breads = @shop.breads
   end
 
   def edit
@@ -30,7 +31,7 @@ class Admin::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
       flash[:notice] = "編集しました"
-      redirect_to admin_shops_path
+      redirect_to admin_shop_path(@shop.id)
     end
   end
 

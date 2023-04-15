@@ -1,11 +1,13 @@
-<div class="container mt-4 mx-auto">
-  <div class="col-md-12">
-    <h4 class="mr-5"><%= @shop.shop_name %></h4>
-    <span><%= link_to "ショップ一覧に戻る", admin_shops_path, class:"btn btn-outline-primary btn-sm" %></span>
+<div class="container pt-4 mx-auto">
+
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
   </div>
 
+  <h4><%= @shop.shop_name %></h4>
+
   <div class="row">
-    <div class="col-md-8 mt-4">
+    <div class="col-md-8 mt-1">
       <table>
         <tr>
           <td class="py-2 mr-5">登録ID</td>
@@ -24,7 +26,11 @@
           <td class="pl-4"><%= @shop.address %></td>
         </tr>
         <tr>
-          <td class="py-2">ホームページ</td>
+          <td class="py-2">最寄り駅</td>
+          <td class="pl-4"><%= @shop.nearest_station %></td>
+        </tr>
+        <tr>
+          <td class="py-2">公式リンク</td>
           <td class="pl-4"><%= @shop.shop_url %></td>
         </tr>
         <tr>
@@ -37,38 +43,34 @@
         </tr>
       </table>
     </div>
+
+    <div class="col-md-4">
+      <td><%= link_to "ショップ一覧へ", admin_shops_path, class:"mr-4 btn btn-outline-primary btn-sm" %></td>
+      <td><%= link_to "編集", edit_admin_shop_path(@shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
+      <td><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger" %></td>
+    </div>
+  </div>
+
+
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h5><%= @shop.shop_name %> のパン一覧<h5>
+    </div>
+  </div>
+
+  <div>
+    <ul class="row" style="list-style: none;">
+      <% @breads.each do |bread| %>
+        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+          <%= link_to admin_bread_path(bread.id) do %>
+            <div><%= image_tag bread.get_bread_image(100, 100) %></div>
+            <p style="color: black;"><%= bread.bread_name %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</div>

@@ -54,27 +54,33 @@
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                <li>
-                 <%= link_to admin_shops_path, class: 'nav-link text-dark' do %>
-                 <i class="fa-solid fa-store"></i> ショップ一覧
+                 <%= link_to admin_root_path, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
+                 <i class="fa-solid fa-star"></i> 管理者トップ
                <% end %>
                </li>
               <li>
-                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-                  <i class="fas fa-user-circle"></i> ユーザー一覧
+              <li>
+                 <%= link_to admin_shops_path, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
+                 <i class="fa-solid fa-store"></i> ショップ
+               <% end %>
+               </li>
+              <li>
+                <%= link_to admin_users_path, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
+                  <i class="fas fa-user-circle"></i> ユーザー
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_topics_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-regular fa-folder-open"></i> 特集一覧
+                <%= link_to admin_topics_path, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
+                  <i class="fa-regular fa-folder-open"></i> 特集
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_drinks_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-mug-saucer"></i> ドリンク一覧
+                <%= link_to admin_drinks_path, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
+                  <i class="fa-solid fa-mug-saucer"></i> ドリンク
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark' do %>
+                <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark', style:"font-size: 12px;" do %>
                   <i class="fa-solid fa-right-from-bracket"></i> Log out
                 <% end %>
               </li>

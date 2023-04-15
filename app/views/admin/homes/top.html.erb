@@ -7,22 +7,30 @@
   </div>
 
   <div class="row">
-    <div class="col-md-10 mx-auto">
-      <p>現在の登録ユーザー：　<%= User.count %> users</p>
-      <p>現在の投稿パン　　：　<%= Bread.count %>posts</p>
+    <div class="col-md-7">
+      <div class="mb-4 border p-3">
+        <span>現在の登録ユーザー：　<%= User.count %> users</span>
+        <span class="ml-5">現在の投稿パン：　<%= Bread.count %> posts</span>
+      </div>
     </div>
   </div>
 
-  <div>
-    <h5>新着投稿一覧</h5>
-    <ul class="row" style="list-style: none;">
-      <% @breads.each do |bread| %>
-        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
-          <%= link_to admin_bread_path(bread.id) do %>
-            <div><%= image_tag bread.get_bread_image(100, 100) %></div>
-            <p style="color: black;"><%= bread.bread_name %></p>
-          <% end %>
-        </li>
+  <h5>新着投稿一覧</h5>
+  <ul class="row col-md-12 mx-auto" style="list-style: none;">
+      <% @breads.each_with_index do |bread, index| %>
+        <% if index < 10 %>
+          <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+            <%= link_to admin_bread_path(bread.id) do %>
+              <%= image_tag bread.get_bread_image(100, 100) %>
+              <p style="color: black;"><%= bread.bread_name %></p>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if @breads.count > 10 %>
+        <div class="text-right">
+          <%= link_to "もっとみる>", admin_breads_path %>
+        </div>
       <% end %>
     </ul>
   </div>

@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.bread.all
+    @breads = @user.bread.all.order(updated_at: :desc)  # 更新日順に
   end
 
   def edit

@@ -1,5 +1,6 @@
 class Admin::BreadsController < ApplicationController
   def index
+    @breads = Bread.all.order(created_at: :desc)
   end
 
   def show
@@ -11,7 +12,7 @@ class Admin::BreadsController < ApplicationController
   def destroy
     bread = Bread.find(params[:id])
     user_id = bread.user.id
-    
+
     bread.destroy
     redirect_to admin_user_path(user_id)
 
