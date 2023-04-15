@@ -5,6 +5,14 @@
     <%= form_with model: bread do |f| %>
       <%= f.label :パン写真 %><br>
       <%= f.file_field :bread_image %><br>
+
+      <!--<div class="form-group">-->
+      <!--  <div class="custom-file">-->
+      <!--    <%#= f.file_field :bread_image, class: "custom-file-input", id: "customFile" %>-->
+      <!--    <label class="custom-file-label" for="customFile">ファイルを選択</label>-->
+      <!--  </div>-->
+      <!--</div>-->
+
       <%= f.label :パン名, class:"mt-4" %>
       <%= f.text_field :bread_name, class:'form-control' %>
 

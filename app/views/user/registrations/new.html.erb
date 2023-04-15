@@ -1,4 +1,6 @@
-<div class="container mt-5">
+<!--<div class="container mt-5">-->
+<div class="container d-flex justify-content-center pt-5">
+
   <div class="text-center">
 
     <h3>Sign up</h3>
@@ -7,27 +9,47 @@
       <!--users→userに変更　DWO参照-->
       <%= render "user/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
+      <!--<div class="field">-->
+        <%#= f.label :name %><br />
+        <%#= f.text_field :name, autofocus: true %>
+      <!--</div>-->
+
+      <div class=" input-group">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-user"></i></span>
+        <%= f.text_field :name, class: "form-control", placeholder: "Username", aria: {label: "Username"}, input_html: {aria_describedby: "basic-addon1"} %>
       </div>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autocomplete: "email" %>
+      <!--<div class="field">-->
+        <%#= f.label :email %><br />
+        <%#= f.email_field :email, autocomplete: "email" %>
+      <!--</div>-->
+
+      <div class=" input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
+        <%= f.text_field :email, class: "form-control", placeholder: "Email", aria: {label: "Email"}, input_html: {aria_describedby: "basic-addon1"} %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
+      <!--<div class="field">-->
+        <%#= f.label :password %>
+        <%# if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%# end %><br />
+        <%#= f.password_field :password, autocomplete: "new-password" %>
+      <!--</div>-->
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-key"></i></span>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password", aria: {label: "Password"}, input_html: {autocomplete: "new-password", aria_describedby: "basic-addon1"} %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <!--<div class="field">-->
+        <%#= f.label :password_confirmation %><br />
+        <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <!--</div>-->
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-key"></i></span>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password", autocomplete: "new-password", aria: {label: "Confirm Password"}, input_html: {aria_describedby: "basic-addon2"} %>
       </div>
 
       <div class="actions">
