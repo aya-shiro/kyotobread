@@ -2,6 +2,9 @@
   <div class="col-md-8 mx-auto">
 
     <h5>特集を編集する</h5>
+    
+    <%= render 'layouts/errors', obj: @topic %>
+    
     <%= form_with model: @topic, url: admin_topic_path do |f| %>
       <%= f.label :タイトル %><br>
       <%= f.text_field :title, class:'form-control' %><br>

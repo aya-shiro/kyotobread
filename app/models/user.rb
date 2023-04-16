@@ -13,6 +13,9 @@ class User < ApplicationRecord
     end
   end
 
+
+  validates :name, presence: true, length:{maximum:20}
+
   has_many :bread, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

@@ -2,12 +2,12 @@ class User::ShopsController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @shops = Shop.where('address LIKE ? OR shop_name LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @search_shops = Shop.where('address LIKE ? OR shop_name LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
       # 住所もしくは店名で検索する
 
       @keyword = params[:keyword]
 
-      # @shops = Shop.all.order(created_at: :desc)
+      @shops = Shop.all.order(created_at: :desc)
       @topics = Topic.all.order(created_at: :desc)
       @defaults = Drink.default.where(default_select: true)
       # views/layouts/_side.html.erbに必要な記述

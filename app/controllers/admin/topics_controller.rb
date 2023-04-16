@@ -30,6 +30,8 @@ class Admin::TopicsController < ApplicationController
     if @topic.update(topic_params)
       flash[:notice] = "特集を更新しました"
       redirect_to admin_topic_path(@topic.id)
+    else
+      render :edit
     end
   end
 

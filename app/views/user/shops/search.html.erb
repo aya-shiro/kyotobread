@@ -7,7 +7,7 @@
     <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
     <div class="col-9">
-      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @shops.count %>件</h5>
+      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_shops.count %>件</h5>
 
       <% if @keyword.present? %>
         <table class="table">
@@ -16,7 +16,7 @@
             <td>住所</td>
             <td></td>
           </tr>
-          <% @shops.each do |shop| %>
+          <% @search_shops.each do |shop| %>
             <tr>
               <td>
                 <%= link_to shop_path(shop.id) do %>
