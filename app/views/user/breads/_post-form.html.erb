@@ -28,16 +28,15 @@
       <!--seed.rbで設定済みのデフォルトドリンク4種-->
       <% Drink.default.each do |drink| %>
         <span class="mr-4">
-          <%= f.radio_button :drink_name, drink.id %>
           <% case drink.drink_name
           when "コーヒー" %>
-            #
+            <%= f.radio_button :drink_name, drink.id, checked: true %> #
           <% when "紅茶" %>
-            #
+            <%= f.radio_button :drink_name, drink.id %> #
           <% when "牛乳" %>
-            #
+            <%= f.radio_button :drink_name, drink.id %> #
           <% when "お茶" %>
-            #
+            <%= f.radio_button :drink_name, drink.id %> #
           <% end %>
           <%= f.label :drink_name, drink.drink_name %>
         </span>
