@@ -2,7 +2,7 @@
   <div class="mx-auto">
     <div class="row">
 
-    <%#= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+    <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
     <!--app/assets/stylesheets/user/homes.scss併用-->
       <div class="wrap">
@@ -14,12 +14,10 @@
         </ul>
 
         <div id="tab-contents">
-          <div id="tab1" class="tab">
-            <!--<h3>タブ1　ALL</h3>-->
+          <div id="tab1" class="tab">    <!---タブ1 ALL-->
             <ul class="row" style="list-style: none;">
               <% if @breads.exists? %>
                 <% @breads.each do |bread| %>
-                  <!--<li class="mr-1">-->
                   <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
                     <div>
                       <%= link_to bread_path(bread.id) do %>
@@ -33,8 +31,7 @@
             </ul>
           </div>
 
-          <div id="tab2" class="tab">
-            <!--<h3>タブ2　SWEET</h3>-->
+          <div id="tab2" class="tab">    <!--タブ2　SWEET-->
             <ul class="row" style="list-style: none;">
               <% if @sweet_breads.exists? %>
                 <% @sweet_breads.each do |sweet_bread| %>
@@ -52,8 +49,7 @@
             </ul>
           </div>
 
-          <div id="tab3" class="tab">
-            <!--<h3>タブ3　SALTY</h3>-->
+          <div id="tab3" class="tab">    <!--タブ3　SALTY-->
             <ul class="row" style="list-style: none;">
               <% if @salty_breads.exists? %>
                 <% @salty_breads.each do |salty_bread| %>
@@ -71,8 +67,7 @@
             </ul>
           </div>
 
-          <div id="tab4" class="tab">
-            <!--<h3>いいねが多い順</h3>-->
+          <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
             <ul class="row" style="list-style: none;">
               <%# byebug %>
               <% if @favorite_breads.size != 0 %>
