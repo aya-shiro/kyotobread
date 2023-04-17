@@ -58,6 +58,9 @@ Rails.application.routes.draw do
 
     resources:breads, only: [:index, :show, :destroy] do
       resources:comments, only: [:create, :destroy]
+      collection do
+        get 'search'
+      end
     end
 
     resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]

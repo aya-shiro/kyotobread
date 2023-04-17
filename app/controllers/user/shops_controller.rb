@@ -11,6 +11,8 @@ class User::ShopsController < ApplicationController
       @topics = Topic.all.order(created_at: :desc)
       @defaults = Drink.default.where(default_select: true)
       # views/layouts/_side.html.erbに必要な記述
+    else
+      redirect_to root_path    # 検索窓が空白の場合root_pathに遷移
     end
   end
 

@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2023_04_08_053338) do
     t.integer "bread_id"
     t.string "title"
     t.text "body"
+    t.boolean "is_published", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

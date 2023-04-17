@@ -14,7 +14,7 @@ class Admin::TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order(created_at: :desc)
   end
 
   def show
@@ -45,6 +45,6 @@ class Admin::TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :body)
+    params.require(:topic).permit(:title, :body, :is_published)
   end
 end

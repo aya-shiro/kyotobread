@@ -8,7 +8,7 @@
     <%= form_with model: @topic, url: admin_topics_path do |f| %>
       <%= f.file_field :画像 %><br>
       <%= f.label :タイトル, class:"mt-4" %><br>
-      <%= f.text_field :title, class:'form-control', placeholder: "*30文字以内" %><br>
+      <%= f.text_field :title, class:'form-control', placeholder: "*25文字以内" %><br>
       <%= f.label :本文 %><br>
       <%= f.text_area :body, rows: 16, class:'form-control' %><br>
 

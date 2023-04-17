@@ -1,14 +1,21 @@
 <div class="container pt-5">
 
-  <div class="col-md-12">
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-    <h5>登録ショップ一覧</h5>
-    <p>
-      <%= link_to "ショップ新規登録", new_admin_shop_path, class:"btn btn-sm btn-secondary mt-3" %>
-    </p>
-
+  <div class="row">
+    <div class="col-md-12">
+      <h5>登録ショップ一覧</h5>
+      <p><%= link_to "ショップ新規登録", new_admin_shop_path, class:"btn btn-sm btn-secondary mt-3" %></p>
+    </div>
+  </div>
+  
     <table class="table">
       <tr>
+        <th>ID</th>
         <th>店名</th>
         <!--<th>郵便番号</th>-->
         <th>住所</th>
@@ -20,6 +27,7 @@
 
       <% @shops.each do |shop| %>
         <tr>
+          <td><%= shop.id %></td>
           <td>
             <%= link_to admin_shop_path(shop.id) do %>
               <%= shop.shop_name %>

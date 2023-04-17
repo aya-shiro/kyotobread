@@ -16,13 +16,12 @@ class Bread < ApplicationRecord
     user.present? && favorites.exists?(user_id: user.id)
   end
 
-  # enum taste_selects: { plain: 0, sweet: 1, salt: 2 
+  # enum taste_selects: { plain: 0, sweet: 1, salt: 2
 
   validates :bread_image, presence: true
   validates :bread_name, presence: true, length:{maximum:20}
   validates :introduce, presence: true, length:{maximum:80}
   validates :taste, inclusion: {in: [true, false]}
-
 
   has_one_attached :bread_image
 

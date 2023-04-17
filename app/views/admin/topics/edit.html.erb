@@ -2,12 +2,12 @@
   <div class="col-md-8 mx-auto">
 
     <h5>特集を編集する</h5>
-    
+
     <%= render 'layouts/errors', obj: @topic %>
-    
+
     <%= form_with model: @topic, url: admin_topic_path do |f| %>
       <%= f.label :タイトル %><br>
-      <%= f.text_field :title, class:'form-control' %><br>
+      <%= f.text_field :title, class:'form-control', placeholder: "*25文字以内" %><br>
       <%= f.label :本文 %><br>
       <%= f.text_area :body, rows: 16, class:'form-control' %><br>
 

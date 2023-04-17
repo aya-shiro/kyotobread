@@ -3,9 +3,7 @@
   <div class="mx-auto">
     <div class="row">
 
-    <%#= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, coffee: @coffee, tea: @tea, milk: @milk, tya: @tya %>
     <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
-
 
     <div class="col-9">
       <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @shops.count %>件</h5>

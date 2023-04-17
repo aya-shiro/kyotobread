@@ -1,19 +1,45 @@
-<!--特集詳細ページ-->
 <div class="container pt-5">
-  <div class="col-md-8 mx-auto">
 
+  <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">
       <%= flash[:notice] %>
     </div>
+  <% end %>
 
+  <div class="col-md-8 mx-auto">
     <h4 class="mb-3"><%= @topic.title %></h4>
     <p><%= @topic.body %></p>
     <%= image_tag @topic.get_bread_image(200, 200), class:"mx-auto d-block" %>
     <div class="mt-5">
       <span><%= link_to "特集一覧ページ", admin_topics_path, class:"btn btn-sm btn-outline-secondary" %></span>
-      <span><%= link_to "編集", edit_admin_topic_path(@topic.id), class:"ml-5 btn btn-sm btn-secondary" %></span>
-      <span><%= link_to "削除", admin_topic_path(@topic.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"ml-2 btn btn-sm btn-danger" %></span>
+      <span><%= link_to "編集", edit_admin_topic_path(@topic.id), class:"ml-5 btn btn-sm btn-outline-secondary" %></span>
+      <span><%= link_to "削除", admin_topic_path(@topic.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"ml-2 btn btn-sm btn-outline-danger" %></span>
+    </div>
+
+    <div>
+      <p class="mt-4">
+        <% if @topic.is_published == false %>
+          現在の公開状況：<span class="text-secondary pl-2">非公開</span>
+        <% else %>
+          現在の公開状況：<span class="text-success pl-2">公開中</span>
+        <% end %>
+      </p>
+      <%= form_with model: @topic, url:admin_topic_path, method: :patch do |f| %>
+        <% if @topic.is_published == false %>
+          <%= f.radio_button :is_published, :false, checked: true, class:"ml-4" %>
+           非公開
+          <%= f.radio_button :is_published, :true, class:'ml-4' %>
+           公開中
+        <% else %>
+          <%= f.radio_button :is_published, :false, checked: true, class:"ml-4" %>
+           非公開
+          <%= f.radio_button :is_published, :true, class:"ml-4" %>
+           公開中
+        <% end %>
+        <%= f.submit '公開状況を変更する', "data-confirm" => "公開状況を変更します", class: 'ml-3 btn btn-danger btn-sm' %>
+      <% end %>
     </div>
 
   </div>
+
 </div>

@@ -1,6 +1,6 @@
 <div class="container pt-5">
 
-  <div class="col-md-10 mx-auto">
+  <div class="col-md-12 mx-auto">
 
     <h5>ユーザー一覧</h5>
 
@@ -25,13 +25,9 @@
         <td><%= user.bread.count %> posts</td>
         <td>
           <% if user.is_delete == false %>
-            <div class="text-success">
-             有効
-            </div>
+            <div class="text-success">有効</div>
           <% else %>
-            <div class="text-danger">
-             退会
-            </div>
+            <div class="text-danger">退会</div>
           <% end %>
         </td>
       </tr>
