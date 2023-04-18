@@ -3,55 +3,20 @@
     <h5>ショップ一覧</h5>
 
     <% @shops.each do |shop| %>
-      <div class="row mt-3 border p-3">
+      <div class="row my-3 border p-3">
         <div class="col-md-1" style="color: black;">
           <%= link_to shop_path(shop.id) do %>
           <h2 style="color: gray;"><i class="fa-solid fa-store"></i></h2>
           <% end %>
         </div>
-        <div class="col-md-6 mt-4">
+        <div class="col-md-6">
           <%= link_to shop_path(shop.id) do %>
-            <h5 style="color: black;"><%= shop.shop_name %><h5>
-            <p style="color: black;"><%= shop.breads.count %>posts</p>
-            <!--<p style="color: black;">公式リンク：<%#= shop.online_url %></p><br>-->
+            <h5 class="text-dark"><%= shop.shop_name %><h5>
+            <p class="text-dark"><small><%= shop.breads.count %>posts</small></p>
           <% end %>
         </div>
       </div>
     <% end %>
-
-  </div>
-</div>
-
-
-
-
-
-
-<!--上と下どっちか選ぶ-->
-<div class="container mt-4">
-  <div class="col-md-10 mx-auto">
-    <h5>ショップ一覧</h5>
-
-    <table class="table">
-      <tr>
-        <td>店名</td>
-        <td>公式リンク</td>
-        <td>オンラインショップ</td>
-      </tr>
-
-      <% @shops.each do |shop| %>
-          <tr>
-            <td>
-              <%= link_to shop_path(shop.id) do %>
-                <%= shop.shop_name %>
-              <% end %>
-            </td>
-            <td><%= shop.online_url %></td>
-            <td><%= shop.shop_url %></td>
-          </tr>
-      <% end %>
-
-    </table>
 
   </div>
 </div>

@@ -21,6 +21,11 @@
             <%= f.text_field :keyword, placeholder: "パン名を入力" %>
             <%= f.submit "検索", class:"btn btn-sm btn-secondary" %>
           <% end %>
+        <% else %>
+          <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
+            <%= f.text_field :keyword, placeholder: "パン名を入力" %>
+            <%= f.submit "検索", class:"btn btn-sm btn-secondary" %>
+          <% end %>
         <% end %>
 
           <a class="navbar-brand" href="/"><%= image_tag('logo_image300.jpg')%></a>
@@ -56,32 +61,32 @@
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                 <li>
-                 <%= link_to admin_root_path, class: 'nav-link text-dark' do %>
+                 <%= link_to admin_root_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                    <i class="fa-solid fa-star"></i> 管理者トップ
                  <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                  <%= link_to admin_users_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                     <i class="fas fa-user-circle"></i> ユーザー
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_shops_path, class: 'nav-link text-dark' do %>
+                  <%= link_to admin_shops_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                     <i class="fa-solid fa-store"></i> ショップ
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_topics_path, class: 'nav-link text-dark' do %>
+                  <%= link_to admin_topics_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                     <i class="fa-regular fa-folder-open"></i> 特集
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_drinks_path, class: 'nav-link text-dark' do %>
+                  <%= link_to admin_drinks_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                     <i class="fa-solid fa-mug-saucer"></i> ドリンク
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark' do %>
+                  <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
                     <i class="fa-solid fa-right-from-bracket"></i> Log out
                   <% end %>
                 </li>

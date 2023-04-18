@@ -1,25 +1,26 @@
 <div class="container pt-5">
-  <div class="col-md-10 mx-auto">
-
-
+  <div class="col-md-8 mx-auto">
     <h5>特集一覧</h5>
 
-    <table class="table">
-      <tr>
-        <th>タイトル</th>
-        <th>作成日</th>
-        <th></th>
-      </tr>
-
       <% @topics.each do |topic| %>
-        <tr>
-          <td>
-            <%= link_to topic_path(topic.id) do %>
-              <%= topic.title %>
-            <% end %>
-          </td>
-          <td><%= topic.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
+        <% if topic.is_published == true %>
+          <div class="row mt-3 border p-3">
+            <div class="col-md-6">
+              <%= link_to topic_path(topic.id) do %>
+                <h4 class="text-dark"><%= topic.title %></h4>
+                <p class="text-dark"><%= topic.created_at.strftime('%Y/%m/%d') %></p>
+                <p class="text-dark" style="overflow: hidden; text-overflow: ellipsis; max-width: 300px; max-height: 100px">
+                  <small><%= truncate(topic.body, length: 100) %></small>
+                </p>
+                <p><small>続きを読む ＞<small></p>
+              <% end %>
+
+            </div>
+            <div class="col-md-6 mt-1">
+              <%= image_tag topic.get_bread_image(300, 200), class:"ml-3" %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </table>
   </div>
