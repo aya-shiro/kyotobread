@@ -1,4 +1,5 @@
 class Admin::BreadsController < ApplicationController
+  before_action :authenticate_admin!
 
   def search
     if params[:keyword].present?

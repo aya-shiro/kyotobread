@@ -15,6 +15,7 @@ class User::BreadsController < ApplicationController
   end
 
   def index
+    return redirect_to root_path unless params[:drink_id]    # breads/new再リロード時のエラー回避
     @drink = Drink.find_by(id: params[:drink_id])
     @breads = @drink.breads
 
