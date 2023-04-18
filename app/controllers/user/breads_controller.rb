@@ -74,6 +74,7 @@ class User::BreadsController < ApplicationController
 
     @bread.drink = drink
     if @bread.update(bread_params)
+      flash[:notice] = "投稿を編集しました"
       redirect_to bread_path
     else
       render :edit

@@ -1,8 +1,10 @@
 <div class="container pt-5">
 
-  <!--<div class="text-success">-->
-    <%#= flash[:notice] %>
-  <!--</div>-->
+  <% if flash[:notice] %>
+      <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
   <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
     <div class="row mb-3">
@@ -29,42 +31,38 @@
       <h5><%= @bread.bread_name %></h5>
       <p style="height: 160px;"><%= @bread.introduce %></p>
 
-      <table>
-        </tr>
-          <td class="pb-2">ジャンル</td>
-          <td class="pl-2 pb-2">
-            <% if @bread.taste %>    <!--trueは甘、falseは塩-->
-              甘い系
-            <% else %>
-              塩味系
-            <% end %>
-          </td>
-        </tr>
-        </tr>
-          <td class="py-2">一緒に飲むなら？</td>
-          <td class="pl-2">#<%= @bread.drink.drink_name %></td>
-        </tr>
-        <tr>
-          <td>購入店名</td>
-          <%#= @bread.shop.address_display %>
-          <td class="pl-2">
-            〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %><br>
-            <%= @bread.shop.shop_name %>
-          </td>
-        </tr>
-        <tr>
-          <td class="py-2">投稿日</td>
-          <td class="pl-2"><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
-        </tr>
+      <dl class="row">
+        <dd class="col-sm-3">ジャンル：</dd>
+        <dd class="col-sm-9">
+          <% if @bread.taste %>    <!--trueは甘、falseは塩-->
+            甘い系
+          <% else %>
+            塩味系
+          <% end %>
+        </dd>
 
-        <!--投稿5分経過後に更新された場合、更新日時を表示する-->
-        <% if @bread.updated_at - @bread.created_at > 5.minutes %>
-          <tr style="color: gray;">
-            <td class="py-2">(最終更新</td>
-            <td><%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</td>    <!--東京時間のhour/minutesまで表示-->
-          </tr>
-        <% end %>
-      </table>
+        <dd class="col-sm-3">パンのお供：</dd>
+        <dd class="col-sm-9">
+          <p># <%= @bread.drink.drink_name %></p>
+        </dd>
+
+        <dd class="col-sm-3">購入店：</dd>
+        <dd class="col-sm-9">
+          <% if @bread.shop %>
+            <span>〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
+            <span><%= @bread.shop.shop_name %></span>
+          <% end %>
+        </dd>
+
+        <dd class="col-sm-3 text-truncate">投稿日：</dd>
+        <dd class="col-sm-9">
+          <%= @bread.created_at.strftime("%Y/%m/%d") %>
+          <% if @bread.updated_at - @bread.created_at > 5.minutes %>
+            <p class="py-2 text-secondary"><small>(最終更新 <%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</small></p>    <!--東京時間のhour/minutesまで表示-->
+          <% end %>
+        </dd>
+      </dl>
+
 
       <!--いいね機能非同期化→favorites/_favorite-btn.html.erb-->
       <span id="favorite-btn_<%= @bread.id %>">
@@ -75,15 +73,15 @@
 
 
       <% if @bread.user == current_user %>
-        <%= link_to "編集", edit_bread_path(@bread.id), class:"mt-3 ml-5 btn btn-outline-secondary" %>
-        <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"mt-3 btn btn-outline-secondary" %>
+        <%= link_to "編集", edit_bread_path(@bread.id), class:"ml-5 btn btn-outline-secondary" %>
+        <%= link_to "削除", bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-outline-secondary" %>
       <% end %>
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-8 mt-3">
+    <div class="col-8">
       <% if @bread.comments.exists? %>
 
       <!--コメント一覧非同期化-->

@@ -68,7 +68,6 @@
     <h5>
       <i class="fa-regular fa-folder-open"></i> 特集
     </h5>
-    <%# if @topics.exists? %>
       <% @topics.each_with_index do |topic, index| %>
         <% if topic.is_published == true %>
           <% if index < 3 %>
@@ -86,7 +85,6 @@
           <%= link_to "もっとみる>", topics_path %>
         </div>
       <% end %>
-    <%# end %>
 
   </div>
 

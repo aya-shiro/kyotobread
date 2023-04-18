@@ -1,10 +1,5 @@
 <div class="container pt-5">
 
-    <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
-      <%= f.text_field :keyword, placeholder: "パン名を入力" %>
-      <%= f.submit "検索", class:"btn btn-sm btn-secondary" %>
-    <% end %>
-
     <div class="row">
       <div class="col-9">
         <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @shops.count %>件</h5>

@@ -1,12 +1,11 @@
-      <!--@breadの "@" 削除-->
       <% if bread.favorite_by?(current_user) %>
-        <span class="mt-3">
+        <span>
           <%= link_to bread_favorites_path(bread.id), method: :delete, remote: true do %>
             <i class="fa-solid fa-heart" style="color: #e40101;"></i> <%= bread.favorites.count %>
           <% end %>
         </span>
       <% else %>
-        <span class="mt-3">
+        <span>
           <%= link_to bread_favorites_path(bread.id), method: :post, remote: true do %>
             <i class="fa-regular fa-heart" style="color: #e40101;"></i> <%= bread.favorites.count %>
           <% end %>
