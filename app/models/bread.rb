@@ -1,7 +1,7 @@
 class Bread < ApplicationRecord
 
   belongs_to :user
-  belongs_to :shop, optional: true
+  belongs_to :shop, optional: true    # shopのnilを
   has_many :topic
 
   belongs_to :drink
@@ -18,7 +18,7 @@ class Bread < ApplicationRecord
 
   # enum taste_selects: { plain: 0, sweet: 1, salt: 2
 
-  validates :bread_image, presence: { message: "は省略できません" }
+  validates :bread_image, presence: true
   validates :bread_name, presence: true, length:{maximum:20}
   validates :introduce, presence: true, length:{maximum:80}
   validates :taste, inclusion: {in: [true, false], message: 'はどちらかを選択してください' }
