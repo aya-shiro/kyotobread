@@ -51,10 +51,15 @@ class User::BreadsController < ApplicationController
     drink = Drink.find_by(id: drink_id)
     @bread.drink_id = drink.id
 
-    if @bread.save
-      redirect_to bread_path(@bread.id)
+    # if @bread.save
+    #   redirect_to bread_path(@bread.id)
+    # else
+    #   render :new
+    # end
+    unless @bread.save
+      render "user/breads/error.js.erb"
     else
-      render :new
+      redirect_to bread_path(@bread.id)
     end
   end
 
