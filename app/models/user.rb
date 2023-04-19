@@ -30,6 +30,8 @@ class User < ApplicationRecord
     bread_image.variant(resize_to_fill: [width, height]).processed  #写真をresize_to_fillでスクエアに
   end
 
+  validates :name, presence: true, length:{maximum:10}
+
 
   has_one_attached :user_image
 

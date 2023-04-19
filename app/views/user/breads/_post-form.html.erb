@@ -1,13 +1,10 @@
     <!--user/breads/new & showで使用しているパン投稿フォーム-->
 
-    <%#= render 'layouts/errors', obj: bread %>
-    <%# if @errors %>
     <div id="error">
       <%= render 'layouts/errors', obj: bread %>
     </div>
-   <%# end %>
 
-    <%= form_with model: bread do |f| %>
+    <%= form_with model: bread, local: false do |f| %>
       <%= f.label :パン写真 %><br>
       <%= f.file_field :bread_image %><br>
 

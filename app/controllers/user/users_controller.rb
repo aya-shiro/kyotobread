@@ -17,10 +17,15 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    if @user.update(user_params)
-      redirect_to user_path(@user.id)
+    # if @user.update(user_params)
+    #   redirect_to user_path(@user.id)
+    # else
+    #   render :edit
+    # end
+    unless @user.update(user_params)
+      render "user/breads/error.js.erb"
     else
-      render :edit
+      redirect_to user_path(@user.id)
     end
   end
 

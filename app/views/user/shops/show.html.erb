@@ -1,46 +1,31 @@
-<div class="container pt-5 mx-auto">
+<div class="container pt-5">
 
-  <div class="row pt-3">
-    <div class="col-md-8">
+  <div class="row mb-3">
+    <div class="col-md-6">
       <h4 class="mr-5"><%= @shop.shop_name %></h4>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-8 mt-3">
-      <table>
-        <tr>
-          <td class="py-2">店名</td>
-          <td class="pl-4"><%= @shop.shop_name %></td>
-        </tr>
-        <tr>
-          <td class="py-2">郵便番号</td>
-          <td class="pl-4">〒<%= @shop.postcode %></td>
-        </tr>
-        <tr>
-          <td class="py-2">住所</td>
-          <td class="pl-4"><%= @shop.address %></td>
-        </tr>
-        <tr>
-          <td class="py-2">公式リンク</td>
-          <td class="pl-4"><%= @shop.shop_url %></td>
-        </tr>
-        <tr>
-          <td class="py-2">オンラインショップ</td>
-          <td class="pl-4"><%= @shop.online_url %></td>
-        </tr>
-        <tr>
-          <td class="py-2">登録日</td>
-          <td class="pl-4"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <td class="pt-4"><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></td>
-
-      </table>
-    </div>
-  </div>
+  <dl class="row">
+    <dd class="col-sm-2">店名</dd>
+    <dd class="col-sm-9"><%= @shop.shop_name %></dd>
+    <dd class="col-sm-2">郵便番号</dd>
+    <dd class="col-sm-9">〒<%= @shop.postcode %></dd>
+    <dd class="col-sm-2">住所</dd>
+    <dd class="col-sm-9"><%= @shop.address %></dd>
+    <dd class="col-sm-2">最寄り駅</dd>
+    <dd class="col-sm-9"><%= @shop.nearest_station %></dd>
+    <dd class="col-sm-2">公式リンク</dd>
+    <dd class="col-sm-9"><%= @shop.shop_url %></dd>
+    <dd class="col-sm-2">オンラインショップ</dd>
+    <dd class="col-sm-9"><%= @shop.online_url %></dd>
+    <dd class="col-sm-2">登録日</td>
+    <dd class="col-sm-9"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
+    <div class="pt-4"><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></div>
+  </dl>
 
   <div class="row mt-5">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <h5><%= @shop.shop_name %> のパン一覧<h5>
     </div>
   </div>
