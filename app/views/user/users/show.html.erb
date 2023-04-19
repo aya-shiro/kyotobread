@@ -8,8 +8,10 @@
       <h5><%= @user.name %></h5>
       <%= @user.email %><br>
       <%= @user.user_info %><br>
-      <% if @user == current_user %>
+      <% if @user == current_user && @user.name != "ゲスト" %>  <!--ゲストでないログインユーザの場合-->
         <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"mt-3 btn btn-sm btn-outline-secondary" %><br>
+      <% end %>
+      <% if @user == current_user %>  <!--ゲストでないログインユーザの場合-->
         <%= link_to favorites_show_path, class:"mt-3 btn btn-sm btn-outline-danger" do  %>
           <i class="fa-solid fa-heart"></i>
         <% end %>
@@ -23,11 +25,10 @@
   <div>
     <ul class="row" style="list-style: none;">
       <% @breads.each do |bread| %>
-        <!--<li class="mr-1">-->
         <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
           <%= link_to bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(220, 220) %></div>
-            <p><%= bread.bread_name %></p>
+            <p class="text-dark"><%= bread.bread_name %></p>
           <% end %>
         </li>
       <% end %>

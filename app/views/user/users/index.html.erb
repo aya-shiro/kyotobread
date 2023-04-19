@@ -10,11 +10,10 @@
           <% end %>
         </div>
         <div class="col-md-6 mt-4">
-          <%= link_to user_path(user.id) do %>
+          <%= link_to user_path(user.id), class:"text-dark" do %>
             <h5><%= user.name %></h5>
+            <%= user.bread.count %> posts
           <% end %>
-          <%= user.bread.count %> posts
-
         </div>
       </div>
     <% end %>

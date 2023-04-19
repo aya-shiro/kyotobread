@@ -8,40 +8,39 @@
 
     <div class="col-md-7">
       <h5><%= @bread.bread_name %></h5>
-      <p><%= @bread.introduce %></p>
+      <p style="height: 160px;"><%= @bread.introduce %></p>
 
-      <table>
-        </tr>
-          <td class="py-2">ジャンル</td>
-          <td>
-            <% if @bread.taste %>
-              甘い系
-            <% else %>
-              塩味系
-            <% end %>
-          </td>
-        </tr>
-        </tr>
-          <td class="py-2">一緒に飲むなら？</td>
-          <td><%= @bread.drink.drink_name %></td>
-        </tr>
-        <tr>
-          <td class="py-2">購入店名</td>
-          <td><%= @bread.shop.address_display %></td>
-        </tr>
-        <tr>
-          <td class="py-2">投稿日</td>
-          <td><%= @bread.created_at.strftime("%Y/%m/%d") %></td>
-        </tr>
+      <dl class="row">
+        <dd class="col-sm-3">ジャンル：</dd>
+        <dd class="col-sm-9">
+          <% if @bread.taste %>    <!--trueは甘、falseは塩-->
+            甘い系
+          <% else %>
+            塩味系
+          <% end %>
+        </dd>
 
-        <!--投稿5分経過後に更新された場合、更新日時を表示する-->
-        <% if @bread.updated_at - @bread.created_at > 5.minutes %>
-          <tr style="color: gray;">
-            <td class="py-2">(最終更新</td>
-            <td><%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</td>    <!--東京時間のhour/minutesまで表示-->
-          </tr>
-        <% end %>
-      </table>
+        <dd class="col-sm-3">パンのお供：</dd>
+        <dd class="col-sm-9">
+          <p># <%= @bread.drink.drink_name %></p>
+        </dd>
+
+        <dd class="col-sm-3">購入店：</dd>
+        <dd class="col-sm-9">
+          <% if @bread.shop %>
+            <span>〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
+            <span><%= @bread.shop.shop_name %></span>
+          <% end %>
+        </dd>
+
+        <dd class="col-sm-3 text-truncate">投稿日：</dd>
+        <dd class="col-sm-9">
+          <%= @bread.created_at.strftime("%Y/%m/%d") %>
+          <% if @bread.updated_at - @bread.created_at > 5.minutes %>
+            <p class="py-2 text-secondary"><small>(最終更新 <%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</small></p>    <!--東京時間のhour/minutesまで表示-->
+          <% end %>
+        </dd>
+      </dl>
 
 
         <% if @bread.favorite_by?(current_user) %>
@@ -56,14 +55,14 @@
 
         <span class="ml-3"><i class="far fa-comment-dots fa-flip-horizontal"></i> <%= @bread.comments.count %></span>
 
-        <span><%= link_to "ユーザー詳細", admin_user_path(@user.id), class:"mt-5 ml-3 btn btn-sm btn-outline-primary" %></span>
-        <%= link_to admin_bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm mt-5 ml-3" do %>
+        <span><%= link_to "ユーザー詳細", admin_user_path(@user.id), class:"ml-3 btn btn-sm btn-outline-primary" %></span>
+        <%= link_to admin_bread_path(@bread.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm ml-3" do %>
           <span><%= @user.name %>さんのこの投稿を削除する</span>
         <% end %>
     </div>
 
     <div class="row">
-      <div class="col-8 mt-3">
+      <div class="col-8">
         <% if @bread.comments.exists? %>
           <% @bread.comments.each do |comment| %>
             <%= image_tag comment.user.get_user_image(50, 50) %>
@@ -77,7 +76,7 @@
             <%# end %>
           <% end %>
         <% else %>
-          <p>コメントはありません</p>
+          <div>コメントはありません</div>
         <% end %>
       </div>
     </div>

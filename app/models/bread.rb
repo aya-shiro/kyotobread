@@ -20,7 +20,7 @@ class Bread < ApplicationRecord
 
   validates :bread_image, presence: true
   validates :bread_name, presence: true, length:{maximum:20}
-  validates :introduce, presence: true, length:{maximum:80}
+  validates :introduce, presence: true, length:{maximum:150}
   validates :taste, inclusion: {in: [true, false], message: 'はどちらかを選択してください' }
 
   has_one_attached :bread_image
