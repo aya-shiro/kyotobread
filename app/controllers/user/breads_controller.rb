@@ -1,4 +1,5 @@
 class User::BreadsController < ApplicationController
+  before_action :authenticate_user!, except: %i[search index show]
 
   def search
     if params[:keyword].present?

@@ -35,8 +35,8 @@
       <i class="fa-solid fa-location-dot"></i> エリアから探す
     </h5>
       <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
-        <%= f.text_field :keyword, placeholder: "エリア/店名を入力" %>
-        <%= f.submit "検索", class:"mt-2 btn btn-sm btn-outline-secondary" %>
+        <%= f.text_field :keyword, class:"form-control", placeholder: "エリア/店名を検索" %>
+        <%= f.submit style:"display: none;" %>
       <% end %>
   </div>
 

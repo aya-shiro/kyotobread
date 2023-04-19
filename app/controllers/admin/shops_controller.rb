@@ -1,4 +1,6 @@
 class Admin::ShopsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @shop = Shop.new
   end

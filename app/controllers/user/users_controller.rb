@@ -1,7 +1,8 @@
 class User::UsersController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+
   def index
     @users = User.all
-
   end
 
   def show

@@ -1,4 +1,5 @@
 class User::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @bread = Bread.find(params[:bread_id])

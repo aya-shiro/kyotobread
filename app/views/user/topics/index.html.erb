@@ -8,15 +8,15 @@
           <div class="col-md-6">
             <%= link_to topic_path(topic.id) do %>
               <h4 class="text-dark"><%= topic.title %></h4>
-              <p class="text-dark"><%= topic.created_at.strftime('%Y/%m/%d') %></p>
+              <p class="text-dark"><small><%= topic.created_at.strftime('%Y/%m/%d') %></small></p>
               <p class="text-dark" style="overflow: hidden; text-overflow: ellipsis; max-width: 300px; max-height: 100px">
-                <small><%= truncate(topic.body, length: 100) %></small>
+                <%= truncate(topic.body, length: 100) %>
               </p>
               <p><small>続きを読む ＞<small></p>
             <% end %>
           </div>
           <div class="col-md-6 mt-1">
-            <%= image_tag topic.get_bread_image(300, 200), class:"ml-3" %>    <!--なぜかフッターが小さくなる-->
+            <%= image_tag topic.get_bread_image(300, 200), class:"ml-3" %>
           </div>
         </div>
       <% end %>
