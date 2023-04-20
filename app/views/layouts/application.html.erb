@@ -11,14 +11,14 @@
   </head>
 
   <body>
-    <header style="width: 100%;">
+    <header style="width: 100%; background-color: white;", class="fixed-top mb-5">
 
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container fixed-top" style="background-color: white;">    <!--fixed-topでヘッダー固定-->
+        <div class="container">    <!--fixed-topでヘッダー固定-->
 
-          <a class="navbar-brand" href="/"><%= image_tag('logo_image300.jpg')%></a>
+          <a class="navbar-brand" href="/"><%= image_tag 'logo_image300.jpg', size: "250x40" %></a>
 
-          <div class="ml-2">
+          <div class="ml-2 mb-1">
             <% unless current_admin %>    <!--adminでログインしていた場合は検索窓を非表示にする-->
               <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
                 <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索" %>
@@ -128,17 +128,18 @@
 
     </header>
 
-    <main style="background-color: #ffeecc;">
-      <p class="notice"><%= notice %></p>   <!--devise用-->
-      <p class="alert"><%= alert %></p>   <!--devise用-->
+    <main style="background-color: #ffeecc;", class="mt-5">
       <%= yield %>
     </main>
 
     <footer>
-      <div class='container mt-5'>
+      <div class='container my-4'>
         <div class='row' style:"color:gray;">
-          <div class='mx-auto'>
-            <p>copyright_KyotoBread</p>
+          <div class='mx-auto text-center'>
+            <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary", style:"font-size: 12px;" %> | </span>
+            <span><%= link_to "ABOUT", homes_about_path, class:"text-secondary", style:"font-size: 12px;" %></span>
+
+            <p class="mt-1">copyright_KyotoBread</p>
           </div>
         </div>
       </div>

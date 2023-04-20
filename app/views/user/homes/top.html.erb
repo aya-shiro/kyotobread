@@ -15,7 +15,7 @@
 
         <div id="tab-contents">
           <div id="tab1" class="tab">    <!---タブ1 ALL-->
-            <ul class="row" style="list-style: none;">
+            <ul class="row ml-4" style="list-style: none;">
               <% if @breads.exists? %>
                 <% @breads.each do |bread| %>
                   <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
@@ -32,7 +32,7 @@
           </div>
 
           <div id="tab2" class="tab">    <!--タブ2　SWEET-->
-            <ul class="row" style="list-style: none;">
+            <ul class="row ml-4" style="list-style: none;">
               <% if @sweet_breads.exists? %>
                 <% @sweet_breads.each do |sweet_bread| %>
                   <!--<li class="mr-1">-->
@@ -50,7 +50,7 @@
           </div>
 
           <div id="tab3" class="tab">    <!--タブ3　SALTY-->
-            <ul class="row" style="list-style: none;">
+            <ul class="row ml-4" style="list-style: none;">
               <% if @salty_breads.exists? %>
                 <% @salty_breads.each do |salty_bread| %>
                   <!--<li class="mr-1">-->
@@ -68,7 +68,7 @@
           </div>
 
           <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
-            <ul class="row" style="list-style: none;">
+            <ul class="row ml-4" style="list-style: none;">
               <%# byebug %>
               <% if @favorite_breads.size != 0 %>
                 <% @favorite_breads.each do |favorite_bread| %>

@@ -10,10 +10,10 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "select2"  //yarnでインストールしたファイル
 
 import "./kyotobread.js"  //topのタブメニュー
-// import "./shopssearch.js'
-// import 'select2/dist/css/select2.min.css'
+import "./shopsearch.js"
 
 import "../stylesheets/application"
 

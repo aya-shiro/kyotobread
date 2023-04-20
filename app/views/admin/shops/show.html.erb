@@ -6,62 +6,43 @@
     </div>
   <% end %>
 
-  <h4><%= @shop.shop_name %></h4>
-
-  <div class="row">
-    <div class="col-md-8 mt-1">
-      <table>
-        <tr>
-          <td class="py-2 mr-5">登録ID</td>
-          <td class="pl-4"><%= @shop.id %></td>
-        </tr>
-        <tr>
-          <td class="py-2">店名</td>
-          <td class="pl-4"><%= @shop.shop_name %></td>
-        </tr>
-        <tr>
-          <td class="py-2">郵便番号</td>
-          <td class="pl-4">〒<%= @shop.postcode %></td>
-        </tr>
-        <tr>
-          <td class="py-2">住所</td>
-          <td class="pl-4"><%= @shop.address %></td>
-        </tr>
-        <tr>
-          <td class="py-2">最寄り駅</td>
-          <td class="pl-4"><%= @shop.nearest_station %></td>
-        </tr>
-        <tr>
-          <td class="py-2">公式リンク</td>
-          <td class="pl-4"><%= @shop.shop_url %></td>
-        </tr>
-        <tr>
-          <td class="py-2">オンラインショップ</td>
-          <td class="pl-4"><%= @shop.online_url %></td>
-        </tr>
-        <tr>
-          <td class="py-2">登録日</td>
-          <td class="pl-4"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-md-4">
-      <td><%= link_to "ショップ一覧へ", admin_shops_path, class:"mr-4 btn btn-outline-primary btn-sm" %></td>
-      <td><%= link_to "編集", edit_admin_shop_path(@shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
-      <td><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger" %></td>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <h4 class="mr-5"><%= @shop.shop_name %></h4>
     </div>
   </div>
 
+  <dl class="row col-md-8">
+    <dd class="col-sm-3 border-bottom pb-2">登録ID</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.id %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">店名</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.shop_name %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">郵便番号</dd>
+    <dd class="col-sm-9 border-bottom pb-2">〒<%= @shop.postcode %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">住所</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.address %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">最寄り駅</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.nearest_station %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">公式リンク</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.shop_url %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">オンラインショップ</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.online_url %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">登録日</td>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.created_at.strftime('%Y/%m/%d') %></dd>
+  </dl>
 
-  <div class="row mt-5">
-    <div class="col-md-8">
-      <h5><%= @shop.shop_name %> のパン一覧<h5>
-    </div>
+  <div class="col-md-4">
+    <td><%= link_to "ショップ一覧へ", admin_shops_path, class:"mr-4 btn btn-outline-primary btn-sm" %></td>
+    <td><%= link_to "編集", edit_admin_shop_path(@shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
+    <td><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger" %></td>
+  </div>
+
+  <div class="row mt-5 ml-1">
+    <h5><%= @shop.shop_name %> のパン一覧<h5>
   </div>
 
   <div>
-    <ul class="row" style="list-style: none;">
+    <ul class="row ml-1" style="list-style: none;">
       <% @breads.each do |bread| %>
         <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
           <%= link_to admin_bread_path(bread.id) do %>

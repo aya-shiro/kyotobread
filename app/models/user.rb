@@ -16,9 +16,12 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length:{maximum:10}
 
-  has_many :bread, dependent: :destroy
+  # has_many :bread, dependent: :destroy
+  has_many :breads, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :feedbacks
+
 
   has_one_attached :bread_image  #ユーザー詳細でパン写真表示のため記述
 

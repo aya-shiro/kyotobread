@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.bread.all.order(created_at: :desc)  #マイページの投稿一覧を新着順に
+    @breads = @user.breads.all.order(created_at: :desc)  #マイページの投稿一覧を新着順に
 
   end
 

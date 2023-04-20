@@ -3,28 +3,57 @@
 
   <div class="row">
     <div class="col-md-7">
-      <div class="mb-4 border p-3">
+      <div class="mb-4 p-3" style="background-color: white;">
         <span>現在の有効ユーザー：　<%= @valid_users.count %> users</span>
         <span class="ml-5">現在の投稿パン：　<%= Bread.count %> posts</span>
       </div>
     </div>
   </div>
 
-  <h5 class="ml-1">新着投稿一覧</h5>
+  <h5 class="ml-1">新着ご意見</h5>
+
+  <div class="row col-md-12 mx-auto p-3" style="background-color: white;">
+    <% @feedbacks.each_with_index do |feedback, index| %>
+      <% if index < 5 %>
+        <table class="table">
+            <td>No.<%= feedback.id %></td>
+            <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 400px;">
+              <%= link_to admin_feedback_path(feedback.id), class:"text-dark" do %>
+                <%= feedback.opinion %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to admin_user_path(feedback.user.id) do %>
+                <span class="text-secondary mr-3"><%= feedback.user.name %></span>
+                <span class="text-secondary" style="font-size: 12px;"><%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></span>
+              <% end %>
+            </td>
+        </table>
+      <% end %>
+    <% end %>
+      <% if @feedbacks.count > 5 %>
+        <div class="text-right mt-3">
+          <%= link_to "ご意見一覧へ>", admin_feedbacks_path %>
+        </div>
+      <% end %>
+  </div>
+
+
+  <h5 class="ml-1 mt-4">新着投稿一覧</h5>
   <ul class="row col-md-12 mx-auto" style="list-style: none;">
       <% @breads.each_with_index do |bread, index| %>
         <% if index < 10 %>
           <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
             <%= link_to admin_bread_path(bread.id) do %>
               <%= image_tag bread.get_bread_image(100, 100) %>
-              <p style="color: black;"><%= bread.bread_name %></p>
+              <p class="text-dark"><%= bread.bread_name %></p>
             <% end %>
           </li>
         <% end %>
       <% end %>
       <% if @breads.count > 10 %>
         <div class="text-right">
-          <%= link_to "もっとみる>", admin_breads_path %>
+          <%= link_to "投稿一覧へ>", admin_breads_path %>
         </div>
       <% end %>
     </ul>

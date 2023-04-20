@@ -1,0 +1,15 @@
+<div class="container py-5" style="background-color: #fff7e6">
+
+  <div class="row mb-3">
+    <div class="col-md-7">
+      <p>No.<%= @feedback.id %></p>
+      <p><%= @feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
+      <h4 class="mr-5"><%= @feedback.user.name %></h4>
+      <p><%= @feedback.opinion %></p>
+    </div>
+  </div>
+
+  <%= link_to "ご意見一覧に戻る", admin_feedbacks_path, class:"btn btn-sm btn-outline-secondary" %>
+  <%= link_to "削除", admin_feedback_path(@feedback.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"ml-4 btn btn-sm btn-outline-danger" %>
+
+</div>

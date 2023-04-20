@@ -21,9 +21,10 @@ Rails.application.routes.draw do
 
 
   scope module: :user do
-    # post '/homes/guest_sign_in' => 'homes#guest_sign_in'  # ゲストログイン用
     root to: 'homes#top'
     get 'homes/about'
+    get 'feedbacks/thanks'
+    resources:feedbacks, only: [:new, :create, :show]
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/edit' => 'users#update'
     get 'users/check'
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
     resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:shops, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:drinks, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources:feedbacks, only: [:index, :show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
