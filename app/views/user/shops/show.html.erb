@@ -1,4 +1,4 @@
-<div class="container pt-5">
+<div class="container py-5" style="background-color: #fff7e6">
 
   <div class="row mb-3">
     <div class="col-md-6">
@@ -26,12 +26,12 @@
     <div class=""><%= link_to "ショップ一覧", shops_path, class:"btn btn-outline-primary btn-sm" %></div>
   </div>
 
-  <div class="row mt-5">
+  <div class="row mt-5 ml-1">
     <h5><%= @shop.shop_name %> のパン一覧<h5>
   </div>
 
   <div>
-    <ul class="row" style="list-style: none;">
+    <ul class="row ml-1" style="list-style: none;">
       <% @breads.each do |bread| %>
         <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
           <%= link_to bread_path(bread.id) do %>

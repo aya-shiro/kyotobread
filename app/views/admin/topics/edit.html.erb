@@ -1,7 +1,7 @@
 <div class="container pt-5">
   <div class="col-md-8 mx-auto">
 
-    <h5>特集を編集する</h5>
+    <h5 class="mb-4">特集を編集する</h5>
 
     <%= render 'layouts/errors', obj: @topic %>
 
@@ -11,7 +11,7 @@
       <%= f.label :本文 %><br>
       <%= f.text_area :body, rows: 16, class:'form-control' %><br>
 
-      <%= f.file_field :画像 %><br>
+      <%= f.file_field :bread_image %><br>
 
       <%= f.submit "特集を更新する", class:"btn btn-danger mt-3" %>
     <% end %>

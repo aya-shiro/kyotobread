@@ -47,6 +47,6 @@ class Admin::TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :body, :is_published)
+    params.require(:topic).permit(:title, :body, :bread_image, :is_published)
   end
 end
