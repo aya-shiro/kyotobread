@@ -1,7 +1,7 @@
 <!--vies/user/breads/show.html.erbから切り取り-->
       <%= form_with model:[@bread, @comment], local: false do |f| %>
         <span>
-          <%= f.text_area :comment, placeholder:"コメントをどうぞ", rows: 1, class:"mt-3 form-control" %>
+          <%= f.text_area :comment, placeholder:"コメントをどうぞ(*80文字以内)", rows: 1, class:"mt-3 form-control" %>
           <%= f.submit "送信する", class:"mt-2 btn btn-sm btn-outline-secondary" %>
         </span>
       <% end %>

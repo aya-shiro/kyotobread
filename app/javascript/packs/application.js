@@ -10,7 +10,11 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+
 import "./kyotobread.js"  //topのタブメニュー
+// import "./shopssearch.js'
+// import 'select2/dist/css/select2.min.css'
+
 import "../stylesheets/application"
 
 import '@fortawesome/fontawesome-free/js/all'

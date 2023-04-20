@@ -1,5 +1,4 @@
-  <!--vies/user/breads/show.html.erbから切り取り-->
-
+  <!--views/user/breads/show.html.erbから切り取り-->
 
 <% bread.comments.each do |comment| %>
   <div class="my-2">
@@ -7,14 +6,16 @@
       <div class="col-auto">
         <%= image_tag comment.user.get_user_image(40, 40), class:"rounded-circle", as:"image" %>
       </div>
-      <div style="font-size: 13px;" class="mr-2"><%= comment.user.name %></div>
-      <div style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></div>
-      <div><%= comment.comment %></div>
+      <div class="col-7">
+        <span style="font-size: 13px;" class="mr-1"><%= comment.user.name %></span>
+        <span style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+        <div><%= comment.comment %></div>
       <% if comment.user == current_user %>
         <span>
-          <%= link_to "✕", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, class:"btn btn-sm btn-outline-secondary" %>
+          <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, style:"font-size: 8px; color: gray;" %>
         </span>
       <% end %>
+      </div>
   　</div>
   </div>
 <% end %>

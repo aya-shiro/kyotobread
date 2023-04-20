@@ -1,7 +1,3 @@
 if($('#error').length){
   $('#error').html("<%= j(render 'user/breads/post-form', bread: @bread) %>");
 }
-
-if($('#user_error').length){
-  $('#user_error').html("<%= j(render 'user/users/edit', user: user) %>");
-}

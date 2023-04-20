@@ -17,13 +17,9 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    # if @user.update(user_params)
-    #   redirect_to user_path(@user.id)
-    # else
-    #   render :edit
-    # end
+
     unless @user.update(user_params)
-      render "user/breads/error.js.erb"
+      render "user/users/error.js.erb"
     else
       redirect_to user_path(@user.id)
     end

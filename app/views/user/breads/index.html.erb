@@ -8,14 +8,14 @@
 
       <div class="col-9">
         <h5 class="mb-4"><%= @drink.drink_name %>におすすめのパン</h5>
-        <ul class="row" style="list-style: none; text-align: right;">
+        <ul class="row" style="list-style: none;">
           <% @breads.each do |bread| %>
             <li class="mr-1">
               <div>
-                <%= link_to bread_path(bread.id) do %>
+                <%= link_to bread_path(bread.id), class:"text-dark" do %>
                   <%= image_tag bread.get_bread_image(200, 200) %><br>
+                  <%= bread.bread_name %>
                 <% end %>
-                <%= bread.bread_name %>
               </div>
             </li>
           <% end %>

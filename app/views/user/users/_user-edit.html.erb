@@ -1,0 +1,14 @@
+    <div id="user_error">
+      <%= render 'layouts/errors', obj: @user %>
+    </div>
+
+    <%= form_with model: @user, url: users_mypage_edit_path, method: :patch, local: false do |f| %>
+      <%= f.file_field :user_image, class:"mt-3" %><br>
+      <%= f.label :ユーザーネーム, class:"mt-3", placeholder: "*10文字以内" %><br>
+      <%= f.text_field :name, class:'form-control' %><br>
+      <%= f.label :自己紹介 %><br>
+      <%= f.text_area :user_info, class:'form-control', rows: 4, cols: 60 %><br>
+
+      <%= f.submit "変更を保存する", class:"mt-3 btn btn-secondary" %>
+    <% end %>
+    <%= link_to "退会について", users_check_path, remote: true, class:"mt-3 btn btn-sm btn-outline-danger" %>

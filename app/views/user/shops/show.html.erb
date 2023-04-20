@@ -6,28 +6,28 @@
     </div>
   </div>
 
-  <dl class="row">
-    <dd class="col-sm-2">店名</dd>
-    <dd class="col-sm-9"><%= @shop.shop_name %></dd>
-    <dd class="col-sm-2">郵便番号</dd>
-    <dd class="col-sm-9">〒<%= @shop.postcode %></dd>
-    <dd class="col-sm-2">住所</dd>
-    <dd class="col-sm-9"><%= @shop.address %></dd>
-    <dd class="col-sm-2">最寄り駅</dd>
-    <dd class="col-sm-9"><%= @shop.nearest_station %></dd>
-    <dd class="col-sm-2">公式リンク</dd>
-    <dd class="col-sm-9"><%= @shop.shop_url %></dd>
-    <dd class="col-sm-2">オンラインショップ</dd>
-    <dd class="col-sm-9"><%= @shop.online_url %></dd>
-    <dd class="col-sm-2">登録日</td>
-    <dd class="col-sm-9"><%= @shop.created_at.strftime('%Y/%m/%d') %></td>
-    <div class="pt-4"><%= link_to "ショップ一覧に戻る", shops_path, class:"btn btn-outline-primary btn-sm" %></div>
+  <dl class="row col-md-8">
+    <dd class="col-sm-3 border-bottom pb-2">店名</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.shop_name %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">郵便番号</dd>
+    <dd class="col-sm-9 border-bottom pb-2">〒<%= @shop.postcode %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">住所</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.address %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">最寄り駅</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.nearest_station %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">公式リンク</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.shop_url %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">オンラインショップ</dd>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.online_url %></dd>
+    <dd class="col-sm-3 border-bottom pb-2">登録日</td>
+    <dd class="col-sm-9 border-bottom pb-2"><%= @shop.created_at.strftime('%Y/%m/%d') %></dd>
   </dl>
+  <div class="col-md-3">
+    <div class=""><%= link_to "ショップ一覧", shops_path, class:"btn btn-outline-primary btn-sm" %></div>
+  </div>
 
   <div class="row mt-5">
-    <div class="col-md-6">
-      <h5><%= @shop.shop_name %> のパン一覧<h5>
-    </div>
+    <h5><%= @shop.shop_name %> のパン一覧<h5>
   </div>
 
   <div>
@@ -36,7 +36,7 @@
         <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
           <%= link_to bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(220, 220) %></div>
-            <p style="color: black;"><%= bread.bread_name %></p>
+            <p class="text-dark"><%= bread.bread_name %></p>
           <% end %>
         </li>
       <% end %>

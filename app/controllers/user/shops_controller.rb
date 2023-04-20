@@ -22,7 +22,7 @@ class User::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @breads = @shop.breads
+    @breads = @shop.breads.all.order(created_at: :desc)
   end
 
   def onlines
