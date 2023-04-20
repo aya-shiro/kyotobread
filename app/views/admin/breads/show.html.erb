@@ -1,5 +1,5 @@
 <!--user/breads/show.html.erbと部分テンプレートを検討-->
-<div class="container pt-5">
+<div class="container py-5" style="background-color: #fff7e6">
 
  <div class="row">
     <div class="col-md-5">
@@ -61,11 +61,11 @@
         <% end %>
     </div>
 
-    <div class="row">
+    <div class="row ml-2">
       <div class="col-8">
         <% if @bread.comments.exists? %>
           <% @bread.comments.each do |comment| %>
-            <%= image_tag comment.user.get_user_image(50, 50) %>
+            <%= image_tag comment.user.get_user_image(50, 50), class:"rounded-circle" %>
             <%= comment.user.name %>
             <span style="font-size: 3px; color: gray;">
               <%= comment.created_at.strftime("%Y/%m/%d") %>

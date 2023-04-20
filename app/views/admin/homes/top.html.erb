@@ -1,10 +1,5 @@
-<div class="container pt-5">
-
-  <div class="row">
-    <div class="col-md-10 mx-auto">
-      <!--<h5 class="mb-3">管理者ページ</h5>-->
-    </div>
-  </div>
+<!--管理者ページ-->
+<div class="container py-5" style="background-color: #fff7e6">
 
   <div class="row">
     <div class="col-md-7">
@@ -15,7 +10,7 @@
     </div>
   </div>
 
-  <h5>新着投稿一覧</h5>
+  <h5 class="ml-1">新着投稿一覧</h5>
   <ul class="row col-md-12 mx-auto" style="list-style: none;">
       <% @breads.each_with_index do |bread, index| %>
         <% if index < 10 %>
@@ -34,7 +29,5 @@
       <% end %>
     </ul>
   </div>
-
-
 
 </div>
