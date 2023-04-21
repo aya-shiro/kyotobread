@@ -6,13 +6,13 @@
       <%= f.label :店名 %><br>
       <%= f.text_field :shop_name, class:'form-control' %><br>
       <%= f.label :アクセス %><br>
-      〒<%= f.text_field :postcode, placeholder:"〒0000000" %><br>
+      〒<%= f.text_field :postcode, placeholder:"0000000" %><br>
       <%= f.text_area :address, class:'mt-2 form-control', placeholder:"京都府京都市OO…" %><br>
       <%= f.label :最寄り駅 %><br>
       <%= f.text_field :nearest_station, class:'form-control' %><br>
-      <%= f.label :ホームページ %><br>
+      <%= f.label :公式リンク %><br>
       <%= f.text_field :shop_url, class:'form-control' %><br>
-      <%= f.label :オンライン %><br>
+      <%= f.label :オンラインショップ %><br>
       <%= f.text_field :online_url, class:'form-control' %><br>
 
       <%= f.submit "更新する", class:"btn btn-secondary mt-3" %>

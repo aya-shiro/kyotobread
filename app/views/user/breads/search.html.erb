@@ -6,9 +6,9 @@
     <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
     <div class="col-9">
-      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @shops.count %>件</h5>
+      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @breads.count %>件</h5>
       <% if @keyword.present? %>
-        <ul class="row" style="list-style: none;">
+        <ul class="row ml-2" style="list-style: none;">
           <% @breads.each do |bread| %>
             <li class="mr-1">
               <div>

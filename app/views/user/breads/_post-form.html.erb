@@ -51,8 +51,7 @@
       <!--other_drink_nameのはnot_default、つまりadminでdrink_name登録式を採用している方-->
       </div>
 
-
       <%= f.label :ショップ選択, class:"mt-4" %>
-        <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display), { include_blank: true }, class:"select_search", style:"width: 400px"%>   <!--addressメソッドはshop.rbで定義-->
+      <%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :address_display), { include_blank: true }, class:"select_search", style:"width: 400px"%>   <!--addressメソッドはshop.rbで定義-->
       <%= f.submit class:"mt-4 btn btn-secondary" %>
     <% end %>

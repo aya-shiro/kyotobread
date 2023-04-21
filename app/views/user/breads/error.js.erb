@@ -1,3 +1,3 @@
 if($('#error').length){
-  $('#error').html("<%= j(render 'user/breads/post-form', bread: @bread) %>");
+  $('#error').html("<%= j(render 'layouts/errors', obj: @bread) %>");
 }
