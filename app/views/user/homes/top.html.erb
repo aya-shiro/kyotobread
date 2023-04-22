@@ -29,7 +29,6 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= paginate @breads %>
           </div>
 
           <div id="tab2" class="tab">    <!--タブ2　SWEET-->
@@ -48,7 +47,7 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= paginate @sweet_breads %>
+            <%#= paginate @sweet_breads %>
 
           </div>
 
@@ -68,7 +67,7 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= paginate @salty_breads %>
+            <%#= paginate @salty_breads %>
           </div>
 
           <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
@@ -88,12 +87,26 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= paginate @favorite_breads %>
+            <%#= paginate @favorite_breads %>
           </div>
 
         </div>
       </div>
 
     </div>
+
+    <div class="d-flex justify-content-center pb-3">
+      <% if @breads.exists? %>
+        <%= paginate @breads %>
+      <% elsif @sweet_breads.exists? %>
+        <%= paginate @sweet_breads %>
+      <% elsif @salty_breads.exists? %>
+        <%= paginate @salty_breads %>
+      <% elsif @favorite_breads.size != 0 %>
+        <%= paginate @favorite_breads %>
+      <% end %>
+    </div>
+
   </div>
+
 </div>
