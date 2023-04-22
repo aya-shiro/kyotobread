@@ -43,9 +43,9 @@
                 <li>
                   <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
                     <% if current_user.name == 'ゲスト' %>
-                      <i class="fa-solid fa-user"></i> ゲスト
+                      <i class="fas fa-user"></i> ゲスト
                     <% else %>
-                      <i class="fa-solid fa-user"></i> マイページ
+                      <i class="fas fa-user"></i> マイページ
                     <% end %>
                   <% end %>
                 </li>
@@ -56,12 +56,12 @@
                 </li>
                 <li>
                   <%= link_to users_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-users"></i>ユーザー一覧
+                    <i class="fas fa-users"></i> ユーザー一覧
                   <% end %>
                 </li>
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-right-from-bracket"></i> Log out
+                    <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% elsif  admin_signed_in? %>
@@ -78,17 +78,17 @@
                 </li>
                 <li>
                   <%= link_to admin_shops_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                    <i class="fa-solid fa-store"></i> ショップ
+                    <i class="fas fa-store-alt"></i> ショップ
                   <% end %>
                 </li>
                 <li>
                   <%= link_to admin_topics_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                    <i class="fa-regular fa-folder-open"></i> 特集
+                    <i class="fas fa-folder-open"></i> 特集
                   <% end %>
                 </li>
                 <li>
                   <%= link_to admin_drinks_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                    <i class="fa-solid fa-mug-saucer"></i> ドリンク
+                    <i class="fas fa-coffee"></i> ドリンク
                   <% end %>
                 </li>
                 <li>
@@ -100,12 +100,12 @@
               <!--ログインしていない状態-->
                 <li>
                   <%= link_to user_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-user"></i> ゲストログイン(閲覧用)
+                    <i class="fas fa-user"></i> ゲストログイン(閲覧用)
                   <% end %>
                 </li>
                 <li>
                   <%= link_to homes_about_path,class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-bread-slice"></i> About
+                    <i class="fas fa-bread-slice"></i> About
                   <% end %>
                 </li>
                 <li>

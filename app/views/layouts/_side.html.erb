@@ -4,7 +4,7 @@
 
   <div class="py-3 pl-3" style="background-color: #fff7e6;" >
     <h5>
-      <i class="fa-solid fa-mug-saucer"></i> ドリンクから探す
+      <i class="fas fa-coffee"></i> ドリンクから探す
     </h5>
     <ul class="ml-2" style="list-style: none;">
       <% @defaults.each do |default| %>
@@ -32,7 +32,7 @@
 
   <div class="p-3 mt-3" style="background-color: #fff7e6;">
     <h5>
-      <i class="fa-solid fa-location-dot"></i> エリアから探す
+      <i class="fas fa-map"></i> エリアから探す
     </h5>
       <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
         <%= f.text_field :keyword, class:"form-control", placeholder: "エリア/店名を検索" %>
@@ -42,7 +42,7 @@
 
   <div class="p-3 mt-3" style="background-color: #fff7e6;">
     <h5>
-      <i class="fa-solid fa-store"></i> ショップ
+      <i class="fas fa-store-alt"></i> ショップ
     </h5>
     <% @shops.each_with_index do |shop, index| %>
       <% if index < 3 %>
@@ -66,7 +66,7 @@
 
   <div class="p-3 my-3" style="background-color: #fff7e6;">
     <h5>
-      <i class="fa-regular fa-folder-open"></i> 特集
+      <i class="fas fa-folder-open"></i> 特集
     </h5>
       <% @topics.each_with_index do |topic, index| %>
         <% if topic.is_published == true %>

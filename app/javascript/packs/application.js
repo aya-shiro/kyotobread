@@ -10,10 +10,13 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "select2"  //yarnでインストールした1ファイル
+import "select2"  // yarnを実行しnode_moduleにインストールされたファイル
+import "jscroll"  // yarnを実行しnode_moduleにインストールされたファイル
 
-import "./kyotobread.js"  //topのタブメニュー
-import "./shopsearch.js"
+import "./kyotobread.js"   // topのタブメニュー
+import "./shopsearch.js"   // _post-form.html.erbで使用
+import "./jquery.jscroll.min.js"  // 無限スクロール
+
 
 import "../stylesheets/application"
 

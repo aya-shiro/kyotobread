@@ -6,7 +6,7 @@
     <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
       <!--app/assets/stylesheets/user/homes.scss併用-->
-      <div class="wrap" style="margin-left: 340px;">
+      <div class="wrap top-page" style="margin-left: 340px;">
         <ul id="tab-menu">
           <li><a href="#tab1" class="active">ALL</a></li>
           <li><a href="#tab2" class="">SWEET</a></li>
@@ -99,14 +99,15 @@
     <div class="d-flex justify-content-center pb-3">
       <% if @breads.exists? %>
         <%= paginate @breads %>
-      <% elsif @sweet_breads.exists? %>
-        <%= paginate @sweet_breads %>
-      <% elsif @salty_breads.exists? %>
-        <%= paginate @salty_breads %>
-      <% elsif @favorite_breads.size != 0 %>
-        <%= paginate @favorite_breads %>
+      <%# elsif @sweet_breads.exists? %>
+        <%#= paginate @sweet_breads %>
+      <%# elsif @salty_breads.exists? %>
+        <%#= paginate @salty_breads %>
+      <%# elsif @favorite_breads.size != 0 %>
+        <%#= paginate @favorite_breads %>
       <% end %>
     </div>
+
 
   </div>
 

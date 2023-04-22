@@ -1,6 +1,6 @@
 class User::HomesController < ApplicationController
   def top
-    @breads = Bread.all.order(created_at: :desc).page(params[:page]).per(6)
+    @breads = Bread.all.order(created_at: :desc).page(params[:page]).per(10)
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
 
