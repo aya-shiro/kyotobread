@@ -13,26 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-
-/*ページネーション自体のデザイン*/
-.pagination>li>a {
-  text-align: center;
-  margin: 0 auto;
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
-
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: none;     /*背景の色を変える*/
-  color: green;
-}
-
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {
-  opacity: 1;    /*角を丸くする*/
-}
-
-
