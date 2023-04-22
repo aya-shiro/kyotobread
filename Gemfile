@@ -71,3 +71,4 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'rinku'  # urlのリンク化
+gem 'kaminari'  # ページネーション

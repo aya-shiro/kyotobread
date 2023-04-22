@@ -16,7 +16,7 @@ class Admin::TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all.order(created_at: :desc)
+    @topics = Topic.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show

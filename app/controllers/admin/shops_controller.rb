@@ -17,12 +17,12 @@ class Admin::ShopsController < ApplicationController
   end
 
   def index
-    @shops = Shop.all.order(created_at: :desc)
+    @shops = Shop.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
     @shop = Shop.find(params[:id])
-    @breads = @shop.breads
+    @breads = @shop.breads.page(params[:page]).per(6)
   end
 
   def edit

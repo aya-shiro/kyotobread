@@ -3,7 +3,7 @@ class User::BreadsController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @breads = Bread.where('bread_name LIKE ?', "%#{params[:keyword]}%")
+      @search_breads = Bread.where('bread_name LIKE ?', "%#{params[:keyword]}%").page(params[:page]).per(6)
       @keyword = params[:keyword]
 
       @shops = Shop.all.order(created_at: :desc)
@@ -18,13 +18,12 @@ class User::BreadsController < ApplicationController
   def index
     return redirect_to root_path unless params[:drink_id]    # breads/new再リロード時のエラー回避
     @drink = Drink.find_by(id: params[:drink_id])
-    @breads = @drink.breads
+    @breads = @drink.breads.page(params[:page]).per(4)
 
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
     @defaults = Drink.default.where(default_select: true)
     # views/layouts/_side.html.erbに必要な記述
-
   end
 
   def show

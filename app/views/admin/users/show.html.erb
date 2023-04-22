@@ -67,10 +67,11 @@
               <% end %>
             </li>
           <% end %>
-        <% else %>
-          <p>投稿はありません</p>
         <% end %>
       </ul>
+
+        <%= paginate @breads %>
+
     </div>
   </div>
 

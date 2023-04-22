@@ -2,12 +2,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.breads.all.order(updated_at: :desc)  # 更新日順に
+    @breads = @user.breads.all.order(updated_at: :desc).page(params[:page]).per(4)  # 更新日順に
   end
 
   def edit
@@ -15,7 +15,6 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # params[:user][:is_delete] == "false"
     if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
       redirect_to admin_user_path(@user.id)

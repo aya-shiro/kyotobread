@@ -15,8 +15,8 @@ class User::FavoritesController < ApplicationController
     # redirect_to bread_path(bread.id)
   end
 
-  def show
-    @favorites = current_user.favorites.includes(:bread)
+  def index
+    @favorites = current_user.favorites.includes(:bread).page(params[:page]).per(4)
     # current_userの、Breadモデルのデータを含むfavorites(つまりいいね)を取得する。
   end
 end

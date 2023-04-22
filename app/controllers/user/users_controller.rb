@@ -2,12 +2,12 @@ class User::UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(2)
   end
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.breads.all.order(created_at: :desc)  #マイページの投稿一覧を新着順に
+    @breads = @user.breads.all.order(created_at: :desc).page(params[:page]).per(3)  #マイページの投稿一覧を新着順に
 
   end
 

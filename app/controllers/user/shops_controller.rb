@@ -2,7 +2,7 @@ class User::ShopsController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @search_shops = Shop.where('address LIKE ? OR shop_name LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @search_shops = Shop.where('address LIKE ? OR shop_name LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%").page(params[:page]).per(3)
       # 住所もしくは店名で検索する
 
       @keyword = params[:keyword]
@@ -17,15 +17,15 @@ class User::ShopsController < ApplicationController
   end
 
   def index
-    @shops = Shop.all
+    @shops = Shop.all.page(params[:page]).per(3)
   end
 
   def show
     @shop = Shop.find(params[:id])
-    @breads = @shop.breads.all.order(created_at: :desc)
+    @breads = @shop.breads.all.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def onlines
-    @shops = Shop.all
+    @shops = Shop.all.page(params[:page]).per(3)
   end
 end

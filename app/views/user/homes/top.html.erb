@@ -29,6 +29,7 @@
                 <% end %>
               <% end %>
             </ul>
+            <%= paginate @breads %>
           </div>
 
           <div id="tab2" class="tab">    <!--タブ2　SWEET-->
@@ -47,6 +48,8 @@
                 <% end %>
               <% end %>
             </ul>
+            <%= paginate @sweet_breads %>
+
           </div>
 
           <div id="tab3" class="tab">    <!--タブ3　SALTY-->
@@ -65,6 +68,7 @@
                 <% end %>
               <% end %>
             </ul>
+            <%= paginate @salty_breads %>
           </div>
 
           <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
@@ -83,8 +87,8 @@
                   </li>
                 <% end %>
               <% end %>
-
             </ul>
+            <%= paginate @favorite_breads %>
           </div>
 
         </div>

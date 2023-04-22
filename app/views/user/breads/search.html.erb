@@ -3,27 +3,28 @@
   <div class="mx-auto">
     <div class="row">
 
-    <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+      <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
-    <div class="col-9">
-      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @breads.count %>件</h5>
-      <% if @keyword.present? %>
-        <ul class="row ml-2" style="list-style: none;">
-          <% @breads.each do |bread| %>
-            <li class="mr-1">
-              <div>
-                <%= link_to bread_path(bread.id) do %>
-                  <%= image_tag bread.get_bread_image(180, 180) %><br>
-                <% end %>
-                <%= bread.bread_name %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-      <p>該当のパンは見つかりませんでした</p>
-      <% end %>
+      <div class="col-9">
+        <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_breads.count %>件</h5>
+        <% if @keyword.present? %>
+          <ul class="row ml-2" style="list-style: none;">
+            <% @search_breads.each do |bread| %>
+              <li class="mr-1">
+                <div>
+                  <%= link_to bread_path(bread.id) do %>
+                    <%= image_tag bread.get_bread_image(180, 180) %><br>
+                  <% end %>
+                  <%= bread.bread_name %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
 
-    </div>
+        <%= paginate @search_breads %>
+
+      </div>
+
   </div>
 </div>

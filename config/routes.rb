@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'favorites/show'
+    get 'favorites/index'
 
     resources:topics, only: [:index, :show]
     get 'shops/onlines'
