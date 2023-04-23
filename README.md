@@ -5,8 +5,8 @@
 京都パン×レビュー
 
 ### テーマを選んだ理由
-京都在住かつパン好きですが、京都はパン屋が多く種類も豊富で選びきれないので、レビューをもとに食べたいパンを厳選して悔いなく購入したいと思いました。
-購入した後にレビューをすることで自身の記録になり、他ユーザーの参考にもなるので、パン好きには需要のあるコンテンツだと思います。
+京都のベーカリーショップでのパンとの出会いを共有・記録するサイトを作りたいと考えたため。
+個人店や昔ながらの店舗も多いので、新しい京都での楽しみ方のひとつとして、京都で過ごした思い出をパンとともに持ち帰ってもらいたいという思いで選んだ。
 
 ### ターゲットユーザ
 パン好きの人、京都や京都近隣に住む人
@@ -16,6 +16,7 @@
 
 ## 設計書
 ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
+テーブル定義書:　https://docs.google.com/spreadsheets/d/1jdTGVucFFHbK_Bp1P2plaWBXBL9XhzpERNN9ed7C8Kk/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -25,5 +26,5 @@ ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?u
 - IDE：Cloud9
 
 ## 使用素材
-- FontAwesome(ver.6.4.0):  https://fontawesome.com/
+- FontAwesome(ver.5.15.4):  https://fontawesome.com/
 - pixabay:  https://pixabay.com/ja/

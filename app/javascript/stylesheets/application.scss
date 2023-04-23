@@ -7,29 +7,17 @@
 
 
 
-/*ページネーション自体のデザイン*/
-.pagination > li > a {
-  text-align: center;
-  margin: 0 auto;
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
+// nav.pagination .tab1,
+// nav.pagination .tab2,
+// nav.pagination .tab3,
+// nav.pagination .tab4 {
+//   display: none;
+// }
 
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: none;     /*背景の色を変える*/
-  color: green;
-}
+// nav.pagination {
+//   display: none;
+// }
 
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {
-  opacity: 1;    /*角を丸くする*/
-}
-
-
-nav.pagination {
-  display: none;
-}
 .scroll-list {
   padding: 0;
 }
