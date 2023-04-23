@@ -11,7 +11,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "select2"  // yarnを実行しnode_moduleにインストールされたファイル
-import "jscroll"  // yarnを実行しnode_moduleにインストールされたファイル
 
 import "./kyotobread.js"   // topのタブメニュー
 import "./shopsearch.js"   // _post-form.html.erbで使用

@@ -25,3 +25,11 @@
 .pagination>li>a:hover {
   opacity: 1;    /*角を丸くする*/
 }
+
+
+nav.pagination {
+  display: none;
+}
+.scroll-list {
+  padding: 0;
+}

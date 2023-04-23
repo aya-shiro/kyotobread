@@ -9,31 +9,37 @@
       <div class="wrap top-page">
       <!--<div class="wrap top-page" style="margin-left: 340px;">-->
         <ul id="tab-menu">
-          <li><a href="#tab1" class="active">ALL</a></li>
-          <li><a href="#tab2" class="">SWEET</a></li>
-          <li><a href="#tab3" class="">SALT</a></li>
-          <li><a href="#tab4" class="">いいね順</a></li>
+          <li><a href="#tab1" id="tab1-list" class="active">ALL</a></li>
+          <li><a href="#tab2" id="tab2-list" class="">SWEET</a></li>
+          <li><a href="#tab3" id="tab3-list" class="">SALT</a></li>
+          <li><a href="#tab4" id="tab4-list" class="">いいね順</a></li>
         </ul>
 
         <div id="tab-contents">
           <div id="tab1" class="tab">    <!---タブ1 ALL-->
-            <ul class="row ml-4" style="list-style: none;">
-              <% if @breads.exists? %>
-                <% @breads.each do |bread| %>
-                  <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
-                    <div>
-                      <%= link_to bread_path(bread.id) do %>
-                        <%= image_tag bread.get_bread_image(180, 180) %><br>
-                      <% end %>
-                      <%= bread.bread_name %>
-                    </div>
-                  </li>
+            <div class="scroll-list jscroll">
+              <ul class="row ml-4" style="list-style: none;">
+                <% if @breads.exists? %>
+                  <% @breads.each do |bread| %>
+                    <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px;">
+                      <div>
+                        <%= link_to bread_path(bread.id) do %>
+                          <%= image_tag bread.get_bread_image(180, 180) %><br>
+                        <% end %>
+                        <%= bread.bread_name %>
+                      </div>
+                    </li>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
+              </ul>
+              <div class="tab1">
+                <%= paginate @breads %>
+              </div>
+            </div>
           </div>
 
           <div id="tab2" class="tab">    <!--タブ2　SWEET-->
+          <div class="scroll-list_2 jscroll_2">
             <ul class="row ml-4" style="list-style: none;">
               <% if @sweet_breads.exists? %>
                 <% @sweet_breads.each do |sweet_bread| %>
@@ -49,11 +55,14 @@
                 <% end %>
               <% end %>
             </ul>
-            <%#= paginate @sweet_breads %>
-
+            <div class="tab2">
+              <%= paginate @sweet_breads %>
+            </div>
+          </div>
           </div>
 
           <div id="tab3" class="tab">    <!--タブ3　SALTY-->
+          <div class="scroll-list_3 jscroll_3">
             <ul class="row ml-4" style="list-style: none;">
               <% if @salty_breads.exists? %>
                 <% @salty_breads.each do |salty_bread| %>
@@ -69,10 +78,14 @@
                 <% end %>
               <% end %>
             </ul>
-            <%#= paginate @salty_breads %>
+            <div class="tab3">
+               <%= paginate @salty_breads %>
+            </div>
+            </div>
           </div>
 
           <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
+          <div class="scroll-list_4 jscroll_4">
             <ul class="row ml-4" style="list-style: none;">
               <%# byebug %>
               <% if @favorite_breads.size != 0 %>
@@ -89,7 +102,10 @@
                 <% end %>
               <% end %>
             </ul>
-            <%#= paginate @favorite_breads %>
+            <div class="tab4">
+            <%= paginate @favorite_breads %>
+            </div>
+            </div>
           </div>
 
         </div>
@@ -98,15 +114,15 @@
     </div>
 
     <div class="d-flex justify-content-center pb-3">
-      <% if @breads.exists? %>
-        <%= paginate @breads %>
+      <%# if @breads.exists? %>
+        <%#= paginate @breads %>
       <%# elsif @sweet_breads.exists? %>
         <%#= paginate @sweet_breads %>
       <%# elsif @salty_breads.exists? %>
         <%#= paginate @salty_breads %>
       <%# elsif @favorite_breads.size != 0 %>
         <%#= paginate @favorite_breads %>
-      <% end %>
+      <%# end %>
     </div>
 
 
