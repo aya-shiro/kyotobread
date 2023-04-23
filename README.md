@@ -16,7 +16,7 @@
 
 ## 設計書
 ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
-テーブル定義書:　https://docs.google.com/spreadsheets/d/1jdTGVucFFHbK_Bp1P2plaWBXBL9XhzpERNN9ed7C8Kk/edit?usp=sharing
+テーブル定義書:　https://docs.google.com/spreadsheets/d/1tYZ9WfvFt7-AV8eH4l1Fc1phKBqG2fr_vvqEIAe4oO4/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -28,3 +28,8 @@ ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?u
 ## 使用素材
 - FontAwesome(ver.5.15.4):  https://fontawesome.com/
 - pixabay:  https://pixabay.com/ja/
+
+## インストール
+- $ rails db:migrate
+- $ rails db:seed
+- $ bundle install
