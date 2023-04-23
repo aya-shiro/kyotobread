@@ -10,7 +10,7 @@
               <h4 class="text-dark"><%= topic.title %></h4>
               <p class="text-dark"><small><%= topic.created_at.strftime('%Y/%m/%d') %></small></p>
               <p class="text-dark" style="overflow: hidden; text-overflow: ellipsis; max-width: 300px; max-height: 100px">
-                <%= truncate(topic.body, length: 100) %>
+                <%= truncate(topic.body, length: 50) %>
               </p>
               <p>続きを読む ＞</p>
             <% end %>
@@ -26,5 +26,5 @@
   <div class="d-flex justify-content-center pt-3">
     <%= paginate @topics %>
   </div>
-  
+
 </div>

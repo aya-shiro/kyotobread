@@ -22,7 +22,7 @@ class Admin::ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @breads = @shop.breads.page(params[:page]).per(6)
+    @breads = @shop.breads.page(params[:page]).per(50)
   end
 
   def edit

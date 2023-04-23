@@ -1,13 +1,13 @@
 class User::HomesController < ApplicationController
   def top
-    @breads = Bread.all.order(created_at: :desc).page(params[:page]).per(10)
+    @breads = Bread.all.order(created_at: :desc).page(params[:page]).per(20)
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
 
     @defaults = Drink.default.where(default_select: true)
 
-    @sweet_breads = @breads.where(taste: true).page(params[:page]).per(6)
-    @salty_breads = @breads.where(taste: false).page(params[:page]).per(6)
+    @sweet_breads = @breads.where(taste: true).page(params[:page]).per(20)
+    @salty_breads = @breads.where(taste: false).page(params[:page]).per(20)
 
     # 過去一週間のいいね順に並べる
     to = Time.current.at_end_of_day
@@ -19,7 +19,7 @@ class User::HomesController < ApplicationController
 
     # いいね順のページネーション記述
     @favorite_breads = Kaminari.paginate_array(@favorite_breads)
-                       .page(params[:page]).per(10)
+                       .page(params[:page]).per(16)
 
     @users = User.all
   end

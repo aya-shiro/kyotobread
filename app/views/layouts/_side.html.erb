@@ -1,5 +1,6 @@
 <!--homes/top, user/breads/index&earch で使用しているサイドバー-->
-<div class="col-md-3" style="position:fixed;">
+<div class="col-md-3">
+<!--<div class="col-md-3" style="position:fixed;">-->
 
 
   <div class="py-3 pl-3" style="background-color: #fff7e6;" >
@@ -42,13 +43,13 @@
 
   <div class="p-3 mt-3" style="background-color: #fff7e6;">
     <h5>
-      <i class="fas fa-store-alt"></i> ショップ
+      <i class="fas fa-store"></i> ショップ
     </h5>
     <% @shops.each_with_index do |shop, index| %>
       <% if index < 3 %>
         <ul class="ml-4">
           <%= link_to shop_path(shop.id) do %>
-            <li style="color: black;"><%= shop.shop_name %></li>
+            <li class="text-dark"><%= shop.shop_name %></li>
           <% end %>
         </ul>
       <% end %>
@@ -71,12 +72,12 @@
       <% @topics.each_with_index do |topic, index| %>
         <% if topic.is_published == true %>
           <% if index < 3 %>
-            <%= link_to topic_path(topic.id) do %>
-              <ul class="ml-4">
+            <ul class="ml-4">
+              <%= link_to topic_path(topic.id) do %>
                 <li style="color: black;"><%= topic.title %></li>
                 <li style="color: gray; font-size: 12px; list-style: none;">(<%= topic.created_at.strftime('%Y/%m/%d') %>)</li>
-              </ul>
-            <% end %>
+              <% end %>
+            </ul>
           <% end %>
         <% end %>
       <% end %>

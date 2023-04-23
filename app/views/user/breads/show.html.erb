@@ -49,8 +49,10 @@
         <dd class="col-sm-3">購入店：</dd>
         <dd class="col-sm-9">
           <% if @bread.shop %>
-            <span>〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
-            <span><%= @bread.shop.shop_name %></span>
+            <%= link_to shop_path(@bread.shop) do %>
+              <span class="text-dark">〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
+              <span class="text-dark"><%= @bread.shop.shop_name %></span>
+            <% end %>
           <% end %>
         </dd>
 

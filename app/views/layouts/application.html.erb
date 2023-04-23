@@ -68,7 +68,7 @@
               <!--管理者がログインしている場合-->
                 <li>
                  <%= link_to admin_root_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                   <i class="fa-solid fa-star"></i> 管理者トップ
+                   <i class="fas fa-star"></i> 管理者トップ
                  <% end %>
                 </li>
                 <li>
@@ -78,7 +78,7 @@
                 </li>
                 <li>
                   <%= link_to admin_shops_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                    <i class="fas fa-store-alt"></i> ショップ
+                    <i class="fas fa-store"></i> ショップ
                   <% end %>
                 </li>
                 <li>
@@ -93,7 +93,7 @@
                 </li>
                 <li>
                   <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
-                    <i class="fa-solid fa-right-from-bracket"></i> Log out
+                    <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% else %>

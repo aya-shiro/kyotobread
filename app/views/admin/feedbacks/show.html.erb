@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <%= link_to "ご意見一覧に戻る", admin_feedbacks_path, class:"btn btn-sm btn-outline-secondary" %>
+  <%= link_to "ご意見一覧", admin_feedbacks_path, class:"btn btn-sm btn-outline-secondary" %>
   <%= link_to "削除", admin_feedback_path(@feedback.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"ml-4 btn btn-sm btn-outline-danger" %>
 
 </div>

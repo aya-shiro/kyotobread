@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.breads.all.order(updated_at: :desc).page(params[:page]).per(4)  # 更新日順に
+    @breads = @user.breads.all.order(updated_at: :desc).page(params[:page]).per(50)  # 更新日順に
   end
 
   def edit

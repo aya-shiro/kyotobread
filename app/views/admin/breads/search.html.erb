@@ -6,10 +6,10 @@
         <% if @keyword.present? %>
           <ul class="row ml-2" style="list-style: none;">
             <% @search_breads.each do |bread| %>
-              <li class="mr-1">
+              <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
                 <div>
                   <%= link_to admin_bread_path(bread.id) do %>
-                    <%= image_tag bread.get_bread_image(180, 180) %><br>
+                    <%= image_tag bread.get_bread_image(100, 100) %><br>
                   <% end %>
                   <%= bread.bread_name %>
                 </div>
@@ -18,9 +18,10 @@
           </ul>
         <% end %>
       </div>
+    </div>
 
+    <div class="d-flex justify-content-center pb-3">
       <%= paginate @search_breads %>
-
     </div>
 
 </div>

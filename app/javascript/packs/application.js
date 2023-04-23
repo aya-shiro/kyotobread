@@ -15,7 +15,7 @@ import "jscroll"  // yarnを実行しnode_moduleにインストールされた�
 
 import "./kyotobread.js"   // topのタブメニュー
 import "./shopsearch.js"   // _post-form.html.erbで使用
-import "./jquery.jscroll.min.js"  // 無限スクロール
+import "./jscroll.js"  // 無限スクロール
 
 
 import "../stylesheets/application"

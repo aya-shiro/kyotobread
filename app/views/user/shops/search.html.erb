@@ -12,8 +12,8 @@
       <% if @keyword.present? %>
         <table class="table">
           <tr>
-            <td>店名</td>
-            <td>住所</td>
+            <th>店名</th>
+            <th>住所</th>
             <td></td>
           </tr>
           <% @search_shops.each do |shop| %>
@@ -35,7 +35,7 @@
       </table>
 
       <% end %>
-      
+
     <div class="d-flex justify-content-center">
       <%= paginate @search_shops %>
     </div>
