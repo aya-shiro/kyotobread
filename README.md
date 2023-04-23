@@ -15,8 +15,8 @@
 京都に遊びに来た時、パン屋に行く前・行った後
 
 ## 設計書
-ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
-テーブル定義書:　https://docs.google.com/spreadsheets/d/1jdTGVucFFHbK_Bp1P2plaWBXBL9XhzpERNN9ed7C8Kk/edit?usp=sharing
+- ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
+- テーブル定義書:　https://docs.google.com/spreadsheets/d/1jdTGVucFFHbK_Bp1P2plaWBXBL9XhzpERNN9ed7C8Kk/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
