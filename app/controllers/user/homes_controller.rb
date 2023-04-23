@@ -19,7 +19,7 @@ class User::HomesController < ApplicationController
 
     # いいね順のページネーション記述
     @favorite_breads = Kaminari.paginate_array(@favorite_breads)
-                       .page(params[:page]).per(16)
+                       .page(params[:page]).per(20)
 
     @users = User.all
   end
