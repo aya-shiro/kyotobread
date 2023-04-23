@@ -13,10 +13,8 @@
 
 unless Admin.exists?(email: 'fromkyoto@gmail.com')
   Admin.create!(
-     email: 'fromkyoto@gmail.com',
-    # email: 'fromkyoto@admin.com',
-     
-     password: 'fromkyoto'
+    email: 'fromkyoto@admin.com',
+    password: 'fromkyoto'
   )
 end
 

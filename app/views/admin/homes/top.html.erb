@@ -16,6 +16,7 @@
     <% @feedbacks.each_with_index do |feedback, index| %>
       <% if index < 5 %>
         <table class="table">
+          <tr>
             <td>No.<%= feedback.id %></td>
             <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 400px;">
               <%= link_to admin_feedback_path(feedback.id), class:"text-dark" do %>
@@ -28,6 +29,7 @@
                 <span class="text-secondary" style="font-size: 12px;"><%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></span>
               <% end %>
             </td>
+          </tr>
         </table>
       <% end %>
     <% end %>

@@ -11,7 +11,7 @@ class Topic < ApplicationRecord
 
   def get_bread_image(width, height)
     unless bread_image.attached?
-      file_path = Rails.root.join('app/assets/images/about_breads_image640.jpg')
+      file_path = Rails.root.join('app/assets/images/about_image640.jpg')
       bread_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     bread_image.variant(resize_to_fill: [width, height]).processed   #写真をresize_to_fillでスクエアに
