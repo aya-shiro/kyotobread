@@ -6,8 +6,8 @@
       <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
 
       <div class="col-9">
-        <h5 class="mb-4"><%= @drink.drink_name %>におすすめのパン</h5>
-        <ul class="row" style="list-style: none;">
+        <h5 class="mb-4 ml-2"><%= @drink.drink_name %>におすすめのパン</h5>
+        <ul class="row ml-3" style="list-style: none;">
           <% @breads.each do |bread| %>
             <li class="mr-1">
               <div>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="d-flex justify-content-center pt-3">
-      <%= paginate @breads %>
+      <%= paginate @breads, theme: 'twitter-bootstrap-4' %>
     </div>
 
   </div>

@@ -7,6 +7,28 @@
 
 
 
+/*ページネーション自体*/
+.pagination > li > a {
+  border: none;
+  color: #696969;
+}
+
+/* 表示しているページ番号 */
+.pagination>.active>a {
+  background: none;
+}
+
+/*ホバー時*/
+.pagination>li>a:hover {
+  opacity: 1;
+  color: #696969;
+}
+
+.page-item.active .page-link {
+  background-color: #ffeecc;
+  color: #696969;
+}
+
 // nav.pagination .tab1,
 // nav.pagination .tab2,
 // nav.pagination .tab3,
