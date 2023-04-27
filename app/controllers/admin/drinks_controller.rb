@@ -18,12 +18,16 @@ class Admin::DrinksController < ApplicationController
   end
 
   def edit
+    @drink = Drink.find(params[:id])
+  end
+
+  def update
+    drink = Drink.find(params[:id])
+    drink.update(drink_params)
+    redirect_to admin_drinks_path
   end
 
   def destroy
-    drink = Drink.find(params[:id])
-    drink.destroy
-    redirect_to admin_drinks_path
   end
 
 

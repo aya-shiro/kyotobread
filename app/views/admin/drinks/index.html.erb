@@ -28,12 +28,17 @@
       <% end %>
 
         <% @drinks.not_default.each do |drink| %>    <!--上で登録したドリンクのみ-->
-          <p class="mt-3">
-            <%= link_to "✕", admin_drink_path(drink), method: :delete, class:"btn btn-sm btn-outline-danger" %>
-            <%= drink.drink_name %>
-          </p>
+          <p class="mt-3"><%= drink.drink_name %></p>
+
+          <%= form_with model: @drink, url: admin_drink_path(drink), method: :patch do |f| %>
+            <%= f.text_field :drink_name %>
+            <%= f.submit "書き換える", class:"btn btn-sm btn-outline-danger" %>
+          <% end %>
+
         <% end %>
     </div>
+
+
 
 
   </div>
