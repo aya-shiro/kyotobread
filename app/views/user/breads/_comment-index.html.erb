@@ -1,4 +1,4 @@
-  <!--views/user/breads/show.html.erbから切り取り-->
+<!--views/user/breads/show.html.erbから切り取り-->
 
 <% bread.comments.each do |comment| %>
   <div class="my-2">
@@ -10,11 +10,11 @@
         <span style="font-size: 13px;" class="mr-1"><%= comment.user.name %></span>
         <span style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
         <div><%= comment.comment %></div>
-      <% if comment.user == current_user %>
-        <span>
-          <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, style:"font-size: 8px; color: gray;" %>
-        </span>
-      <% end %>
+        <% if comment.user == current_user %>
+          <span>
+            <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, style:"font-size: 8px; color: gray;" %>
+          </span>
+        <% end %>
       </div>
   　</div>
   </div>

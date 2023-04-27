@@ -87,11 +87,9 @@
       <% if @bread.comments.exists? %>
 
       <!--コメント一覧非同期化-->
-        <div id="comment-index">
+        <div id="comment-index" class="mt-3">
           <%= render 'user/breads/comment-index', bread: @bread  %>
         </div>
-      <% else %>
-         <span>コメントを書く</span>
       <% end %>
 
       <!--コメントフォーム非同期化-->

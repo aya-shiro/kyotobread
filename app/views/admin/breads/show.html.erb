@@ -61,19 +61,25 @@
         <% end %>
     </div>
 
-    <div class="row ml-2">
-      <div class="col-8">
+    <div class="row ml-4 mt-3">
+      <div>
         <% if @bread.comments.exists? %>
           <% @bread.comments.each do |comment| %>
-            <%= image_tag comment.user.get_user_image(50, 50), class:"rounded-circle" %>
-            <%= comment.user.name %>
-            <span style="font-size: 3px; color: gray;">
-              <%= comment.created_at.strftime("%Y/%m/%d") %>
-            </span>
-            <%= comment.comment %>
-            <%# if comment.user == current_user %>
-              <%= link_to "削除", admin_bread_comment_path(comment.bread_id, comment.id), method: :delete, class:"btn btn-sm btn-outline-secondary" %><br>
-            <%# end %>
+            <div class="my-2">
+              <div class="row">
+                <div class="col-auto">
+                  <%= image_tag comment.user.get_user_image(40, 40), class:"rounded-circle" %>
+                </div>
+                <div class="col-7">
+                  <span style="font-size: 13px;" class="mr-1"><%= comment.user.name %></span>
+                  <span style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+                  <div><%= comment.comment %></div>
+                  <span>
+                    <%= link_to "削除", admin_bread_comment_path(comment.bread_id, comment.id), method: :delete, style:"font-size: 8px; color: gray;" %>
+                  </span>
+                </div>
+              </div>
+            </div>
           <% end %>
         <% else %>
           <div>コメントはありません</div>
