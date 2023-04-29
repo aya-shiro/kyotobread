@@ -3,19 +3,21 @@
     <h5>ユーザー一覧</h5>
 
     <% @users.each do |user| %>
-      <div class="row mt-3" style="background-color: white;">
-        <div class="col-md-3">
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_user_image(100, 100), class:"my-4 ml-3 rounded-circle" %>
-          <% end %>
+      <% if user.is_delete == false %>
+        <div class="row mt-3" style="background-color: white;">
+          <div class="col-md-3">
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.get_user_image(100, 100), class:"my-4 ml-3 rounded-circle" %>
+            <% end %>
+          </div>
+          <div class="col-md-4 mt-4">
+            <%= link_to user_path(user.id), class:"text-dark" do %>
+              <h5><%= user.name %></h5>
+              <%= user.breads.count %> posts
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-4 mt-4">
-          <%= link_to user_path(user.id), class:"text-dark" do %>
-            <h5><%= user.name %></h5>
-            <%= user.breads.count %> posts
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 

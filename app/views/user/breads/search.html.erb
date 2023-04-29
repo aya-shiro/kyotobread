@@ -10,14 +10,16 @@
         <% if @keyword.present? %>
           <ul class="row ml-2" style="list-style: none;">
             <% @search_breads.each do |bread| %>
-              <li class="mr-1">
-                <div>
-                  <%= link_to bread_path(bread.id) do %>
-                    <%= image_tag bread.get_bread_image(180, 180) %><br>
-                  <% end %>
-                  <%= bread.bread_name %>
-                </div>
-              </li>
+              <%# if bread.user.is_delete == false %>
+                <li class="mr-1">
+                  <div>
+                    <%= link_to bread_path(bread.id) do %>
+                      <%= image_tag bread.get_bread_image(180, 180) %><br>
+                    <% end %>
+                    <%= bread.bread_name %>
+                  </div>
+                </li>
+              <%# end %>
             <% end %>
           </ul>
         <% end %>

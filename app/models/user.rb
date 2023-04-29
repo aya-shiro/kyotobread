@@ -7,8 +7,6 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64  #ランダムパスワード生成
-      # user.skip_confirmation!  # Confirmable を使用している場合は必要
-      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
       user.name = "ゲスト"
     end
   end
@@ -16,14 +14,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length:{maximum:10}
 
-  # has_many :bread, dependent: :destroy
   has_many :breads, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :feedbacks
 
 
-  has_one_attached :bread_image  #ユーザー詳細でパン写真表示のため記述
+  has_one_attached :bread_image
 
   def get_bread_image(width, height)
     unless bread_image.attached?
@@ -41,6 +38,6 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-user-image.jpg')
       user_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    user_image.variant(resize_to_fill: [width, height]).processed  #写真をresize_to_fillでスクエアに
+    user_image.variant(resize_to_fill: [width, height]).processed
   end
 end

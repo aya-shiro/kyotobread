@@ -35,7 +35,6 @@ class User::SessionsController < Devise::SessionsController
 
     return if !@user  #@userが取得できなかった場合はそこで終了(returnで切る)
     if @user.valid_password?(params[:user][:password]) && @user.is_delete   #@userが取得できた場合、passwordが取得したemailのアカウントと一致しているかか確認
-    # else
       flash[:alert] = "メールアドレスとパスワードが一致しません"
       redirect_to new_user_registration_path
     end
