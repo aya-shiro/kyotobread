@@ -1,22 +1,20 @@
 class Bread < ApplicationRecord
 
   belongs_to :user
-  belongs_to :shop, optional: true    # shopのnilを
+  belongs_to :shop, optional: true    # shopのnilを許す
   has_many :topic
 
   belongs_to :drink
   accepts_nested_attributes_for :drink
 
   has_many :comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy  #いいね機能
+  has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user    #いいね順
 
   def favorite_by?(user)
-    # favorites.exists?(user_id: user.id)
     user.present? && favorites.exists?(user_id: user.id)
   end
 
-  # enum taste_selects: { plain: 0, sweet: 1, salt: 2
 
   validates :bread_image, presence: true
   validates :bread_name, presence: true, length:{maximum:20}
