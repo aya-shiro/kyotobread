@@ -1,5 +1,8 @@
 class Bread < ApplicationRecord
 
+  scope :active_users_breads, -> { includes(:user).where(user: { is_delete: false }) }
+
+
   belongs_to :user
   belongs_to :shop, optional: true    # shopのnilを許す
   has_many :topic

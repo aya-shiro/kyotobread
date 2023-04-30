@@ -24,10 +24,10 @@
   <div class="row ml-1">
     <h5 class="mt-5 mb-3"><%= @user.breads.count %> posts</h5>
   </div>
-  <div>
-    <ul class="row ml-1" style="list-style: none;">
+  <div class="bread_list">
+    <ul class="row ml-1" style="">
       <% @breads.each do |bread| %>
-        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
+        <li class="mr-1" style="">
           <%= link_to bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(220, 220) %></div>
             <p class="text-dark"><%= bread.bread_name %></p>

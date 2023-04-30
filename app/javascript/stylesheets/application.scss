@@ -5,7 +5,11 @@
 @import "select2/dist/css/select2.min.css";
 @import "./user/homes";
 
-
+* {
+  margin: 0;
+  padding: 0;
+  // box-sizing: border-box;
+}
 
 /*ページネーション自体*/
 .pagination > li > a {
@@ -43,4 +47,16 @@
 
 .scroll-list {
   padding: 0;
+}
+
+.bread_list {
+  ul {
+    list-style: none;
+  }
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 220px;
+  }
 }

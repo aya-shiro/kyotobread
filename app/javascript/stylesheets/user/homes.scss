@@ -3,53 +3,49 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // user/homes/top.html.erbに適用させる
-@charset "UTF-8";
+//@charset "UTF-8"
+#user_homes_top {
 
-* {
-  margin: 0;
-  padding: 0;
-  // box-sizing: border-box;
-}
-
-
-.wrap {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#tab-menu {
-  display: flex;
-}
-
-#tab-menu li {
-  list-style-type: none;
-  width: 25%;
-}
-
-#tab-menu li a {
-  color: #000;
-  text-decoration: none;
-  display: block;
-  padding: 20px;
-  text-align: center;
-  border-bottom: none;
-}
-
-#tab-menu .active {
-  border-bottom: 1px solid #000;
-  color: #000;
-}
-
-#tab-contents {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#tab-contents .tab {
-  width: 100%;
-  padding-top: 5px;
-  background: #fff;
-  border-top: none;
-  background-color: #ffeecc;
+  
+  .wrap {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  #tab-menu {
+    display: flex;
+  }
+  
+  #tab-menu li {
+    list-style-type: none;
+    width: 25%;
+  }
+  
+  #tab-menu li a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    text-align: center;
+    border-bottom: none;
+  }
+  
+  #tab-menu .active {
+    border-bottom: 1px solid #000;
+    color: #000;
+  }
+  
+  #tab-contents {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #tab-contents .tab {
+    width: 100%;
+    padding-top: 5px;
+    background: #fff;
+    border-top: none;
+    background-color: #ffeecc;
+  }
 }

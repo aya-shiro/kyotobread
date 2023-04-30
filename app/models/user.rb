@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  scope :active_users, -> { where(is_delete: false) }
 
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |user|
