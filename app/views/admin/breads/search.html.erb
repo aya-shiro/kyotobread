@@ -4,18 +4,20 @@
       <div class="col-md-12">
         <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_breads.count %>件</h5>
         <% if @keyword.present? %>
-          <ul class="row ml-2" style="list-style: none;">
-            <% @search_breads.each do |bread| %>
-              <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
-                <div>
-                  <%= link_to admin_bread_path(bread.id) do %>
-                    <%= image_tag bread.get_bread_image(100, 100) %><br>
-                  <% end %>
-                  <%= bread.bread_name %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
+          <div class="bread_list">
+            <ul class="row ml-2">
+              <% @search_breads.each do |bread| %>
+                <li class="mr-1" style="max-width: 100px;">
+                  <div>
+                    <%= link_to admin_bread_path(bread.id) do %>
+                      <%= image_tag bread.get_bread_image(100, 100) %><br>
+                    <% end %>
+                    <%= bread.bread_name %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="container py-5" style="background-color: #fff7e6">
+<div class="main-theme container py-5">
 
   <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">
@@ -31,7 +31,7 @@
   </dl>
 
   <div class="col-md-4">
-    <td><%= link_to "ショップ一覧", admin_shops_path, class:"mr-4 btn btn-outline-primary btn-sm" %></td>
+    <td><%= link_to "ショップ一覧", admin_shops_path, class:"mr-4 btn btn-warning btn-sm" %></td>
     <td><%= link_to "編集", edit_admin_shop_path(@shop.id), class:"btn btn-sm btn-outline-secondary" %></td>
     <td><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger" %></td>
   </div>

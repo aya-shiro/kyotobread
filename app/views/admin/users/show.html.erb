@@ -1,4 +1,4 @@
-<div class="container py-5" style="background-color: #fff7e6">
+<div class="main-theme container py-5">
 
   <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">
@@ -8,7 +8,7 @@
 
   <div class="row col-md-8">
     <h5 class="mr-5"><%= @user.name %>さんのユーザー詳細 </h5>
-    <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-outline-primary btn-sm" %>
+    <%= link_to "ユーザー一覧", admin_users_path, class:"btn btn-warning btn-sm" %>
   </div>
 
   <div class="row">
@@ -54,21 +54,23 @@
       <% end %>
 
       <h5 class="mt-5"><%= @user.name %>さんの投稿一覧 / 最終更新日</h5>
-      <ul class="row col-md-12 mx-auto" style="list-style: none;">
-        <% if @breads.exists? %>
-          <% @breads.each do |bread| %>
-            <li class="mr-1 mt-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
-              <%= link_to admin_bread_path(bread.id) do %>
-                <%= image_tag bread.get_bread_image(100, 100), class:"mr-3" %>
-                  <p class="text-dark">
-                    <%= bread.bread_name %><br>
-                    <span><small><%= bread.updated_at.strftime('%Y/%m/%d') %></small></span>    <!--最終更新日-->
-                  </p>
-              <% end %>
-            </li>
+      <div class="bread_list">
+        <ul class="row col-md-12 mx-auto">
+          <% if @breads.exists? %>
+            <% @breads.each do |bread| %>
+              <li class="mr-1 mt-2" style="max-width: 100px;">
+                <%= link_to admin_bread_path(bread.id) do %>
+                  <%= image_tag bread.get_bread_image(100, 100), class:"mr-3" %>
+                    <p class="text-dark">
+                      <%= bread.bread_name %><br>
+                      <span><small><%= bread.updated_at.strftime('%Y/%m/%d') %></small></span>    <!--最終更新日-->
+                    </p>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
 
     <div class="d-flex justify-content-center">
       <%= paginate @breads, theme: 'twitter-bootstrap-4' %>
