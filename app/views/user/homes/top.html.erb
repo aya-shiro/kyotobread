@@ -3,7 +3,7 @@
 
     <div class="row">
 
-      <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+      <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, default_drinks: @default_drinks %>
 
       <!--app/assets/stylesheets/user/homes.scss併用-->
       <div class="wrap top-page">
@@ -28,8 +28,8 @@
                         <%= bread.bread_name %>
                       </div>
                     </li>
-    
-    
+
+
                 <% end %>
                 <% end %>
               </ul>

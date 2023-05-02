@@ -1,6 +1,5 @@
-<!--homes/top, user/breads/index&earch で使用しているサイドバー-->
+<!--homes/top, user/breads/index&earch のサイドバー-->
 <div class="col-md-3">
-<!--<div class="col-md-3" style="position:fixed;">-->
 
 <div class="position-fixed" style="width: 270px; height: 70%; overflow-y: scroll;">
   <div class="py-3 pl-3" style="background-color: #fff7e6;" >
@@ -8,10 +7,10 @@
       <i class="fas fa-coffee"></i> ドリンクから探す
     </h5>
     <ul class="ml-2" style="list-style: none;">
-      <% @defaults.each do |default| %>
+      <% @default_drinks.each do |default_drink| %>
         <li class="px-1 my-1" >
-          <%= link_to breads_path(drink_id: default.id), method: :get do %>
-            <div class="my-2" style="color: black;"># <%= default.drink_name %></div>
+          <%= link_to breads_path(drink_id: default_drink.id), method: :get do %>
+            <div class="my-2" style="color: black;"># <%= default_drink.drink_name %></div>
           <% end %>
         </li>
       <% end %>
@@ -20,7 +19,6 @@
 
       <div class="mt-2">
         <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
-          <!--<i class="fa-solid fa-mug-saucer" style="font-size: 30px; color: #f9f110;"></i>-->
           <li>
             <%= f.label :その他 %>
             <%= f.submit "探す", class:"p-1 mb-2 ml-3 btn btn-sm btn-outline-secondary" %>

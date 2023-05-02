@@ -3,7 +3,7 @@ class Admin::BreadsController < ApplicationController
 
   def search
     if params[:keyword].present?
-      @search_breads = Bread.where('bread_name LIKE ?', "%#{params[:keyword]}%").page(params[:page]).per(100)
+      @search_breads = Bread.active_users_breads.where('bread_name LIKE ?', "%#{params[:keyword]}%").page(params[:page]).per(100)
       @keyword = params[:keyword]
       @shops = Shop.all.order(created_at: :desc)
     else
@@ -13,7 +13,7 @@ class Admin::BreadsController < ApplicationController
 
 
   def index
-    @breads = Bread.all.order(created_at: :desc).page(params[:page]).per(100)
+    @breads = Bread.active_users_breads.all.order(created_at: :desc).page(params[:page]).per(100)
   end
 
   def show
