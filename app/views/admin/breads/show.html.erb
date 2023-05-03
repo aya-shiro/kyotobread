@@ -74,7 +74,7 @@
                   <span style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
                   <div><%= comment.comment %></div>
                   <span>
-                    <%= link_to "削除", admin_bread_comment_path(comment.bread_id, comment.id), method: :delete, style:"font-size: 8px; color: gray;" %>
+                    <%= link_to "削除", admin_bread_comment_path(comment.bread_id, comment.id), method: :delete, "data-confirm" => "コメントを削除します", style:"font-size: 8px; color: gray;" %>
                   </span>
                 </div>
               </div>

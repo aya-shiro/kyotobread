@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'homes/about'
     get 'feedbacks/thanks'
-    resources:feedbacks, only: [:new, :create, :show]
+    resources:feedbacks, only: [:new, :create]
     get 'users/mypage/edit' => 'users#edit'
     patch 'users/mypage/edit' => 'users#update'
     get 'users/check'
