@@ -60,7 +60,7 @@
   </div>
 
   <h5 class="p-3 mt-3 text-center" style="background-color: #fff7e6;">
-    <%= link_to "ONLINE SHOP ", shops_onlines_path, class:"text-dark" %>
+    <%= link_to "// ONLINE SHOP //", shops_onlines_path, class:"text-dark" %>
   </h5>
 
   <div class="p-3 my-3" style="background-color: #fff7e6;">
@@ -72,7 +72,7 @@
           <% if index < 3 %>
             <ul class="ml-4">
               <%= link_to topic_path(topic.id) do %>
-                <li style="color: black;"><%= topic.title %></li>
+                <li class="text-dark"><%= topic.title %></li>
                 <li style="color: gray; font-size: 12px; list-style: none;">(<%= topic.created_at.strftime('%Y/%m/%d') %>)</li>
               <% end %>
             </ul>

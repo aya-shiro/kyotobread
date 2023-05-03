@@ -4,16 +4,12 @@ class User::CommentsController < ApplicationController
   def create
     @bread = Bread.find(params[:bread_id])
     comment = current_user.comments.new(comment_params)
-    # comment.bread_id = @bread.id
     comment.save
-    # redirect_to bread_path(bread)
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    # bread = comment.bread
     @bread = Bread.find(params[:bread_id])
-    # redirect_to bread_path(bread.id)
   end
 
   private
