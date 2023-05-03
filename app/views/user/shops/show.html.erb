@@ -1,4 +1,4 @@
-<div class="container py-5" style="background-color: #fff7e6">
+<div class="main-theme container py-5">
 
   <div class="row mb-3">
     <div class="col-md-6">
@@ -20,17 +20,17 @@
     <dd class="col-sm-9 border-bottom pb-2"><%= Rinku.auto_link(@shop.online_url, :all, 'target="_blank"').html_safe %></dd>
   </dl>
   <div class="col-md-3">
-    <div class=""><%= link_to "ショップ一覧", shops_path, class:"btn btn-outline-primary btn-sm" %></div>
+    <div class=""><%= link_to "ショップ一覧", shops_path, class:"btn btn-warning btn-sm" %></div>
   </div>
 
   <div class="row mt-5 ml-1">
     <h5><%= @shop.shop_name %> のパン一覧<h5>
   </div>
 
-  <div>
-    <ul class="row ml-1" style="list-style: none;">
+  <div class="bread_list">
+    <ul class="row ml-1">
       <% @breads.each do |bread| %>
-        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px;">
+        <li class="mr-1" style="max-width: 220px;">
           <%= link_to bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(220, 220) %></div>
             <p class="text-dark"><%= bread.bread_name %></p>

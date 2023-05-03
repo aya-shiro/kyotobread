@@ -11,10 +11,10 @@
   </head>
 
   <body>
-    <header style="width: 100%; background-color: white;", class="fixed-top mb-5">
+    <header style="background-color: white;", class="fixed-top mb-5">
 
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">    <!--fixed-topでヘッダー固定-->
+        <div class="container">
 
           <a class="navbar-brand" href="/"><%= image_tag 'logo_image300.jpg', size: "230x40" %></a>
 
@@ -28,7 +28,6 @@
               <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
                 <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索  " %>
                 <%= f.submit style:"display: none;" %>
-                <%#= f.submit "検索", class:"btn btn-sm btn-secondary" %>
               <% end %>
             <% end %>
           </div>
@@ -42,7 +41,7 @@
               <% if user_signed_in? %>
               <!--会員がログインしている場合-->
                 <li>
-                  <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                  <%= link_to user_path(current_user), class:"nav-link text-dark" do %>
                     <% if current_user.name == 'ゲスト' %>
                       <i class="fas fa-user"></i> ゲスト
                     <% else %>
@@ -51,71 +50,71 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_bread_path, class: 'nav-link text-dark' do %>
+                  <%= link_to new_bread_path, class:"nav-link text-dark" do %>
                     <i class="fas fa-plus"></i> 投稿する
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to users_path, class: 'nav-link text-dark' do %>
+                  <%= link_to users_path, class:"nav-link text-dark" do %>
                     <i class="fas fa-users"></i> ユーザー一覧
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-dark" do %>
                     <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                 <li>
-                 <%= link_to admin_root_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                 <%= link_to admin_root_path, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                    <i class="fas fa-star"></i> 管理者トップ
                  <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_users_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                  <%= link_to admin_users_path, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                     <i class="fas fa-user-circle"></i> ユーザー
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_shops_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                  <%= link_to admin_shops_path, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                     <i class="fas fa-store"></i> ショップ
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_topics_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                  <%= link_to admin_topics_path, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                     <i class="fas fa-folder-open"></i> 特集
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_drinks_path, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                  <%= link_to admin_drinks_path, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                     <i class="fas fa-coffee"></i> ドリンク
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_admin_session_path,method: :delete, class: 'nav-link text-dark', style: 'font-size: 13px;' do %>
+                  <%= link_to destroy_admin_session_path,method: :delete, class:"nav-link text-dark", style:"font-size: 13px;" do %>
                     <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% else %>
               <!--ログインしていない状態-->
                 <li>
-                  <%= link_to user_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
+                  <%= link_to user_guest_sign_in_path, method: :post, class:"nav-link text-dark" do %>
                     <i class="fas fa-user"></i> ゲストログイン(閲覧用)
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to homes_about_path,class: 'nav-link text-dark' do %>
+                  <%= link_to homes_about_path, class:"nav-link text-dark" do %>
                     <i class="fas fa-bread-slice"></i> About
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+                  <%= link_to new_user_registration_path, class:"nav-link text-dark" do %>
                     <i class="fas fa-user-plus"></i> 新規登録
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_user_session_path,  class: 'nav-link text-dark' do %>
+                  <%= link_to new_user_session_path, class:"nav-link text-dark" do %>
                     <i class="fas fa-sign-in-alt"></i> Log in
                   <% end %>
                 </li>
@@ -133,12 +132,11 @@
     </main>
 
     <footer>
-      <div class='container my-4'>
-        <div class='row' style:"color:gray;">
-          <div class='mx-auto text-center'>
+      <div class="container my-4">
+        <div class="row">
+          <div class="mx-auto text-center">
             <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary", style:"font-size: 12px;" %> | </span>
             <span><%= link_to "ABOUT", homes_about_path, class:"text-secondary", style:"font-size: 12px;" %></span>
-
             <p class="mt-1">copyright_KyotoBread</p>
           </div>
         </div>

@@ -1,12 +1,12 @@
-<div class="container py-5" style="background-color: #fff7e6">
+<div class="main-theme container py-5">
   <div class="col-md-10 mx-auto">
     <h5>ショップ一覧</h5>
 
     <% @shops.each do |shop| %>
       <div class="row my-3 p-3" style="background-color: white;">
-        <div class="col-md-1" style="color: black;">
+        <div class="col-md-1 text-dark">
           <%= link_to shop_path(shop.id) do %>
-          <h2 style="color: gray;"><i class="fas fa-store"></i></h2>
+          <h2 class="text-secondary"><i class="fas fa-store"></i></h2>
           <% end %>
         </div>
         <div class="col-md-6">
@@ -23,5 +23,5 @@
   <div class="d-flex justify-content-center">
     <%= paginate @shops, theme: 'twitter-bootstrap-4' %>
   </div>
-  
+
 </div>
