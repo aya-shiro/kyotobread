@@ -2,7 +2,7 @@
   <div class="col-md-8 mx-auto">
 
     <h4 class="mb-3"><%= @topic.title %></h4>
-    <p><%= @topic.body %></p>
+    <%=safe_join(@topic.body.split("\n"),tag(:br))%>  <!--改行-->
     <%= image_tag @topic.get_bread_image(400, 300), class:"mt-4 mx-auto d-block" %>
     <p><%= link_to "特集一覧ページ", topics_path, class:"mt-5 btn btn-sm btn-warning" %></p>
 

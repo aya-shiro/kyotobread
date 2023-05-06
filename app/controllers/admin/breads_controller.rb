@@ -13,7 +13,7 @@ class Admin::BreadsController < ApplicationController
 
 
   def index
-    @breads = Bread.active_users_breads.all.order(created_at: :desc).page(params[:page]).per(100)
+    @breads = Bread.active_users_breads.all.order(updated_at: :desc).page(params[:page]).per(100)
   end
 
   def show

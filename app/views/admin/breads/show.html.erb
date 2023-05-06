@@ -7,7 +7,7 @@
 
     <div class="col-md-7">
       <h5><%= @bread.bread_name %></h5>
-      <p style="height: 160px;"><%= @bread.introduce %></p>
+      <p style="height: 160px;"><%=safe_join(@bread.introduce.split("\n"),tag(:br))%></p>
 
       <dl class="row">
         <dd class="col-sm-3">ジャンル：</dd>
