@@ -8,7 +8,6 @@ class Shop < ApplicationRecord
   validates :shop_name, presence: true
   validates :postcode, presence: true
   validates :address, presence: true
-  validates :nearest_station, presence: true
 
   # user/breads/_post-formで使用
   def address_display

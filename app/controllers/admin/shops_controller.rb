@@ -34,6 +34,8 @@ class Admin::ShopsController < ApplicationController
     if @shop.update(shop_params)
       flash[:notice] = "編集しました"
       redirect_to admin_shop_path(@shop.id)
+    else
+      render :edit
     end
   end
 

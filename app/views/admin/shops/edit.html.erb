@@ -2,6 +2,10 @@
   <div class="col-md-6 mx-auto">
 
     <h3>ショップ編集</h3>
+    <div id="error">
+      <%= render 'layouts/errors', obj: @shop %>
+    </div>
+
     <%= form_with model: @shop, url: admin_shop_path do |f| %>
       <%= f.label :店名 %><br>
       <%= f.text_field :shop_name, class:'form-control' %><br>
@@ -15,7 +19,7 @@
       <%= f.label :オンラインショップ %><br>
       <%= f.text_field :online_url, class:'form-control' %><br>
 
-      <%= f.submit "更新する", class:"btn btn-secondary my-3" %>
+      <%= f.submit class:"btn btn-secondary my-3" %>
     <% end %>
     <%= link_to "ショップ詳細にもどる", admin_shop_path(@shop.id), class:"text-secondary" %>
 
