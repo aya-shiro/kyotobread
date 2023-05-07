@@ -76,5 +76,3 @@ gem "net-imap"
 gem 'rinku'  # urlのリンク化
 gem 'kaminari'  # ページネーション
 gem 'bootstrap4-kaminari-views'
-
-gem 'net-smtp'    # なぜ必要？

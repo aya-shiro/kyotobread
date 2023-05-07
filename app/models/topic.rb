@@ -5,8 +5,6 @@ class Topic < ApplicationRecord
   validates :title, presence: true, length:{maximum:30}
   validates :body, presence: true
 
-
-
   has_one_attached :bread_image
 
   def get_bread_image(width, height)

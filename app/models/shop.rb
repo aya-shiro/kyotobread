@@ -5,7 +5,10 @@ class Shop < ApplicationRecord
 
   # accepts_nested_attributes_for :online, update_only: true
   # update_only: trueは、onlineモデルのカラムを”入れ替え”でなく”上書き”するために必要なオプション
-
+  validates :shop_name, presence: true
+  validates :postcode, presence: true
+  validates :address, presence: true
+  validates :nearest_station, presence: true
 
   # user/breads/_post-formで使用
   def address_display
