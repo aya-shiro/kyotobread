@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     post 'user/guest_sign_in' => 'user/sessions#guest_sign_in'
   end
 
+  root to: 'user/homes#top'
 
   scope module: :user do
-    root to: 'homes#top'
     get 'homes/about'
     get 'feedbacks/thanks'
     resources:feedbacks, only: [:new, :create]

@@ -1,2 +1,5 @@
+console.log("test")
+console.log($('#comment-index'))
 $('#comment-index').html("<%= j(render 'user/breads/comment-index', bread: @bread) %>");
+
 $('#comment_comment').val('')    <!--コメント送信後にフォームを空にする-->

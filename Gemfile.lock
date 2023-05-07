@@ -295,7 +295,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   bootstrap4-kaminari-views
   byebug
-  capybara (>= 3.26)
+  capybara (>= 2.15)
   devise
   dotenv-rails
   factory_bot_rails
@@ -316,7 +316,6 @@ DEPENDENCIES
   rinku
   rspec-rails
   sass-rails (>= 6)
-  selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
