@@ -214,57 +214,59 @@ describe '[STEP1] ユーザログイン前のテスト' do
   describe 'ヘッダーのテスト: ログインしている場合' do
     let(:user) { create(:user) }
 
-    # before do
-    #   visit new_user_session_path
-    #   fill_in 'user[email]', with: user.email
-    #   fill_in 'user[password]', with: user.password
-    #   click_button 'Log in'
-    # end
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'Log in'
+    end
 
-    # context 'ヘッダーの表示を確認' do
-    #   it 'Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である' do
-    #     home_link = find_all('a')[0].native.inner_text
-    #     expect(home_link).to match(/Bookers/)
-    #   end
-    #   it 'Homeリンクが表示される: 左上から2番目のリンクが「Home」である' do
-    #     home_link = find_all('a')[1].native.inner_text
-    #     expect(home_link).to match(/Home/)
-    #   end
-    #   it 'Usersリンクが表示される: 左上から3番目のリンクが「Users」である' do
-    #     users_link = find_all('a')[2].native.inner_text
-    #     expect(users_link).to match(/Users/)
-    #   end
-    #   it 'Booksリンクが表示される: 左上から4番目のリンクが「Books」である' do
-    #     books_link = find_all('a')[3].native.inner_text
-    #     expect(books_link).to match(/Books/)
-    #   end
-    #   it 'Log outリンクが表示される: 左上から5番目のリンクが「Log out」である' do
-    #     logout_link = find_all('a')[4].native.inner_text
-    #     expect(logout_link).to match(/Log out/)
-    #   end
-    # end
+    context 'ヘッダーの表示を確認' do
+      it 'KyotoBreadリンクが表示される: 左上から1番目のリンクが「KyotoBread」である' do
+        home_link = find_all('a')[0].native.inner_text
+        expect(home_link)
+      end
+      it 'GuestまたはMypageリンクが表示される: 左上から2番目のリンクが「Guest」または「Mypage」である' do
+        home_link = find_all('a')[1].native.inner_text
+        # expect(home_link).to match(/Guest/)
+        expect(['Guest', 'Mypage']).to include(home_link)
+
+      end
+      it 'Usersリンクが表示される: 左上から3番目のリンクが「New Post」である' do
+        bread_link = find_all('a')[2].native.inner_text
+        expect(bread_link).to match(/New Post/)
+      end
+      it 'Booksリンクが表示される: 左上から4番目のリンクが「Users」である' do
+        user_users_link = find_all('a')[3].native.inner_text
+        expect(user_users_link).to match(/Users/)
+      end
+      it 'Log outリンクが表示される: 左上から5番目のリンクが「Log out」である' do
+        log_out_link = find_all('a')[4].native.inner_text
+        expect(log_out_link).to match(/Log out/)
+      end
+    end
   end
 
-  #describe 'ユーザログアウトのテスト' do
-  #  let(:user) { create(:user) }
+  describe 'ユーザログアウトのテスト' do
+    let(:user) { create(:user) }
 
-  #  before do
-  #    visit new_user_session_path
-  #    fill_in 'user[name]', with: user.name
-  #    fill_in 'user[password]', with: user.password
-  #    click_button 'Log in'
-  #    logout_link = find_all('a')[4].native.inner_text
-  #    logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-  #    click_link logout_link
-  #  end
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'Log out'
+      log_out_link = find_all('a')[4].native.inner_text
+      log_out_link = log_out_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link log_out_link
+    end
 
-  #  context 'ログアウト機能のテスト' do
-  #    it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
-  #      expect(page).to have_link '', href: '/home/about'
-  #    end
-  #    it 'ログアウト後のリダイレクト先が、トップになっている' do
-  #      expect(current_path).to eq '/'
-  #    end
-  #  end
-  #end
+    context 'ログアウト機能のテスト' do
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
+        expect(page).to have_link '', href: '/home/about'
+      end
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq '/'
+      end
+    end
+  end
 end

@@ -7,7 +7,7 @@ FactoryBot.define do
     password_confirmation { 'password' }
 
     after(:build) do |user|
-      user.profile_image.attach(io: File.open('spec/images/test_profile_image.jpeg'), filename: 'profile_image.jpeg', content_type: 'application/xlsx')
+      user.user_image.attach(io: File.open('spec/images/no-user-image.jpg'), filename: 'profile_image.jpeg', content_type: 'application/xlsx')
     end
   end
 end
