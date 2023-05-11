@@ -12,29 +12,27 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(current_path).to eq '/'
       end
       it 'ゲストログインリンクが表示される: 表示が「Guest Log in」である' do
-        log_in_link = find_all('a')[1].native.inner_text
-        expect(log_in_link).to match(/Guest Log in/)
+        expect(page).to have_link 'Guest Log in', href: user_guest_sign_in_path
       end
       it 'Aboutリンクが表示される: 表示が「About」である' do
-        about_link = find_all('a')[2].native.inner_text
-        expect(about_link).to match(/About/)
+        expect(page).to have_link 'About', href: homes_about_path
       end
       it 'Sign upリンクが表示される: 表示が「Sign up」である' do
-        sign_up_link = find_all('a')[3].native.inner_text
-        expect(sign_up_link).to match(/Sign up/)
+        # sign_up_link = find_all('a')[3].native.inner_text
+        # expect(sign_up_link).to match(/Sign up/)
+        expect(page).to have_link 'Sign up', href: new_user_registration_path
       end
-      it 'Sign upリンクの内容が正しい' do
-        sign_up_link = find_all('a')[3].native.inner_text
-        expect(page).to have_link sign_up_link, href: new_user_registration_path
-      end
+
       it 'Log inリンクが表示される: 表示が「Log in」である' do
-        log_in_link = find_all('a')[4].native.inner_text
-        expect(log_in_link).to match(/Log in/)
+        # log_in_link = find_all('a')[4].native.inner_text
+        # expect(log_in_link).to match(/Log in/)
+        expect(page).to have_link 'Log in', href: new_user_session_path
+
       end
-      it 'Log inリンクの内容が正しい' do
-        log_in_link = find_all('a')[4].native.inner_text
-        expect(page).to have_link log_in_link, href: new_user_session_path
-      end
+      # it 'Log inリンクの内容が正しい' do
+      #   log_in_link = find_all('a')[4].native.inner_text
+      #   expect(page).to have_link log_in_link, href: new_user_session_path
+      # end
     end
   end
 
@@ -193,7 +191,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
 
       it 'ログイン後のリダイレクト先が、ログインした状態のトップになっている' do
-        click_button 'Log in'
         expect(current_path).to eq '/'
       end
     end
@@ -222,25 +219,24 @@ describe '[STEP1] ユーザログイン前のテスト' do
     end
 
     context 'ヘッダーの表示を確認' do
-      it 'KyotoBreadリンクが表示される: 左上から1番目のリンクが「KyotoBread」である' do
+      it 'KyotoBreadリンクが表示される: リンクが「KyotoBread」である' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link)
       end
-      it 'GuestまたはMypageリンクが表示される: 左上から2番目のリンクが「Guest」または「Mypage」である' do
-        home_link = find_all('a')[1].native.inner_text
-        # expect(home_link).to match(/Guest/)
-        expect(['Guest', 'Mypage']).to include(home_link)
+      it 'GuestまたはMypageリンクが表示される: リンクが「Guest」または「Mypage」である' do
+
+        expect(page).to have_link 'Mypage', href: new_user_registration_path
 
       end
-      it 'Usersリンクが表示される: 左上から3番目のリンクが「New Post」である' do
+      it 'New Postリンクが表示される: リンクが「New Post」である' do
         bread_link = find_all('a')[2].native.inner_text
         expect(bread_link).to match(/New Post/)
       end
-      it 'Booksリンクが表示される: 左上から4番目のリンクが「Users」である' do
+      it 'Usersリンクが表示される: リンクが「Users」である' do
         user_users_link = find_all('a')[3].native.inner_text
         expect(user_users_link).to match(/Users/)
       end
-      it 'Log outリンクが表示される: 左上から5番目のリンクが「Log out」である' do
+      it 'Log outリンクが表示される: リンクが「Log out」である' do
         log_out_link = find_all('a')[4].native.inner_text
         expect(log_out_link).to match(/Log out/)
       end
@@ -254,15 +250,19 @@ describe '[STEP1] ユーザログイン前のテスト' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Log out'
-      log_out_link = find_all('a')[4].native.inner_text
-      log_out_link = log_out_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      click_link log_out_link
+      click_button 'Log in'
+      # log_out_link = find_all('a')[4].native.inner_text
+      # log_out_link = log_out_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link 'Log out'
+
     end
 
     context 'ログアウト機能のテスト' do
       it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
-        expect(page).to have_link '', href: '/home/about'
+        expect(page).to have_link '', href: '/homes/about'
+        # expect(current_path).to eq '/'
+        expect(page).to have_link 'Sign up', href: new_user_registration_path
+
       end
       it 'ログアウト後のリダイレクト先が、トップになっている' do
         expect(current_path).to eq '/'
