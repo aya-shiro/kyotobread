@@ -1,32 +1,33 @@
 <div class="main-theme container py-5 d-flex justify-content-center pt-5">
   <div class="col-md-6 mx-auto">
 
-  <h5>アカウント情報の編集</h5>
+  <h5 class="mb-4">アカウント情報の編集</h5>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%#= render "users/shared/error_messages", resource: resource %>
+    <%= render "user/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :新しいEmail %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field input-group mb-4">
+      <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+      <%= f.email_field :email, class: "form-control", placeholder: "新しいEmail", autofocus: true, autocomplete: "email", aria: {label: "Username"}, input_html: {aria_describedby: "basic-addon1"} %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div class="field mt-3">
-      <%= f.label :password %> <i>(変更しない場合は空白のままにしてください)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+    <em><%= @minimum_password_length %> characters minimum</em>
+
+    <div class="field input-group mb-3">
+      <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+      <%= f.password_field :password, class: "form-control", placeholder: "新しいパスワード(変更しない場合は空白のままにしてください)", autocomplete: "new-password", aria: {label: "Password"}, input_html: {autocomplete: "new-password", aria_describedby: "basic-addon1"} %>
       <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
       <% end %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="field input-group mb-3">
+      <span class="input-group-text" id="basic-addon2"><i class="fas fa-key"></i></span>
+      <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認用パスワード", autocomplete: "new-password", aria: {label: "Confirm Password"}, input_html: {aria_describedby: "basic-addon2"} %>
     </div>
 
     <div class="actions">
