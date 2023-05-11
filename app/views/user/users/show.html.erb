@@ -12,6 +12,7 @@
       <%= @user.user_info %><br>
       <% if @user == current_user && @user.name != "ゲスト" %>
         <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"mt-3 btn btn-sm btn-outline-secondary" %><br>
+        <%= link_to "アカウント情報の編集", edit_user_registration_path, class: "mt-3 btn btn-sm btn-outline-secondary" %><br>
       <% end %>
       <% if @user == current_user %>
         <%= link_to favorites_index_path, class:"mt-3 btn btn-sm btn-outline-danger" do  %>
@@ -22,7 +23,7 @@
   </div>
 
   <div class="row ml-1">
-    <h5 class="mt-5 mb-3"><%= @user.breads.count %> posts</h5>
+    <h5 class="mt-1 mb-3"><%= @user.breads.count %> posts</h5>
   </div>
   <div class="bread_list">
     <ul class="row ml-1">
