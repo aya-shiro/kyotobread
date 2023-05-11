@@ -10,10 +10,12 @@
         <%= @user.email %><br>
       <% end %>
       <%= @user.user_info %><br>
-      <% if @user == current_user && @user.name != "ゲスト" %>
-        <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"mt-3 btn btn-sm btn-outline-secondary" %><br>
-        <%= link_to "アカウント情報の編集", edit_user_registration_path, class: "mt-3 btn btn-sm btn-outline-secondary" %><br>
-      <% end %>
+      <div class="mt-3">
+        <% if @user == current_user && @user.name != "ゲスト" %>
+          <%= link_to "プロフィールの編集", users_mypage_edit_path, class:"text-secondary" %> |
+          <%= link_to "アカウント情報の編集", edit_user_registration_path, class:"text-secondary" %><br>
+        <% end %>
+      </div>
       <% if @user == current_user %>
         <%= link_to favorites_index_path, class:"mt-3 btn btn-sm btn-outline-danger" do  %>
           <i class="fas fa-heart"></i>
