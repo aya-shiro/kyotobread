@@ -13,7 +13,11 @@
   <body>
     <header style="background-color: white;", class="fixed-top mb-5">
       <div class="container">
+        <div>
+          <a class="navbar-brand ml-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "230x40" %></a>  <!--KyotoBreadロゴ-->
+        </div>
 
+        <!--<nav class="navbar navbar-light" style="display: inline;">-->
         <nav class="navbar navbar-light" style="display: inline;">
 
           <% unless current_admin %>
@@ -127,11 +131,11 @@
               <%= f.submit style:"display: none;" %>
             <% end %>
           <% end %>
-        </nav>
+        <!--</nav>-->
 
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <!--<nav class="navbar navbar-expand-lg navbar-light">-->
+        <!--<nav class="navbar navbar-light">-->
 
-          <a class="navbar-brand" href="/"><%= image_tag 'logo_image300.jpg', size: "230x40" %></a>  <!--KyotoBreadロゴ-->
 
           <button class="mr-3 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
