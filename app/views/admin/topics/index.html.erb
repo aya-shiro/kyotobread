@@ -1,59 +1,57 @@
 <div class="main-theme container py-5">
+  <div class="col-md-12 mx-auto">
 
-  <% if flash[:notice] %>
-    <div class="alert alert-secondary" role="alert">
-      <%= flash[:notice] %>
+    <% if flash[:notice] %>
+      <div class="alert alert-secondary" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <h5>特集一覧</h5>
+        <p><%= link_to "特集新規登録", new_admin_topic_path, class:"btn btn-sm btn-secondary mt-3" %></p>
+      </div>
     </div>
-  <% end %>
 
-  <div class="row">
-    <div class="col-md-12 mx-auto">
-      <h5>特集一覧</h5>
-      <p><%= link_to "特集新規登録", new_admin_topic_path, class:"btn btn-sm btn-secondary mt-3" %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12 mx-auto">
-      <table class="table">
-        <tr>
-          <th>ID</th>
-          <th>タイトル</th>
-          <th>書き出し</th>
-          <th>作成日</th>
-          <th>公開状況</th>
-        </tr>
-
-        <% @topics.each do |topic| %>
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <table class="table">
           <tr>
-            <td><%= topic.id %></td>
-            <td>
-              <%= link_to admin_topic_path(topic.id) do %>
-                <%= topic.title %>
-              <% end %>
-            </td>
-            <td class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;"><%= topic.body %></td>
-            <td><%= topic.created_at.strftime('%Y/%m/%d') %></td>
-            <td>
-              <% if topic.is_published == false %>
-                <div class="text-secondary">
-                 非公開
-                </div>
-              <% else %>
-                <div class="text-success">
-                 公開中
-                </div>
-              <% end %>
-            </td>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>書き出し</th>
+            <th>作成日</th>
+            <th>公開状況</th>
           </tr>
-        <% end %>
-      </table>
 
-    <div class="d-flex justify-content-center">
-      <%= paginate @topics, theme: 'twitter-bootstrap-4' %>
+          <% @topics.each do |topic| %>
+            <tr>
+              <td><%= topic.id %></td>
+              <td>
+                <%= link_to admin_topic_path(topic.id) do %>
+                  <%= topic.title %>
+                <% end %>
+              </td>
+              <td class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;"><%= topic.body %></td>
+              <td><%= topic.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                <% if topic.is_published == false %>
+                  <div class="text-secondary">非公開</div>
+                <% else %>
+                  <div class="text-success">公開中</div>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
+        <div class="d-flex justify-content-center">
+          <%= paginate @topics, theme: 'twitter-bootstrap-4' %>
+        </div>
+
+      </div>
     </div>
 
-    </div>
   </div>
-
 </div>

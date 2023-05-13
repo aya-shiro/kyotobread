@@ -2,12 +2,12 @@
 
  <div class="row">
     <div class="col-md-5">
-      <%= image_tag @bread.get_bread_image(400, 400) %>
+      <%= image_tag @bread.get_bread_image(400, 400), class:"resize-image" %>
     </div>
 
     <div class="col-md-7">
       <h5><%= @bread.bread_name %></h5>
-      <p style="height: 160px;"><%=safe_join(@bread.introduce.split("\n"),tag(:br))%></p>
+      <p style="height: 160px;"><%=safe_join(@bread.introduce.split("\n"),tag(:br))%></p>  <!--改行表示-->
 
       <dl class="row">
         <dd class="col-sm-3">ジャンル：</dd>

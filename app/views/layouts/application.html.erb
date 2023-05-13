@@ -14,18 +14,17 @@
     <header style="background-color: white;", class="fixed-top">
       <div class="container">
         <nav class="navbar navbar-light" style="display: inline;">
-          <% unless current_admin %>
-            <button class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-icon"><i class="fas fa-search"></i></span>
-            </button>
-            <div class="row offcanvas navbar-offcanvas" id="navbar-search" style="display:none;">
-              <div class="navbar-nav mr-auto">
+          <button class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-icon"><i class="fas fa-search"></i></span>
+          </button>
 
+          <div class="row offcanvas navbar-offcanvas" id="navbar-search" style="display:none;">
+            <div class="navbar-nav mr-auto">
+              <% unless current_admin %>
                 <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
                   <%= f.text_field :keyword, class: "form-control my-2", placeholder: "パンを検索" %>
                   <%= f.submit style:"display: none;" %>
                 <% end %>
-
                 <div class="py-3 pl-3" style="background-color: #fff7e6;" >
                   <h5>ドリンクから探す</h5>
                   <ul class="ml-2" style="list-style: none;">
@@ -49,7 +48,7 @@
                   </ul>
                 </div>
 
-              <!--user-SHOP NAV-->
+                <!--user-SHOP NAV-->
                 <div class="p-3 mt-3" style="background-color: #fff7e6;">
                   <h5>エリアから探す</h5>
                     <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
@@ -57,7 +56,6 @@
                       <%= f.submit style:"display: none;" %>
                     <% end %>
                 </div>
-
                 <div class="p-3 mt-3" style="background-color: #fff7e6;">
                   <h5>
                     <i class="fas fa-store"></i> ショップ
@@ -103,15 +101,18 @@
                     </div>
                   <% end %>
                 </div>
+
               <% else %>    <!--admin側のパン検索窓-->
                 <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索" %>
+                  <%= f.text_field :keyword, class: "form-control ml-2", placeholder: "パンを検索" %>
                   <%= f.submit style:"display: none;" %>
                 <% end %>
               <% end %>
             </div>
           </div>
         </nav>
+
+
 
         <a class="navbar-brand mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>  <!--KyotoBreadロゴ-->
 

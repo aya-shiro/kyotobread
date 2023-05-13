@@ -8,8 +8,8 @@
 
   <div class="col-md-8 mx-auto">
     <h4 class="mb-3"><%= @topic.title %></h4>
-    <%=safe_join(@topic.body.split("\n"),tag(:br))%>  <!--改行-->
-    <%= image_tag @topic.get_bread_image(400, 300), class:"mt-4 mx-auto d-block" %>
+    <%=safe_join(@topic.body.split("\n"),tag(:br))%>  <!--改行表示-->
+    <%= image_tag @topic.get_bread_image(400, 300), class:"mt-4 mx-auto d-block resize-image" %>
     <div class="mt-5">
       <span><%= link_to "特集一覧ページ", admin_topics_path, class:"btn btn-sm btn-warning" %></span>
       <span><%= link_to "編集", edit_admin_topic_path(@topic.id), class:"ml-5 btn btn-sm btn-outline-secondary" %></span>
@@ -36,7 +36,7 @@
           <%= f.radio_button :is_published, :true, class:"ml-4" %>
            公開中
         <% end %>
-        <%= f.submit '公開状況を変更する', "data-confirm" => "公開状況を変更します", class: 'ml-3 btn btn-danger btn-sm' %>
+        <%= f.submit '公開状況を変更する', "data-confirm" => "公開状況を変更します", class: 'mt-1 ml-3 btn btn-danger btn-sm' %>
       <% end %>
     </div>
 

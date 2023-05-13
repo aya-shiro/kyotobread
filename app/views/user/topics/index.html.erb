@@ -9,14 +9,14 @@
             <%= link_to topic_path(topic.id) do %>
               <h4 class="text-dark"><%= topic.title %></h4>
               <p class="text-dark"><small><%= topic.created_at.strftime('%Y/%m/%d') %></small></p>
-              <p class="text-dark" style="overflow: hidden; text-overflow: ellipsis; max-width: 300px; max-height: 100px">
+              <p class="text-dark bread_list" style="max-height: 100px">
                 <%= truncate(topic.body, length: 50) %>
               </p>
               <p>続きを読む ＞</p>
             <% end %>
           </div>
           <div class="col-md-6 mt-1">
-            <%= image_tag topic.get_bread_image(300, 200), class:"ml-3" %>
+            <%= image_tag topic.get_bread_image(300, 200), class:"ml-3 resize-image mx-auto" %>
           </div>
         </div>
       <% end %>
