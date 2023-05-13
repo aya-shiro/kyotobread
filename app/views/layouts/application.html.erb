@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header style="background-color: white;", class="fixed-top mb-5">
+    <header style="background-color: white;", class="fixed-top">
       <div class="container">
         <nav class="navbar navbar-light" style="display: inline;">
           <% unless current_admin %>
@@ -36,7 +36,7 @@
                         <% end %>
                       </li>
                     <% end %>
-                    <p>------------------------</p>
+                    <p>--------------------------</p>
                     <div class="mt-2">
                       <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
                         <li>
@@ -190,7 +190,7 @@
                 </li>
                 <li>
                   <%= link_to homes_about_path, class:"nav-link text-dark" do %>
-                    <i class="fas fa-bread-slice"></i> About
+                    <i class="fas fa-star"></i> About
                   <% end %>
                 </li>
                 <li>
