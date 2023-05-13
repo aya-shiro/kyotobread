@@ -20,10 +20,10 @@
               <ul class="row ml-4" style="">
                 <% if @breads.exists? %>
                   <% @breads.each do |bread| %>
-                    <li class="mr-1" style="max-width: 180px;">
+                    <li class="mr-1" style="max-width: 150px;">
                       <div>
                         <%= link_to bread_path(bread.id) do %>
-                          <%= image_tag bread.get_bread_image(180, 180) %><br>
+                          <%= image_tag bread.get_bread_image(150, 150) %><br>
                         <% end %>
                         <%= bread.bread_name %>
                       </div>
@@ -45,10 +45,10 @@
               <% if @sweet_breads.exists? %>
                 <% @sweet_breads.each do |sweet_bread| %>
                   <!--<li class="mr-1">-->
-                  <li class="mr-1" style="max-width: 180px;">
+                  <li class="mr-1" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(sweet_bread.id) do %>
-                        <%= image_tag sweet_bread.get_bread_image(180, 180) %><br>
+                        <%= image_tag sweet_bread.get_bread_image(150, 150) %><br>
                       <% end %>
                       <%= sweet_bread.bread_name %>
                     </div>
@@ -68,10 +68,10 @@
               <% if @salty_breads.exists? %>
                 <% @salty_breads.each do |salty_bread| %>
                   <!--<li class="mr-1">-->
-                  <li class="mr-1" style="max-width: 180px;">
+                  <li class="mr-1" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(salty_bread.id) do %>
-                        <%= image_tag salty_bread.get_bread_image(180, 180) %><br>
+                        <%= image_tag salty_bread.get_bread_image(150, 150) %><br>
                       <% end %>
                       <%= salty_bread.bread_name %>
                     </div>
@@ -92,10 +92,10 @@
               <% if @favorite_breads.size != 0 %>
                 <% @favorite_breads.each do |favorite_bread| %>
                   <!--<li class="mr-1">-->
-                  <li class="mr-1" style="max-width: 180px;">
+                  <li class="mr-1" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(favorite_bread.id) do %>
-                        <%= image_tag favorite_bread.get_bread_image(180, 180) %><br>
+                        <%= image_tag favorite_bread.get_bread_image(150, 150) %><br>
                       <% end %>
                       <%= favorite_bread.bread_name %>
                     </div>

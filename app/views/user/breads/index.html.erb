@@ -7,12 +7,12 @@
 
       <div class="col-9">
         <h5 class="mb-4 ml-2"><%= @drink.drink_name %>におすすめのパン</h5>
-        <ul class="row ml-3" style="list-style: none;">
+        <ul class="row ml-3 bread_list" style="list-style: none;">
           <% @breads.each do |bread| %>
-            <li class="mr-1">
+            <li class="mr-1" style="max-width: 150px;">
               <div>
                 <%= link_to bread_path(bread.id), class:"text-dark" do %>
-                  <%= image_tag bread.get_bread_image(200, 200) %><br>
+                  <%= image_tag bread.get_bread_image(150, 150) %><br>
                   <%= bread.bread_name %>
                 <% end %>
               </div>
