@@ -12,25 +12,126 @@
 
   <body>
     <header style="background-color: white;", class="fixed-top mb-5">
+      <div class="container">
 
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <nav class="navbar navbar-light" style="display: inline;">
 
-          <a class="navbar-brand" href="/"><%= image_tag 'logo_image300.jpg', size: "230x40" %></a>
+          <% unless current_admin %>
+            <!--user-BREAD NAV-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-bread" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-icon"><i class="fas fa-bread-slice"></i></span>
+            </button>
+            <div class="row collapse navbar-collapse" id="navbar-bread">
+              <div class="navbar-nav mr-auto">
+                <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
+                  <%= f.text_field :keyword, class: "form-control my-2", placeholder: "パンを検索" %>
+                  <%= f.submit style:"display: none;" %>
+                <% end %>
 
-          <div class="ml-2 mb-1">
-            <% unless current_admin %>    <!--adminでログインしていた場合は検索窓を非表示にする-->
-              <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
-                <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索" %>
-                <%= f.submit style:"display: none;" %>
-              <% end %>
-            <% else %>
-              <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
-                <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索  " %>
-                <%= f.submit style:"display: none;" %>
-              <% end %>
+                <div class="py-3 pl-3" style="background-color: #fff7e6;" >
+                  <h5>ドリンクから探す</h5>
+                  <ul class="ml-2" style="list-style: none;">
+                    <% @default_drinks.each do |default_drink| %>
+                      <li class="px-1 my-1" >
+                        <%= link_to breads_path(drink_id: default_drink.id), method: :get do %>
+                          <div class="my-2" style="color: black;"># <%= default_drink.drink_name %></div>
+                        <% end %>
+                      </li>
+                    <% end %>
+                    <p>------------------------</p>
+                    <div class="mt-2">
+                      <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
+                        <li>
+                          <%= f.label :その他 %>
+                          <%= f.submit "探す", class:"p-1 mb-2 ml-3 btn btn-sm btn-outline-secondary" %>
+                        </li>
+                        # <%= f.select :drink_id, options_from_collection_for_select(Drink.not_default.order(id: :desc), :id, :drink_name) %>
+                      <% end %>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!--user-SHOP NAV-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-shop" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-icon"><i class="fas fa-map"></i></span>
+            </button>
+            <div class="row collapse navbar-collapse" id="navbar-shop">
+              <div class="navbar-nav mr-auto">
+                <div class="p-3 mt-3" style="background-color: #fff7e6;">
+                  <h5>エリアから探す</h5>
+                    <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
+                      <%= f.text_field :keyword, class:"form-control", placeholder: "エリア/店名を検索" %>
+                      <%= f.submit style:"display: none;" %>
+                    <% end %>
+                </div>
+
+                <div class="p-3 mt-3" style="background-color: #fff7e6;">
+                  <h5>
+                    <i class="fas fa-store"></i> ショップ
+                  </h5>
+                  <% @shops.each_with_index do |shop, index| %>
+                    <% if index < 3 %>
+                      <ul class="ml-4">
+                        <%= link_to shop_path(shop.id) do %>
+                          <li class="text-dark"><%= shop.shop_name %></li>
+                        <% end %>
+                      </ul>
+                    <% end %>
+                  <% end %>
+                  <% if @shops.count > 3 %>
+                    <div class="text-right">
+                      <%= link_to "もっとみる>", shops_path, class:"text-secondary" %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <h5 class="p-3 mt-3 text-center" style="background-color: #fff7e6;">
+                  <%= link_to "// ONLINE SHOP //", shops_onlines_path, class:"text-dark" %>
+                </h5>
+              </div>
+            </div>
+
+            <!--user-TOPIC NAV-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-topic" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-icon"><i class="fas fa-folder-open"></i></span>
+            </button>
+            <div class="row collapse navbar-collapse" id="navbar-topic">
+              <div class="navbar-nav mr-auto">
+                <div class="p-3 my-3" style="background-color: #fff7e6;">
+                <h5>特集</h5>
+                  <% @topics.each_with_index do |topic, index| %>
+                    <% if topic.is_published == true %>
+                      <% if index < 3 %>
+                        <ul class="ml-4">
+                          <%= link_to topic_path(topic.id) do %>
+                            <li class="text-dark"><%= topic.title %></li>
+                            <li style="color: gray; font-size: 12px; list-style: none;">(<%= topic.created_at.strftime('%Y/%m/%d') %>)</li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <% if @topics.count > 3 %>
+                    <div class="text-right">
+                      <%= link_to "もっとみる>", topics_path, class:"text-secondary" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% else %>    <!--admin側のパン検索窓-->
+            <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
+              <%= f.text_field :keyword, class: "form-control", placeholder: "パンを検索" %>
+              <%= f.submit style:"display: none;" %>
             <% end %>
-          </div>
+          <% end %>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+          <a class="navbar-brand" href="/"><%= image_tag 'logo_image300.jpg', size: "230x40" %></a>  <!--KyotoBreadロゴ-->
 
           <button class="mr-3 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

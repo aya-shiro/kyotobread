@@ -1,91 +1,11 @@
 <!--homes/top, user/breads/index&earch のサイドバー-->
 <div class="col-md-3">
 
-<div class="position-fixed" style="width: 270px; height: 70%; overflow-y: scroll;">
-  <div class="py-3 pl-3" style="background-color: #fff7e6;" >
-    <h5>
-      <i class="fas fa-coffee"></i> ドリンクから探す
-    </h5>
-    <ul class="ml-2" style="list-style: none;">
-      <% @default_drinks.each do |default_drink| %>
-        <li class="px-1 my-1" >
-          <%= link_to breads_path(drink_id: default_drink.id), method: :get do %>
-            <div class="my-2" style="color: black;"># <%= default_drink.drink_name %></div>
-          <% end %>
-        </li>
-      <% end %>
+<!--<div class="position-fixed" style="width: 270px; height: 70%; overflow-y: scroll;">-->
+  <!--<div style="width: 270px;">-->
 
-      <p>--------------------------------</p>
 
-      <div class="mt-2">
-        <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
-          <li>
-            <%= f.label :その他 %>
-            <%= f.submit "探す", class:"p-1 mb-2 ml-3 btn btn-sm btn-outline-secondary" %>
-          </li>
-          # <%= f.select :drink_id, options_from_collection_for_select(Drink.not_default.order(id: :desc), :id, :drink_name) %>
-        <% end %>
-      </div>
-    </ul>
-  </div>
 
-  <div class="p-3 mt-3" style="background-color: #fff7e6;">
-    <h5>
-      <i class="fas fa-map"></i> エリアから探す
-    </h5>
-      <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
-        <%= f.text_field :keyword, class:"form-control", placeholder: "エリア/店名を検索" %>
-        <%= f.submit style:"display: none;" %>
-      <% end %>
-  </div>
 
-  <div class="p-3 mt-3" style="background-color: #fff7e6;">
-    <h5>
-      <i class="fas fa-store"></i> ショップ
-    </h5>
-    <% @shops.each_with_index do |shop, index| %>
-      <% if index < 3 %>
-        <ul class="ml-4">
-          <%= link_to shop_path(shop.id) do %>
-            <li class="text-dark"><%= shop.shop_name %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    <% end %>
-    <% if @shops.count > 3 %>
-      <div class="text-right">
-        <%= link_to "もっとみる>", shops_path, class:"text-secondary" %>
-      </div>
-    <% end %>
-  </div>
-
-  <h5 class="p-3 mt-3 text-center" style="background-color: #fff7e6;">
-    <%= link_to "// ONLINE SHOP //", shops_onlines_path, class:"text-dark" %>
-  </h5>
-
-  <div class="p-3 my-3" style="background-color: #fff7e6;">
-    <h5>
-      <i class="fas fa-folder-open"></i> 特集
-    </h5>
-      <% @topics.each_with_index do |topic, index| %>
-        <% if topic.is_published == true %>
-          <% if index < 3 %>
-            <ul class="ml-4">
-              <%= link_to topic_path(topic.id) do %>
-                <li class="text-dark"><%= topic.title %></li>
-                <li style="color: gray; font-size: 12px; list-style: none;">(<%= topic.created_at.strftime('%Y/%m/%d') %>)</li>
-              <% end %>
-            </ul>
-          <% end %>
-        <% end %>
-      <% end %>
-      <% if @topics.count > 3 %>
-        <div class="text-right">
-          <%= link_to "もっとみる>", topics_path, class:"text-secondary" %>
-        </div>
-      <% end %>
-
-  </div>
-
-</div>
+  <!--</div>-->
 </div>
