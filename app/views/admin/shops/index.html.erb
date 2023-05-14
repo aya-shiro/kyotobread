@@ -19,9 +19,7 @@
         <th>店名</th>
         <!--<th>郵便番号</th>-->
         <th>住所</th>
-        <!--<th>最寄り駅</th>-->
-        <th>登録日</th>
-        <!--<th>online</td>-->
+        <th class="admin-shop-created_at">登録日</th>
        </tr>
 
       <% @shops.each do |shop| %>
@@ -33,7 +31,7 @@
             <% end %>
           </td>
           <td><%= shop.address %></td>
-          <td><%= shop.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="admin-shop-created_at"><%= shop.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
       <% end %>
     </table>

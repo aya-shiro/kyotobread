@@ -6,9 +6,9 @@
     <table class="table mt-4">
       <tr>
         <th>ID</th>
-        <th>ユーザーネーム</th>
-        <th>メールアドレス</th>
-        <th>投稿</th>
+        <th>ユーザー</th>
+        <th class="admin-user_email">Email</th>
+        <th>投稿数</th>
         <th>ステータス</th>
       </tr>
 
@@ -20,8 +20,8 @@
             <%= user.name %>
           <% end %>
         </td>
-        <td><%= user.email %></td>
-        <td><%= user.breads.count %> posts</td>
+        <td class="admin-user_email"><%= user.email %></td>
+        <td><%= user.breads.count %></td>
         <td>
           <% if user.is_delete == false %>
             <div class="text-success">有効</div>

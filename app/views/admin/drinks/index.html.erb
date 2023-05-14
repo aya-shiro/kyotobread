@@ -6,9 +6,7 @@
     </div>
   </div>
 
-  <%#= flash[:notice] %>
-
-  <div class="row ml-1">
+  <div class="row">
     <div class="col-md-3">
       <p>デフォルトドリンク</p>
       <div class="p-3 mb-3" style="background-color: white;">
@@ -22,9 +20,11 @@
     <div class="col-md-5 ml-3">
       <span>Othersの選択肢を増やす</span>
 
+      <%= render 'layouts/errors', obj: @drink %>
+
       <%= form_with model: @drink, url: admin_drinks_path, method: :post, class:"mt-2" do |f| %>
         <%= f.text_field :drink_name, class:"mb-4" %>
-        <%= f.submit "登録する", class:"btn btn-sm btn-secondary" %>
+        <%= f.submit "登録する", "data-confirm" => "新しいドリンクを登録しますか？増やした項目は削除できません(名称変更は可能)", class:"btn btn-sm btn-danger" %>
       <% end %>
 
         <% @drinks.not_default.each do |drink| %>    <!--上で登録したドリンクのみ-->

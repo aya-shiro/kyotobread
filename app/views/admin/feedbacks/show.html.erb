@@ -2,9 +2,9 @@
 
   <div class="row mb-3">
     <div class="col-md-7">
-      <p>No.<%= @feedback.id %></p>
+      <p> フィードバックNo.<%= @feedback.id %></p>
       <p><%= @feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></p>
-      <h4 class="mr-5"><%= @feedback.user.name %></h4>
+      <h5 class="mr-5"><%= @feedback.user.name %></h5>
       <p><%= @feedback.opinion %></p>
     </div>
   </div>

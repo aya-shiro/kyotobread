@@ -2,11 +2,11 @@ class Drink < ApplicationRecord
   has_many :breads
   has_one_attached :drink_image
 
-  validates :drink_name, presence: true
-
-
   scope :default, -> { where(default_select: true) }    # あらかじめ設定したデフォルトドリンク
   scope :not_default, -> { where(default_select: false) }    # admin/drinksで登録できるドリンク
+
+  validates :drink_name, presence: true
+
 
   def get_drink_image(width, height)
     unless drink_image.attached?

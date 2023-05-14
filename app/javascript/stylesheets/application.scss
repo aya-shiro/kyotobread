@@ -58,3 +58,13 @@
   width: 100%;
   height: auto;
 }
+
+// スマートフォンサイズ（425px）以下の際に適用される設定
+@media screen and (max-width:425px) {
+  .admin-user_email {
+    display: none;
+  }
+  .admin-shop-created_at {
+    display: none;
+  }
+}

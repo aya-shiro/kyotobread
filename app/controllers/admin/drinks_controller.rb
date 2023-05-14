@@ -9,6 +9,9 @@ class Admin::DrinksController < ApplicationController
     if @drink.save
       flash[:notice] = "追加登録が完了しました"
       redirect_to admin_drinks_path
+    else
+      @drinks = Drink.all
+      render :index
     end
   end
 
@@ -33,7 +36,7 @@ class Admin::DrinksController < ApplicationController
 
   private
   def drink_params
-    params.require(:drink).permit(:drink_name, :drink_image)
+    params.require(:drink).permit(:drink_name)
   end
 
 end

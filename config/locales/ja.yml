@@ -19,7 +19,7 @@ ja:
         title: タイトル
         body: 本文
       drink:
-        drink_name: ドリンク
+        drink_name: ドリンク名
       comment:
         comment: コメント
   views:
