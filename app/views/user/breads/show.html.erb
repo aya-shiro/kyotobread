@@ -8,15 +8,10 @@
 
   <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
     <div class="row mb-3">
-
-      <div class="col-1">
+      <div class="col-md-9">
         <%= link_to user_path(@user.id) do %>
           <%= image_tag @user.get_user_image(80, 80), class:"rounded-circle" %>
-        <% end %>
-      </div>
-      <div class="col-4">
-        <%= link_to user_path(@user.id) do %>
-          <p><%= @user.name %></p>
+          <span class="text-dark ml-2"><%= @user.name %></span>
         <% end %>
       </div>
     </div>
@@ -24,7 +19,7 @@
 
   <div class="row">
     <div class="col-md-5">
-      <%= image_tag @bread.get_bread_image(400, 400), class:"resize-image" %>
+      <%= image_tag @bread.get_bread_image(400, 400), class:"mb-3 resize-image" %>
     </div>
 
     <div class="col-md-7">
@@ -32,8 +27,7 @@
       <p style="height: 160px;"><%= @bread.introduce %></p>
 
       <dl class="row">
-        <dd class="col-sm-3">ジャンル：</dd>
-        <dd class="col-sm-9">
+        <dd class="col-sm-7">ジャンル：
           <% if @bread.taste %>    <!--trueは甘、falseは塩-->
             甘い系
           <% else %>
@@ -41,26 +35,23 @@
           <% end %>
         </dd>
 
-        <dd class="col-sm-3">パンのお供：</dd>
-        <dd class="col-sm-9">
-          <p># <%= @bread.drink.drink_name %></p>
+        <dd class="col-sm-7">パンのお供：
+          # <%= @bread.drink.drink_name %>
         </dd>
 
-        <dd class="col-sm-3">購入店：</dd>
-        <dd class="col-sm-9">
+        <dd class="col-sm-7">購入店：
           <% if @bread.shop %>
-            <%= link_to shop_path(@bread.shop) do %>
+            <%= link_to shop_path(@bread.shop) do %><br>
               <span class="text-dark">〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
               <span class="text-dark"><%= @bread.shop.shop_name %></span>
             <% end %>
           <% end %>
         </dd>
 
-        <dd class="col-sm-3 text-truncate">投稿日：</dd>
-        <dd class="col-sm-9">
+        <dd class="col-sm-9">投稿日：
           <%= @bread.created_at.strftime("%Y/%m/%d") %>
           <% if @bread.updated_at - @bread.created_at > 5.minutes %>
-            <p class="py-2 text-secondary"><small>(最終更新 <%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</small></p>    <!--東京時間のhour/minutesまで表示-->
+            <span class="py-2 text-secondary"><small>(最終更新 <%= @bread.updated_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>)</small></span>    <!--東京時間のhour/minutesまで表示-->
           <% end %>
         </dd>
       </dl>
