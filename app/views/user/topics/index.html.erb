@@ -16,7 +16,9 @@
             <% end %>
           </div>
           <div class="col-md-6 mt-1">
-            <%= image_tag topic.get_bread_image(300, 200), class:"ml-3 resize-image mx-auto" %>
+            <%= link_to topic_path(topic.id) do %>
+              <%= image_tag topic.get_bread_image(300, 200), class:"ml-3 resize-image mx-auto" %>
+            <% end %>
           </div>
         </div>
       <% end %>

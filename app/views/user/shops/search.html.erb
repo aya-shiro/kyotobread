@@ -1,43 +1,41 @@
 <!--ショップの検索結果を表示する-->
-<div class="container pt-5">
+<div class="main-theme container pt-5">
   <div class="mx-auto">
     <div class="row">
 
-    <%= render 'layouts/side', bread: @bread, shops: @shops, topics: @topics, defaults: @defaults %>
+      <div class="col-md-9">
+        <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_shops.count %>件</h5>
 
-    <div class="col-9">
-      <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_shops.count %>件</h5>
-
-      <% if @keyword.present? %>
-        <table class="table">
-          <tr>
-            <th>店名</th>
-            <th>住所</th>
-            <td></td>
-          </tr>
-          <% @search_shops.each do |shop| %>
+        <% if @keyword.present? %>
+          <table class="table">
             <tr>
-              <td>
-                <%= link_to shop_path(shop.id), class:"text-dark" do %>
-                  <%= shop.shop_name %><br>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to shop_path(shop.id), class:"text-dark" do %>
-                  〒<%= shop.postcode %><br>
-                  <%= shop.address %>
-                <% end %>
-              </td>
-              <td><%= shop.breads.count %>posts</td>
+              <th>店名</th>
+              <th>住所</th>
+              <td></td>
             </tr>
-          <% end %>
-      </table>
+            <% @search_shops.each do |shop| %>
+              <tr>
+                <td>
+                  <%= link_to shop_path(shop.id), class:"text-dark" do %>
+                    <%= shop.shop_name %><br>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to shop_path(shop.id), class:"text-dark" do %>
+                    〒<%= shop.postcode %><br>
+                    <%= shop.address %>
+                  <% end %>
+                </td>
+                <td><%= shop.breads.count %> posts</td>
+              </tr>
+            <% end %>
+        </table>
 
-      <% end %>
+        <% end %>
 
-    <div class="d-flex justify-content-center">
-      <%= paginate @search_shops, theme: 'twitter-bootstrap-4' %>
-    </div>
+      <div class="d-flex justify-content-center">
+        <%= paginate @search_shops, theme: 'twitter-bootstrap-4' %>
+      </div>
 
     </div>
   </div>

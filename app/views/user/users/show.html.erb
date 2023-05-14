@@ -28,11 +28,11 @@
     <h5 class="mt-1 mb-3"><%= @user.breads.count %> posts</h5>
   </div>
   <div class="bread_list">
-    <ul class="row ml-1">
+    <ul class="row mx-auto">
       <% @breads.each do |bread| %>
-        <li class="mr-1" style="max-width: 220px;">
+        <li class="mr-1" style="max-width: 150px;">
           <%= link_to bread_path(bread.id) do %>
-            <div><%= image_tag bread.get_bread_image(220, 220) %></div>
+            <div><%= image_tag bread.get_bread_image(150, 150) %></div>
             <p class="text-dark"><%= bread.bread_name %></p>
           <% end %>
         </li>

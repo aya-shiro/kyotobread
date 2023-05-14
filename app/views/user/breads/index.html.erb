@@ -1,10 +1,10 @@
 <!--ドリンク別のおすすめパン、homes/topより遷移-->
-<div class="container pt-5">
+<div class="main-theme container pt-5">
   <div class="mx-auto">
-    <div class="row">
+    <h5 class="mb-4 ml-2"><%= @drink.drink_name %>におすすめのパン</h5>
 
-      <div class="col-9">
-        <h5 class="mb-4 ml-2"><%= @drink.drink_name %>におすすめのパン</h5>
+    <div class="row">
+      <div class="col-md-9">
         <ul class="row ml-3 bread_list" style="list-style: none;">
           <% @breads.each do |bread| %>
             <li class="mr-1" style="max-width: 150px;">
