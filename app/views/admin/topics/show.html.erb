@@ -25,18 +25,20 @@
         <% end %>
       </p>
       <%= form_with model: @topic, url:admin_topic_path, method: :patch do |f| %>
-        <% if @topic.is_published == false %>
-          <%= f.radio_button :is_published, :false, checked: true, class:"ml-4" %>
-           非公開
-          <%= f.radio_button :is_published, :true, class:'ml-4' %>
-           公開中
-        <% else %>
-          <%= f.radio_button :is_published, :false, checked: true, class:"ml-4" %>
-           非公開
-          <%= f.radio_button :is_published, :true, class:"ml-4" %>
-           公開中
-        <% end %>
-        <%= f.submit '公開状況を変更する', "data-confirm" => "公開状況を変更します", class: 'mt-1 ml-3 btn btn-danger btn-sm' %>
+        <div>
+          <% if @topic.is_published == false %>
+            <%= f.radio_button :is_published, :false, checked: true %>
+             非公開
+            <%= f.radio_button :is_published, :true, class:'ml-4' %>
+             公開中
+          <% else %>
+            <%= f.radio_button :is_published, :false, checked: true %>
+             非公開
+            <%= f.radio_button :is_published, :true, class:"ml-4" %>
+             公開中
+          <% end %>
+          </div>
+        <%= f.submit '公開状況を変更する', "data-confirm" => "公開状況を変更します", class: 'mt-1 btn btn-danger btn-sm' %>
       <% end %>
     </div>
 

@@ -32,9 +32,12 @@
           </div>
         </nav>
 
-
-
-        <a class="navbar-brand mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>  <!--KyotoBreadロゴ-->
+        <!--KyotoBreadロゴ-->
+        <% unless current_admin %>
+          <a class="navbar-brand mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+        <% else %>
+          <a class="navbar-brand mx-auto" href="/admin"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+        <% end %>
 
         <nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">
 
@@ -139,7 +142,9 @@
       <div class="container my-4">
         <div class="row">
           <div class="mx-auto text-center">
-            <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary", style:"font-size: 12px;" %> | </span>
+            <% unless current_admin %>
+              <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary", style:"font-size: 12px;" %> | </span>
+            <% end %>
             <span><%= link_to "ABOUT", homes_about_path, class:"text-secondary", style:"font-size: 12px;" %></span>
             <p class="mt-1">copyright_KyotoBread</p>
           </div>

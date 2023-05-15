@@ -56,11 +56,11 @@
 
 
       <h5 class="mt-3"><%= @user.name %>さんの投稿一覧 / 最終更新日</h5>
-      <div class="bread_list">
+      <div>
         <ul class="row col-md-12 mx-auto">
           <% if @breads.exists? %>
             <% @breads.each do |bread| %>
-              <li class="mr-1 mt-2" style="max-width: 100px;">
+              <li class="mr-1 mt-2 sentence" style="max-width: 100px;">
                 <%= link_to admin_bread_path(bread.id) do %>
                   <%= image_tag bread.get_bread_image(100, 100), class:"mr-3" %>
                     <p class="text-dark">

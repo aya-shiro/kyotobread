@@ -1,23 +1,22 @@
 <div class="main-theme container py-5">
-  <div class="col-md-10 mx-auto">
+  <div class="row ml-2">
     <h5>ショップ一覧</h5>
+  </div>
 
+  <div class="row mx-1">
     <% @shops.each do |shop| %>
-      <div class="row my-3 p-3" style="background-color: white;">
-        <div class="col-md-1 text-dark">
-          <%= link_to shop_path(shop.id) do %>
+      <div class="col-sm-10 col-md-10 p-3 mb-2 bg-white">
+        <%= link_to shop_path(shop.id), class:"d-flex align-items-center" do %>
           <h2 class="text-secondary"><i class="fas fa-store"></i></h2>
-          <% end %>
-        </div>
-        <div class="col-md-6">
-          <%= link_to shop_path(shop.id) do %>
-            <h5 class="text-dark"><%= shop.shop_name %><h5>
-            <p class="text-dark"><small><%= shop.breads.count %>posts</small></p>
-          <% end %>
-        </div>
+          <div class="text-dark ml-4">
+            <span>
+              <h5 class="text-dark"><%= shop.shop_name %><h5>
+              <p class="text-dark"><small><%= shop.breads.count %>posts</small></p>
+            </span>
+          </div>
+        <% end %>
       </div>
     <% end %>
-
   </div>
 
   <div class="d-flex justify-content-center">

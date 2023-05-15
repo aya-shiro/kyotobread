@@ -4,10 +4,10 @@
       <div class="col-md-12">
         <h5 class="mb-4">"<%= @keyword %>" の検索結果 <%= @search_breads.count %>件</h5>
         <% if @keyword.present? %>
-          <div class="bread_list">
+          <div>
             <ul class="row ml-2">
               <% @search_breads.each do |bread| %>
-                <li class="mr-1" style="max-width: 100px;">
+                <li class="mr-1 sentence" style="max-width: 100px;">
                   <div>
                     <%= link_to admin_bread_path(bread.id) do %>
                       <%= image_tag bread.get_bread_image(100, 100) %><br>

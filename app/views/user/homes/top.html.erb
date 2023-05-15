@@ -16,11 +16,11 @@
 
         <div id="tab-contents">
           <div id="tab1" class="tab">    <!---タブ1 ALL-->
-            <div class="scroll-list jscroll bread_list">
+            <div class="scroll-list jscroll">
               <ul class="row mx-auto">
                 <% if @breads.exists? %>
                   <% @breads.each do |bread| %>
-                    <li class="mr-1" style="max-width: 150px;">
+                    <li class="mr-1 sentence" style="max-width: 150px;">
                       <div>
                         <%= link_to bread_path(bread.id) do %>
                           <%= image_tag bread.get_bread_image(150, 150) %><br>
@@ -40,12 +40,11 @@
           </div>
 
           <div id="tab2" class="tab">    <!--タブ2　SWEET-->
-          <div class="scroll-list_2 jscroll_2 bread_list">
+          <div class="scroll-list_2 jscroll_2">
             <ul class="row mx-auto">
               <% if @sweet_breads.exists? %>
                 <% @sweet_breads.each do |sweet_bread| %>
-                  <!--<li class="mr-1">-->
-                  <li class="mr-1" style="max-width: 150px;">
+                  <li class="mr-1 sentence" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(sweet_bread.id) do %>
                         <%= image_tag sweet_bread.get_bread_image(150, 150) %><br>
@@ -63,12 +62,11 @@
           </div>
 
           <div id="tab3" class="tab">    <!--タブ3　SALTY-->
-          <div class="scroll-list_3 jscroll_3 bread_list">
+          <div class="scroll-list_3 jscroll_3">
             <ul class="row mx-auto">
               <% if @salty_breads.exists? %>
                 <% @salty_breads.each do |salty_bread| %>
-                  <!--<li class="mr-1">-->
-                  <li class="mr-1" style="max-width: 150px;">
+                  <li class="mr-1 sentence" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(salty_bread.id) do %>
                         <%= image_tag salty_bread.get_bread_image(150, 150) %><br>
@@ -86,11 +84,11 @@
           </div>
 
           <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
-          <div class="scroll-list_4 jscroll_4 bread_list">
+          <div class="scroll-list_4 jscroll_4">
             <ul class="row mx-auto">
               <% if @favorite_breads.size != 0 %>
                 <% @favorite_breads.each do |favorite_bread| %>
-                  <li class="mr-1" style="max-width: 150px;">
+                  <li class="mr-1 sentence" style="max-width: 150px;">
                     <div>
                       <%= link_to bread_path(favorite_bread.id) do %>
                         <%= image_tag favorite_bread.get_bread_image(150, 150) %><br>

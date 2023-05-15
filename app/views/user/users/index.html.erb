@@ -7,7 +7,7 @@
   <div class="row mx-4">
     <% @users.each do |user| %>
       <div class="col-sm-10 col-md-12 mx-auto mt-3 bg-white">
-        <%= link_to user_path(user.id), class: "d-flex align-items-center py-3" do %>
+        <%= link_to user_path(user.id), class:"d-flex align-items-center py-3" do %>
           <%= image_tag user.get_user_image(100, 100), class:"mr-3 rounded-circle" %>
           <div class="text-dark">
             <span>

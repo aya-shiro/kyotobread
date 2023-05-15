@@ -13,7 +13,7 @@
   <h5><%= link_to "ご意見一覧 >", admin_feedbacks_path %></h5>
 
   <div class="row col-md-12 mx-auto p-3" style="background-color: white;">
-    <% @feedbacks.each_with_index do |feedback| %>
+    <% @feedbacks.each do |feedback| %>
       <table class="table">
         <tr>
           <td>No.<%= feedback.id %></td>
@@ -31,7 +31,6 @@
         </tr>
       </table>
     <% end %>
-
   </div>
 
 
