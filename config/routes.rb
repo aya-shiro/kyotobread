@@ -67,7 +67,9 @@ Rails.application.routes.draw do
     resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:shops, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:drinks, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources:feedbacks, only: [:index, :show, :destroy]
+    get 'feedbacks/solved'
+    get 'feedbacks/solved_index'
+    resources:feedbacks, only: [:index, :show, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

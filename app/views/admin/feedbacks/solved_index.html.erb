@@ -2,8 +2,8 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h5>未解決ご意見一覧</h5>
-      <%= link_to "解決済み", admin_feedbacks_solved_index_path, class:"btn btn-sm btn-warning" %>
+      <h5>解決済みご意見一覧</h5>
+      <%= link_to "未解決", admin_feedbacks_path, class:"btn btn-sm btn-warning" %>
     </div>
   </div>
 
@@ -13,13 +13,13 @@
       <th>ご意見</th>
       <th>ユーザーネーム</th>
       <th>投函日</th>
-     </tr>
+    </tr>
 
     <% @feedbacks.each do |feedback| %>
-      <% if feedback.is_solved == false %>
+      <% if feedback.is_solved == true %>
         <tr>
           <td><%= feedback.id %></td>
-          <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">
+          <td class="sentence" style="max-width: 150px;">
             <%= link_to admin_feedback_path(feedback.id) do %>
               <%= feedback.opinion %>
             <% end %>

@@ -1,9 +1,9 @@
 <!--管理者トップ-->
-<div class="container py-5" style="background-color: #fff7e6">
+<div class="main-theme container py-5">
 
   <div class="row">
     <div class="col-md-7">
-      <div class="mb-4 p-3" style="background-color: white;">
+      <div class="mb-4 p-3 bg-white">
         <span>現在の有効ユーザー：　<%= @active_users.count %> users</span>
         <span class="ml-5">現在の投稿パン：　<%= @breads.count %> posts</span>
       </div>
@@ -12,32 +12,33 @@
 
   <h5><%= link_to "ご意見一覧 >", admin_feedbacks_path %></h5>
 
-  <div class="row col-md-12 mx-auto p-3" style="background-color: white;">
+  <div class="row col-md-12 mx-auto p-3 bg-white">
     <% @feedbacks.each do |feedback| %>
-      <table class="table">
-        <tr>
-          <td>No.<%= feedback.id %></td>
-          <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 400px;">
-            <%= link_to admin_feedback_path(feedback.id) do %>
-              <%= feedback.opinion %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to admin_user_path(feedback.user.id) do %>
-              <span class="text-secondary mr-3"><%= feedback.user.name %></span>
-              <span class="text-secondary" style="font-size: 12px;"><%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></span>
-            <% end %>
-          </td>
-        </tr>
-      </table>
+      <% if feedback.is_solved == false %>
+        <table class="table">
+          <tr>
+            <td>No.<%= feedback.id %></td>
+            <td class="sentence", style="max-width: 50px;">
+              <%= link_to admin_feedback_path(feedback.id) do %>
+                <%= feedback.opinion %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to admin_user_path(feedback.user.id) do %>
+                <span class="text-secondary mr-3"><%= feedback.user.name %></span>
+                <span class="text-secondary" style="font-size: 12px;"><%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
     <% end %>
   </div>
 
-
   <h5 class="ml-1 mt-4"><%= link_to "投稿一覧 >", admin_breads_path %></h5>
-  <ul class="row col-md-12 mx-auto" style="list-style: none;">
+  <ul class="row col-md-12 mx-auto">
     <% @breads.each_with_index do |bread| %>
-      <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+      <li class="mr-1 sentence" style="max-width: 100px;">
         <%= link_to admin_bread_path(bread.id) do %>
           <%= image_tag bread.get_bread_image(100, 100) %>
           <p class="text-dark"><%= bread.bread_name %></p>

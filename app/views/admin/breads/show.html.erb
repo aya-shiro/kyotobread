@@ -24,7 +24,7 @@
 
         <dd class="col-sm-7">購入店：
           <% if @bread.shop %>
-            <%= link_to shop_path(@bread.shop) do %><br>
+            <%= link_to admin_shop_path(@bread.shop) do %><br>
               <span class="text-dark">〒<%= @bread.shop.postcode %>　<%= @bread.shop.address %></span><br>
               <span class="text-dark"><%= @bread.shop.shop_name %></span>
             <% end %>
