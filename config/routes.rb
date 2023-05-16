@@ -67,8 +67,7 @@ Rails.application.routes.draw do
     resources:topics, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:shops, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources:drinks, only: [:index, :new, :create, :edit, :update, :destroy]
-    get 'feedbacks/solved'
-    get 'feedbacks/solved_index'
+    get 'feedbacks/solved'    # 解決済みご意見のindex
     resources:feedbacks, only: [:index, :show, :update, :destroy]
   end
 

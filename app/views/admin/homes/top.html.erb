@@ -19,16 +19,18 @@
           <table class="table">
             <tr>
               <td>No.<%= feedback.id %></td>
-              <td class="sentence", style="max-width: 50px;">
+              <td class="sentence", style="max-width: 100px;">
                 <%= link_to admin_feedback_path(feedback.id) do %>
                   <%= feedback.opinion %>
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_user_path(feedback.user.id) do %>
-                  <span class="text-secondary mr-3"><%= feedback.user.name %></span>
-                  <span class="text-secondary" style="font-size: 12px;"><%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %></span>
-                <% end %>
+                <span class="text-secondary mr-3 small">
+                  <%= link_to admin_user_path(feedback.user.id) do %>
+                    <%= feedback.user.name %><br>
+                  <% end %>
+                  <%= feedback.created_at.in_time_zone('Tokyo').strftime("%Y/%m/%d %H:%M") %>
+                </span>
               </td>
             </tr>
           </table>
