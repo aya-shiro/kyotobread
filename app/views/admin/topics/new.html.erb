@@ -5,7 +5,7 @@
 
     <%= render 'layouts/errors', obj: @topic %>
 
-    <%= form_with model: @topic, url: admin_topics_path do |f| %>
+    <%= form_with model: @topic, url:admin_topics_path do |f| %>
       <%= f.label :タイトル %><br>
       <%= f.text_field :title, class:'form-control', placeholder: "*25文字以内" %><br>
       <%= f.label :本文 %><br>

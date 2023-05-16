@@ -3,7 +3,7 @@
     <h5>ご意見箱</h5>
 
     <p>ユーザーネーム：<%= current_user.name %></p>
-    <%= form_with model: @feedback do |f| %>
+    <%= form_with model: @feedback, url:feedbacks_path do |f| %>
       <%= f.label :ご意見 %>
       <%= f.text_area :opinion, rows: 5, class:'form-control' %>
       <%= f.submit "送信する", class:"mt-4 btn btn-outline-secondary" %>

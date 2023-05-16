@@ -12,9 +12,12 @@
 
   <body>
     <header style="background-color: white;", class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">
+
       <div class="container">
-        <nav class="navbar navbar-light" style="display: inline;">
-          <button class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
+   <nav class="navbar navbar-light" style="display: inline;">
+          <button style="display: block;" class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbar-search" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-icon"><i class="fas fa-search"></i></span>
           </button>
 
@@ -32,19 +35,17 @@
           </div>
         </nav>
 
-        <!--KyotoBreadロゴ-->
+
+     <!--KyotoBreadロゴ-->
         <% unless current_admin %>
-          <a class="navbar-brand mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+          <a id="navbar-logo" class="mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
         <% else %>
-          <a class="navbar-brand mx-auto" href="/admin"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+          <a id="navbar-logo" class="mx-auto" href="/admin"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
         <% end %>
-
-        <nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">
-
+        <!--<nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">-->
           <button class="mr-3 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-icon"><i class="fas fa-bars"></i></span>
           </button>
-
           <div class="row collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto pr-5 mr-2">
               <% if user_signed_in? %>
@@ -157,6 +158,14 @@
   $(document).ready(function() {
     $(".search").click(function() {
       $("#navbar-search").toggle();
+      $("#navbar-logo").toggle();
+
+      if ( $("#navbarNavDropdown").css('display') == 'flex' ){
+        $("#navbarNavDropdown").css({'cssText': 'display: none !important'});
+      }
+      else{
+        $("#navbarNavDropdown").attr('style','');
+      }
     });
   });
 </script>
