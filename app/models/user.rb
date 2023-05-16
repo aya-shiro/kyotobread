@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
 
   validates :name, presence: true, length:{maximum:10}
-  validates :user_info, presence: true, length:{maximum:100}
+  validates :user_info, length:{maximum:100}
 
   has_many :breads, dependent: :destroy
   has_many :comments, dependent: :destroy
