@@ -11,38 +11,35 @@
   </head>
 
   <body>
-    <header style="background-color: white;", class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">
+    <header style="background-color: white; height: 80px;", class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">
 
-      <div class="container">
+        <div class="container">
+          <nav class="navbar navbar-light" style="display: inline;">
+            <button style="display: block;" class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbar-search" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-icon"><i class="fas fa-search"></i></span>
+            </button>
 
-   <nav class="navbar navbar-light" style="display: inline;">
-          <button style="display: block;" class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbar-search" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-icon"><i class="fas fa-search"></i></span>
-          </button>
-
-          <div class="row offcanvas navbar-offcanvas" id="navbar-search" style="display:none;">
-            <div class="navbar-nav mr-auto">
-              <% unless current_admin %>
-                <%= render 'layouts/user-header' %>
-              <% else %>    <!--admin側のパン検索窓-->
-                <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :keyword, class: "form-control ml-2", placeholder: "パンを検索" %>
-                  <%= f.submit style:"display: none;" %>
+            <div class="row offcanvas navbar-offcanvas" id="navbar-search" style="display:none;">
+              <div class="navbar-nav mr-auto">
+                <% unless current_admin %>
+                  <%= render 'layouts/user-header' %>
+                <% else %>    <!--admin側のパン検索窓-->
+                  <%= form_with url: search_admin_breads_path, local: true, method: :get do |f| %>
+                    <%= f.text_field :keyword, class: "form-control ml-2", placeholder: "パンを検索" %>
+                    <%= f.submit style:"display: none;" %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
 
-
-     <!--KyotoBreadロゴ-->
-        <% unless current_admin %>
-          <a id="navbar-logo" class="mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
-        <% else %>
-          <a id="navbar-logo" class="mx-auto" href="/admin"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
-        <% end %>
-        <!--<nav class="navbar navbar-expand-lg navbar-light" style="display: inline;">-->
+          <!--KyotoBreadロゴ-->
+          <% unless current_admin %>
+            <a id="navbar-logo" class="mx-auto" href="/"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+          <% else %>
+            <a id="navbar-logo" class="mx-auto" href="/admin"><%= image_tag 'logo_image300.jpg', size: "150x27" %></a>
+          <% end %>
           <button class="mr-3 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-icon"><i class="fas fa-bars"></i></span>
           </button>
@@ -144,31 +141,31 @@
         <div class="row">
           <div class="mx-auto text-center">
             <% unless current_admin %>
-              <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary", style:"font-size: 12px;" %> | </span>
+              <span><%= link_to "ご意見箱", new_feedback_path, class:"text-secondary small" %> | </span>
             <% end %>
-            <span><%= link_to "ABOUT", homes_about_path, class:"text-secondary", style:"font-size: 12px;" %></span>
+            <span><%= link_to "ABOUT", homes_about_path, class:"text-secondary small" %></span>
             <p class="mt-1">copyright_KyotoBread</p>
           </div>
         </div>
       </div>
     </footer>
 
-
-<script>
-  $(document).ready(function() {
-    $(".search").click(function() {
-      $("#navbar-search").toggle();
-      $("#navbar-logo").toggle();
-
-      if ( $("#navbarNavDropdown").css('display') == 'flex' ){
-        $("#navbarNavDropdown").css({'cssText': 'display: none !important'});
-      }
-      else{
-        $("#navbarNavDropdown").attr('style','');
-      }
-    });
-  });
-</script>
+    <!--header 検索アイコンの挙動管理-->
+    <script>
+      $(document).ready(function() {
+        $(".search").click(function() {
+          $("#navbar-search").toggle();
+          $("#navbar-logo").toggle();
+          // メニューがfrexの場合は非表示に、非表示の場合は現行の表示指定に準拠
+          if ( $("#navbarNavDropdown").css('display') == 'flex' ){
+            $("#navbarNavDropdown").css({'cssText': 'display: none !important'});
+          }
+          else{
+            $("#navbarNavDropdown").attr('style','');
+          }
+        });
+      });
+    </script>
 
   </body>
 </html>
