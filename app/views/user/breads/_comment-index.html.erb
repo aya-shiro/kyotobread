@@ -7,12 +7,12 @@
         <%= image_tag comment.user.get_user_image(40, 40), class:"rounded-circle", as:"image" %>
       </div>
       <div class="col-7">
-        <span style="font-size: 13px;" class="mr-1"><%= comment.user.name %></span>
-        <span style="font-size: 8px; color: gray;"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+        <span class="small mr-1"><%= comment.user.name %></span>
+        <span class="small text-secondary"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
         <div><%= comment.comment %></div>
         <% if comment.user == current_user %>
           <span>
-            <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, style:"font-size: 8px; color: gray;" %>
+            <%= link_to "削除", bread_comment_path(bread.id, comment.id), method: :delete, remote: true, class:"small text-secondary" %>
           </span>
         <% end %>
       </div>

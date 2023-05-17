@@ -43,7 +43,7 @@
   <div>
     <ul class="row ml-1" style="list-style: none;">
       <% @breads.each do |bread| %>
-        <li class="mr-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">
+        <li class="mr-1 sentence" style="max-width: 100px;">
           <%= link_to admin_bread_path(bread.id) do %>
             <div><%= image_tag bread.get_bread_image(100, 100) %></div>
             <p style="color: black;"><%= bread.bread_name %></p>

@@ -13,8 +13,8 @@
     <div>
       <% if @feedback.is_solved == false %>
         <div class="text-danger"><%= flash.now[:alert] %></div>
-        <%= f.check_box :is_solved, style:"transform: scale(1.5);" %>
-        <%= f.submit "解決済みに送る", class:"ml-2 btn btn-sm btn-warning" %>
+        <%= f.hidden_field :is_solved, :value => @feedback.id %>
+        <%= f.submit "解決済みに送る", class:"btn btn-sm btn-warning" %>
       <% else %>
         解決済み
         <%= link_to "削除", admin_feedback_path(@feedback.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"ml-4 btn btn-sm btn-outline-danger" %>

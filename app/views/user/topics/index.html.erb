@@ -4,7 +4,7 @@
 
     <% @topics.each do |topic| %>
       <% if topic.is_published == true %>
-        <div class="row mt-3 p-3" style="background-color: white;">
+        <div class="row mt-3 p-3 bg-white">
           <div class="col-md-6">
             <%= link_to topic_path(topic.id) do %>
               <h4 class="text-dark"><%= topic.title %></h4>

@@ -1,5 +1,5 @@
 class Admin::FeedbacksController < ApplicationController
-  
+
   def index
     # 未解決ご意見は受け取った順に並べる
     @feedbacks = Feedback.all.order(created_at: :desc).page(params[:page]).per(20)
@@ -14,10 +14,6 @@ class Admin::FeedbacksController < ApplicationController
     @feedback = Feedback.find(params[:id])
     if @feedback.update(feedback_params)
       redirect_to admin_feedbacks_solved_path(@solved_feedback)
-    else
-      flash.now[:alert] = "チェックが必要です"
-      @feedback = Feedback.find(params[:id])
-      render :show
     end
   end
 
