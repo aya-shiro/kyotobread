@@ -1,11 +1,5 @@
 <div class="main-theme container py-5">
 
-  <%# if flash[:notice] %>
-      <!--<div class="alert alert-success" role="alert">-->
-      <%#= flash[:notice] %>
-    <!--</div>-->
-  <%# end %>
-
   <% if @user != current_user %>  <!--他ユーザの投稿詳細ページならユーザリンクを表示-->
     <div class="row mb-3">
       <div class="col-md-9">

@@ -4,8 +4,12 @@
   <div class="row">
     <div class="col-md-7">
       <div class="mb-4 p-3 bg-white">
-        <span>現在の有効ユーザー：　<%= @active_users.count %> users</span>
-        <span class="ml-5">現在の投稿パン：　<%= @breads.count %> posts</span>
+        <%= link_to admin_users_path do %>
+          <span class="text-dark">現在の有効ユーザー：　<%= @active_users.count %> users</span><br>
+        <% end %>
+        <%= link_to admin_breads_path do %>
+          <span class="text-dark">現在の投稿パン：　<%= @breads.count %> posts</span>
+        <% end %>
       </div>
     </div>
   </div>
