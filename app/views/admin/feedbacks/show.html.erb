@@ -12,7 +12,6 @@
   <%= form_with model: @feedback, url:admin_feedback_path, method: :patch do |f| %>
     <div>
       <% if @feedback.is_solved == false %>
-        <div class="text-danger"><%= flash.now[:alert] %></div>
         <%= f.hidden_field :is_solved, :value => @feedback.id %>
         <%= f.submit "解決済みに送る", class:"btn btn-sm btn-warning" %>
       <% else %>
