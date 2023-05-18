@@ -1,6 +1,6 @@
 <!--application.html.erbのunress current_adminがtrueの場合の表示-->
 <div class="d-flex flex-wrap">
-  <div class="main-theme header-nav p-3 m-2" >
+  <div class="main-theme p-3 m-2 header-nav" id="small-nav">
     <%= form_with url: search_breads_path, local: true, method: :get do |f| %>
       <%= f.text_field :keyword, class: "form-control my-2", placeholder: "パンを検索" %>
       <%= f.submit style:"display: none;" %>
@@ -28,7 +28,7 @@
   </div>
 
   <!--user-SHOP NAV-->
-  <div class="main-theme header-nav p-3 m-2">
+  <div class="main-theme header-nav p-3 m-2" id="small-nav">
     <%= form_with url: search_shops_path, local: true, method: :get do |f| %>
       <%= f.text_field :keyword, class:"form-control my-2", placeholder: "エリア/店名を検索" %>
       <%= f.submit style:"display: none;" %>
@@ -48,13 +48,13 @@
         <%= link_to "もっとみる>", shops_path, class:"text-secondary" %>
       </div>
     <% end %>
-    <h5 class="main-theme p-3 mt-3">
-      <%= link_to "ONLINE SHOP", shops_onlines_path, class:"text-dark" %>
+    <h5 class="main-theme p-3">
+      <%= link_to "//ONLINE SHOP//", shops_onlines_path, class:"text-dark" %>
     </h5>
   </div>
 
   <!--user-TOPIC NAV-->
-  <div class="main-theme header-nav p-3 m-2">
+  <div class="main-theme header-nav p-3 m-2" id="small-nav">
   <h5 class="mt-2">特集</h5>
     <% @topics.each_with_index do |topic, index| %>
       <% if topic.is_published == true %>

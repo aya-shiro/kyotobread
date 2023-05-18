@@ -1,11 +1,12 @@
 <div class="main-theme container py-5">
-  <div class="col-md-8 mx-auto">
+  <div class="col-md-8 col-sm-10 mx-auto">
 
     <h4 class="mb-3"><%= @topic.title %></h4>
-    <%=safe_join(@topic.body.split("\n"),tag(:br))%>  <!--改行-->
+    <div style="word-wrap: break-word;">
+      <%=safe_join(@topic.body.split("\n"),tag(:br))%>  <!--改行表示-->
+    </div>
     <%= image_tag @topic.get_bread_image(400, 300), class:"mt-4 mx-auto d-block resize-image" %>
     <p><%= link_to "特集一覧ページ", topics_path, class:"mt-5 btn btn-sm btn-warning" %></p>
-
 
   </div>
 </div>
