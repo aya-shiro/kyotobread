@@ -14,6 +14,24 @@
 ### 主な利用シーン
 京都に遊びに来た時、京都府内のパン屋に行く前や行った後
 
+## 機能一覧
+
+#### 会員側の機能
+・ゲストログイン機能
+・会員機能
+・投稿機能
+・検索機能
+・いいね、コメント機能の非同期化
+・トップ画面のタブ切替表示機能
+・トップ画面の無限スクロール機能(jscroll)
+・パンの投稿/編集時のショップ検索機能(select2)
+
+#### 管理者側の機能
+・コンテンツ3種(ドリンク/ショップ/特集)の追加/編集/削除機能
+・ユーザー管理機能
+・コメント管理機能
+・投稿管理機能
+
 ## 設計書
 - ER図:  https://drive.google.com/file/d/1Xy1AH1J3M1RMIduBtNXyn3KJFpx8c5rJ/view?usp=share_link
 - テーブル定義書:　https://docs.google.com/spreadsheets/d/1tYZ9WfvFt7-AV8eH4l1Fc1phKBqG2fr_vvqEIAe4oO4/edit?usp=sharing
@@ -21,7 +39,7 @@
 ## 開発環境
 - OS：Linux(Amazon Linux2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails(ver.6.1.7.3)
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
