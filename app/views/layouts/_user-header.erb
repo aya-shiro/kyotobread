@@ -14,12 +14,11 @@
           <% end %>
         </li>
       <% end %>
-      <p>------------------</p>
+      <p>------------------------</p>
       <div class="mt-2">
         <%= form_with model: @bread, url:breads_path, method: :get do |f| %>
           <li>
-            <%= f.label :その他 %>
-            <%= f.submit "探す", class:"p-1 mb-2 ml-3 btn btn-sm btn-outline-secondary" %>
+            その他<%= f.submit "探す", class:"p-1 mb-2 ml-3 btn btn-sm btn-outline-secondary" %>
           </li>
           # <%= f.select :drink_id, options_from_collection_for_select(Drink.not_default.order(id: :desc), :id, :drink_name) %>
         <% end %>
