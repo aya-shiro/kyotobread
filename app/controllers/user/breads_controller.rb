@@ -5,11 +5,6 @@ class User::BreadsController < ApplicationController
     if params[:keyword].present?
       @search_breads = Bread.active_users_breads.where('bread_name LIKE ?', "%#{params[:keyword]}%").page(params[:page]).per(20)
       @keyword = params[:keyword]
-
-      # views/layouts/_side.html.erbに必要な記述
-      @shops = Shop.all.order(created_at: :desc)
-      @topics = Topic.all.order(created_at: :desc)
-      @default_drinks = Drink.default.where(default_select: true)
     else
       redirect_to root_path    # 検索窓が空白の場合root_pathに遷移
     end
@@ -19,17 +14,17 @@ class User::BreadsController < ApplicationController
     return redirect_to root_path unless params[:drink_id]    # breads/new再リロード時のエラー回避
     @drink = Drink.find_by(id: params[:drink_id])
     @breads = @drink.breads.active_users_breads.order(created_at: :desc).page(params[:page]).per(20)
-
-    # views/layouts/_side.html.erbに必要な記述
-    @shops = Shop.all.order(created_at: :desc)
-    @topics = Topic.all.order(created_at: :desc)
-    @default_drinks = Drink.default.where(default_select: true)
   end
 
   def show
-    @bread = Bread.find(params[:id])
-    @user = @bread.user
-    @comment = Comment.new
+    # 例外処理、削除された投稿はアクセス不可
+    begin
+      @bread = Bread.find(params[:id])
+      @user = @bread.user
+      @comment = Comment.new
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path
+    end
   end
 
   def new

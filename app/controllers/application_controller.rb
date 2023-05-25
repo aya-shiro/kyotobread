@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_header_data
+  def set_header_data  #_user-headerで使用
     @shops = Shop.all.order(created_at: :desc)
     @topics = Topic.all.order(created_at: :desc)
     @default_drinks = Drink.default.where(default_select: true)
