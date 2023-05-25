@@ -1,7 +1,7 @@
 <div class="main-theme container pt-5" id="user_homes_top">
   <div class="mx-auto">
 
-    <div class="row mx-auto">
+    <div class="row">
       <div class="col-md-12">
 
         <!--app/assets/stylesheets/user/homes.scss併用-->
@@ -16,7 +16,7 @@
           <div id="tab-contents">
             <div id="tab1" class="tab">    <!---タブ1 ALL-->
               <div class="scroll-list jscroll">
-                <ul class="row mx-auto">
+                <ul class="row ml-3">
                   <% if @breads.exists? %>
                     <% @breads.each do |bread| %>
                       <li class="mr-1 sentence" style="max-width: 150px;">
@@ -40,7 +40,7 @@
 
             <div id="tab2" class="tab">    <!--タブ2　SWEET-->
               <div class="scroll-list_2 jscroll_2">
-                <ul class="row mx-auto">
+                <ul class="row ml-3">
                   <% if @sweet_breads.exists? %>
                     <% @sweet_breads.each do |sweet_bread| %>
                       <li class="mr-1 sentence" style="max-width: 150px;">
@@ -62,7 +62,7 @@
 
             <div id="tab3" class="tab">    <!--タブ3　SALTY-->
               <div class="scroll-list_3 jscroll_3">
-                <ul class="row mx-auto">
+                <ul class="row ml-3">
                   <% if @salty_breads.exists? %>
                     <% @salty_breads.each do |salty_bread| %>
                       <li class="mr-1 sentence" style="max-width: 150px;">
@@ -84,7 +84,7 @@
 
             <div id="tab4" class="tab">    <!--タブ4 いいねが多い順-->
               <div class="scroll-list_4 jscroll_4">
-                <ul class="row mx-auto">
+                <ul class="row ml-3">
                   <% if @favorite_breads.size != 0 %>
                     <% @favorite_breads.each do |favorite_bread| %>
                       <li class="mr-1 sentence" style="max-width: 150px;">
