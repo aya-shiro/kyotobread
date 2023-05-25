@@ -3,6 +3,12 @@
   <div class="text-center">
 
     <h3 class="mb-4">Log in</h3>
+    
+    <% if flash[:alert] %>
+      <div class="text-danger mb-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -30,7 +36,6 @@
       </div>
     <% end %>
 
-    <!--users→userに変更　DWO参照-->
     <%= render "user/shared/links" %>
 
   </div>

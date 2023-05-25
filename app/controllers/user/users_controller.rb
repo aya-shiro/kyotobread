@@ -7,8 +7,12 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @breads = @user.breads.all.order(created_at: :desc).page(params[:page]).per(30)  #マイページの投稿一覧を新着順に
-
+    if @user.is_delete
+      redirect_to users_path
+      flash[:alert] = "そのユーザは削除されました。"
+    else
+      @breads = @user.breads.all.order(created_at: :desc).page(params[:page]).per(30)  #マイページの投稿一覧を新着順に
+    end
   end
 
   def edit

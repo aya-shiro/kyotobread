@@ -5,6 +5,14 @@
   </div >
 
   <div class="row mx-4">
+    <% if flash[:alert] %>
+      <div class="text-danger mb-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mx-4">
     <% @users.each do |user| %>
       <div class="col-sm-10 col-md-12 mx-auto mt-3 bg-white">
         <%= link_to user_path(user.id), class:"d-flex align-items-center py-3" do %>

@@ -13,6 +13,7 @@ class User < ApplicationRecord
     end
   end
 
+  # 現在のパスワードが無くてもアカウントを更新するメソッド
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 

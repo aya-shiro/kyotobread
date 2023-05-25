@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
   before_action :user_state, only: [:create]
 
 
@@ -35,7 +34,7 @@ class User::SessionsController < Devise::SessionsController
 
     return if !@user  #@userが取得できなかった場合はそこで終了(returnで切る)
     if @user.valid_password?(params[:user][:password]) && @user.is_delete   #@userが取得できた場合、passwordが取得したemailのアカウントと一致しているかか確認
-      flash[:alert] = "メールアドレスとパスワードが一致しません"
+      flash[:alert] = "退会済みです"
       redirect_to new_user_registration_path
     end
   end
