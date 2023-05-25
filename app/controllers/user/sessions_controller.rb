@@ -31,7 +31,7 @@ class User::SessionsController < Devise::SessionsController
   protected
   # 退会しているかを判断するメソッド
   def user_state
-    @user = User.find_by(email: params[:user][:email])     #入力されたemailからアカウントを1件取得
+    @user = User.find_by(email: params[:user][:email])
 
     return if !@user  #@userが取得できなかった場合はそこで終了(returnで切る)
     if @user.valid_password?(params[:user][:password]) && @user.is_delete   #@userが取得できた場合、passwordが取得したemailのアカウントと一致しているかか確認

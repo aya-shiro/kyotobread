@@ -51,7 +51,7 @@
               <!--会員がログインしている場合-->
                 <li>
                   <%= link_to user_path(current_user), class:"nav-link text-dark" do %>
-                    <% if current_user.name == 'ゲスト' %>
+                    <% if current_user.email == 'guest@example.com' %>
                       <i class="fas fa-user"></i> Guest
                     <% else %>
                       <i class="fas fa-user"></i> Mypage
