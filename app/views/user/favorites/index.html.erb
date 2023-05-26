@@ -7,7 +7,7 @@
         <ul class="row ml-2" style="list-style: none;">
           <% if @favorites.exists? %>
             <% @favorites.each do |favorite| %>
-              <li class="mr-1">
+              <li class="mr-1 sentence" style="max-width: 150px;">
                 <div>
                   <%= link_to bread_path(favorite.bread.id), class:"text-dark" do %>
                     <%= image_tag favorite.bread.get_bread_image(150, 150) %><br>
