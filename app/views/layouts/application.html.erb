@@ -156,7 +156,6 @@
     <script>
       $(document).ready(function() {
         $(".search").click(function() {
-//          $("#navbar-search").toggle();
           if ( $("#navbar-search").css('display') == 'none') {
             // 検索窓を表示する
             $("#navbar-logo").hide();
@@ -172,16 +171,7 @@
             $("#seach-nav").css({'cssText': 'display: flex !important'})
             $("#navbarNavDropdown").attr('style','');
           }
-          // メニューがfrexの場合は非表示に、非表示の場合は現行の表示指定に準拠
-/*
-if ( $("#navbarNavDropdown").css('display') == 'flex' ){
-            // 検索窓表示
-            $("#navbarNavDropdown").css({'cssText': 'display: none !important'});
-          }
-          else{
-            $("#navbarNavDropdown").attr('style','');
-          }
-*/        });
+        });
       });
     </script>
 
