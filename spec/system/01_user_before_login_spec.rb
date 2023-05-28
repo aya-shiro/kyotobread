@@ -86,9 +86,10 @@ describe '[STEP1] ユーザログイン前のテスト' do
         is_expected.to eq '/user/sign_up'
       end
       it 'Log inを押すと、ログイン画面に遷移する' do
-        log_in_link = find_all('a')[4].native.inner_text
-        log_in_link = log_in_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link log_in_link, match: :first
+#        log_in_link = find_all('a')[4].native.inner_text
+#        log_in_link = log_in_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+#        click_link log_in_link, match: :first
+        click_link 'log-in'
         is_expected.to eq '/user/sign_in'
       end
     end

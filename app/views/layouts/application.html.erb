@@ -16,7 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-light my-2">
 
         <div class="container">
-          <nav class="navbar navbar-light">
+          <nav class="navbar navbar-light" id="seach-nav">
             <button style="display: block;" class="navbar-toggler search" type="button" data-toggle="offcanvas" data-target="#navbar-search" aria-controls="navbar-search" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-icon"><i class="fas fa-search"></i></span>
             </button>
@@ -123,7 +123,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_user_session_path, class:"nav-link text-dark" do %>
+                  <%= link_to new_user_session_path, id:'log-in', class:"nav-link text-dark" do %>
                     <i class="fas fa-sign-in-alt"></i> Log in
                   <% end %>
                 </li>
@@ -163,9 +163,11 @@
           // メニューがfrexの場合は非表示に、非表示の場合は現行の表示指定に準拠
           if ( $("#navbarNavDropdown").css('display') == 'flex' ){
             $("#navbarNavDropdown").css({'cssText': 'display: none !important'});
+            $("#seach-nav").css({'cssText': 'display: block !important'})
           }
           else{
             $("#navbarNavDropdown").attr('style','');
+            $("#seach-nav").css({'cssText': 'display: flex !important'})
           }
         });
       });
