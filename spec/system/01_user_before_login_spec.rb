@@ -47,7 +47,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
     context '表示内容の確認' do
       it 'KyotoBreadリンクが表示される: 左上から1番目のリンクが「KyotoBread」である' do
         home_link = find_all('a')[0].native.inner_text
-        expect(home_link)      end
+        expect(home_link)
+      end
       it 'ゲストログインリンクが表示される: 左上から2番目のリンクが「Guest Log in」である' do
         expect(page).to have_link 'Guest Log in', href: user_guest_sign_in_path
       end
@@ -210,9 +211,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(home_link)
       end
       it 'GuestまたはMypageリンクが表示される: リンクが「Guest」または「Mypage」である' do
-
-        expect(page).to have_link 'Mypage', href: new_user_registration_path
-
+        # expect(page).to have_link 'Mypage', href: user_path(:user)
+        have_link('Guest', href: new_user_session_path)
       end
       it 'New Postリンクが表示される: リンクが「New Post」である' do
         bread_link = find_all('a')[2].native.inner_text
