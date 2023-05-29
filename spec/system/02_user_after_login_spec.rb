@@ -32,6 +32,21 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
+  describe 'トップ画面のテスト' do
+    before do
+      visit root_path
+    end
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/'
+      end
+      it '自分と他人の投稿画像のリンク先が正しい' do
+        expect(page).to have_link '', href: bread_path(bread)
+        expect(page).to have_link '', href: bread_path(other_bread)
+      end
+    end
+  end
+
   describe '画面のテスト' do
     context 'マイページの確認' do
       before do
@@ -114,6 +129,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it '投稿のdrink_nameが表示される' do
         expect(page).to have_content bread.drink.drink_name
       end
+
       it '投稿の編集リンクが表示される' do
         expect(page).to have_link '編集', href: edit_bread_path(bread)
       end
@@ -145,17 +161,45 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
   end
-  describe 'トップ画面のテスト' do
+
+  describe 'ご意見画面のテスト' do
     before do
-      visit root_path
+      visit new_feedback_path
     end
+
     context '表示内容の確認' do
       it 'URLが正しい' do
-        expect(current_path).to eq '/'
+        expect(current_path).to eq '/feedbacks/new'
       end
-      it '自分と他人の投稿画像のリンク先が正しい' do
-        expect(page).to have_link '', href: bread_path(bread)
-        expect(page).to have_link '', href: bread_path(other_bread)
+      it '自分の名前が表示される' do
+        expect(page).to have_content user.name
+      end
+    end
+    context 'ご意見送信成功のテスト' do
+      before do
+        fill_in 'feedback[opinion]', with: Faker::Lorem.characters(number: 40)
+      end
+      it 'リダイレクト先が、サンクスページになっている' do
+        click_button '送信する'
+        expect(current_path).to eq('/feedbacks/thanks')
+      end
+      it '自分の新しい投稿が正しく保存される' do
+        change(user.feedbacks, :count).by(1)
+      end
+    end
+
+    context 'サンクスページ' do
+      before do
+        visit feedbacks_thanks_path
+      end
+      it 'トップに戻るボタンが表示される' do
+        # expect(page).to have_button('トップに戻る')
+        expect(page).to have_button 'トップに戻る'
+
+      end
+      it 'トップに戻るボタンをクリックするとトップページにリダイレクトされる' do
+        click_button 'トップに戻る'
+        expect(page).to have_current_path('/')
       end
     end
   end

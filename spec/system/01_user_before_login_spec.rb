@@ -249,7 +249,6 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(page).to have_link '', href: '/homes/about'
         # expect(current_path).to eq '/'
         expect(page).to have_link 'Sign up', href: new_user_registration_path
-
       end
       it 'ログアウト後のリダイレクト先が、トップになっている' do
         expect(current_path).to eq '/'
