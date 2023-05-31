@@ -92,6 +92,24 @@ describe '管理者画面のテスト' do
         expect(page).to have_link '', href: admin_bread_path(other_bread)
       end
     end
+    
+    context '投稿内容の確認' do
+      before do
+        visit admin_bread_path(bread)
+      end
+      it '投稿のtitleが表示される' do
+        expect(page).to have_content bread.bread_name
+      end
+      it '投稿のintroduceが表示される' do
+        expect(page).to have_content bread.introduce
+      end
+      it '投稿のdrink_nameが表示される' do
+        expect(page).to have_content bread.drink.drink_name
+      end
+      it '投稿の削除リンクが表示される' do
+        expect(page).to have_link '削除', href: admin_bread_path(bread)
+      end
+    end
   end
   
   

@@ -11,12 +11,11 @@ FactoryBot.define do
 
     drink { association :drink, strategy: :build }
 
-
     after(:build) do |bread|
       bread.bread_image.attach(io: File.open('spec/images/no-user-image.jpg'), filename: 'profile_image.jpeg', content_type: 'application/xlsx')
     end
   end
-
+  
   factory :feedback do
     opinion { Faker::Lorem.characters(number:40) }
   end
