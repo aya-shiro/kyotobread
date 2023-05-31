@@ -1,7 +1,16 @@
 require 'rails_helper'
 
-describe '[STEP1] アドミンログイン前のテスト' do
-  describe '管理者ログイン画面のテスト' do
+describe '管理者画面のテスト' do
+  let(:admin) { create(:admin) }
+
+  let(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
+  let!(:bread) { create(:bread, user: user) }
+  let!(:other_bread) { create(:bread, user: other_user) }
+  let!(:feedback) { create(:feedback, user: user) }
+  let!(:feedback) { create(:feedback, user: other_user) }
+  
+  describe 'アドミンログイン前のテスト' do
     before do
       visit new_admin_session_path
     end
@@ -24,9 +33,9 @@ describe '[STEP1] アドミンログイン前のテスト' do
   
   describe 'ヘッダーのテスト: ログインしている場合' do
     before do
-      visit new_user_session_path
-      fill_in 'admin[email]', with: 'fromkyoto@admin.com'
-      fill_in 'admin[password]', with: 'fromkyoto'
+      visit admin_session_path
+      fill_in 'admin[email]', with: admin.email
+      fill_in 'admin[password]', with: admin.password
       click_button 'Log in'
     end
 
@@ -41,20 +50,75 @@ describe '[STEP1] アドミンログイン前のテスト' do
       it '管理者トップリンクが表示される: リンクが「管理者トップ」である' do
         have_link('管理者トップ', href: admin_root_path)
       end
-      # it 'New Postリンクが表示される: リンクが「New Post」である' do
-      #   bread_link = find_all('a')[2].native.inner_text
-      #   expect(bread_link).to match(/New Post/)
-      # end
-      # it 'Usersリンクが表示される: リンクが「Users」である' do
-      #   user_users_link = find_all('a')[3].native.inner_text
-      #   expect(user_users_link).to match(/Users/)
-      # end
-      # it 'Log outリンクが表示される: リンクが「Log out」である' do
-      #   log_out_link = find_all('a')[4].native.inner_text
-      #   expect(log_out_link).to match(/Log out/)
-      # end
+      it 'ユーザーリンクが表示される: リンクが「ユーザー」である' do
+        expect(page).to have_link 'ユーザー', href: admin_users_path
+      end
+      it 'ショップリンクが表示される: リンクが「ショップ」である' do
+        expect(page).to have_link 'ショップ', href: admin_shops_path
+      end
+      it '特集リンクが表示される: リンクが「特集」である' do
+        expect(page).to have_link '特集', href: admin_topics_path
+      end
+      it 'ドリンクリンクが表示される: リンクが「ドリンク」である' do
+        expect(page).to have_link 'ドリンク', href: admin_drinks_path
+      end
+      it 'Log outリンクが表示される: リンクが「Log out」である' do
+        expect(page).to have_link 'Log out', href: destroy_admin_session_path
+      end
     end
   end
+  
+  describe '画面のテスト' do
+    before do
+      visit admin_session_path
+      fill_in 'admin[email]', with: admin.email
+      fill_in 'admin[password]', with: admin.password
+      click_button 'Log in'
+    end
+    
+    context '管理者トップページの確認' do
+      before do
+        visit admin_root_path
+      end
+      it 'URLが正しい' do
+        expect(current_path).to eq '/admin'
+      end
+      it 'ご意見箱の本文と投函ユーザーのリンク先が正しい' do
+        expect(page).to have_link '', href: admin_feedback_path(feedback)
+        expect(page).to have_link '', href: admin_user_path(other_user)
+      end
+      it '自分と他人の投稿画像のリンク先が正しい' do
+        expect(page).to have_link '', href: admin_bread_path(bread)
+        expect(page).to have_link '', href: admin_bread_path(other_bread)
+      end
+    end
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  describe '管理者ログアウトのテスト' do
+    before do
+      visit admin_session_path
+      fill_in 'admin[email]', with: admin.email
+      fill_in 'admin[password]', with: admin.password
+      click_button 'Log in'
+      click_link 'Log out'
+    end
 
-
+    context 'ログアウト機能のテスト' do
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
+        expect(page).to have_link '', href: '/homes/about'
+        expect(page).to have_link 'Sign up', href: new_user_registration_path
+      end
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq '/'
+      end
+    end
+  end
 end
