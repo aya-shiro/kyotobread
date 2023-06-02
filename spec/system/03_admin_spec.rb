@@ -93,7 +93,9 @@ describe '管理者画面のテスト' do
       end
     end
     
-    context '投稿内容の確認' do
+    context 'ユーザー投稿内容の確認' do
+      let!(:comment) { create(:bread, user: user) }
+
       before do
         visit admin_bread_path(bread)
       end
@@ -108,6 +110,11 @@ describe '管理者画面のテスト' do
       end
       it '投稿の削除リンクが表示される' do
         expect(page).to have_link '削除', href: admin_bread_path(bread)
+      end
+      it 'コメントの削除リンクが表示される' do
+        # expect(page).to have_link '削除', href: admin_bread_comment_path(comment.bread, comment)
+        expect(page).to have_link '削除', href: admin_bread_comment_path(comment.bread_id, comment)
+
       end
     end
   end

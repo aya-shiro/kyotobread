@@ -11,7 +11,23 @@
       </div>
     </div>
 
-    <%= image_tag('about_image640.jpg', class: "resize-image") %>
+    <%= image_tag('about_image640.jpg', class: "resize-image about-image") %>
 
   </div>
 </div>
+
+<script>
+$(function(){
+  $(window).scroll(function(){
+    var scrollPosition = $(this).scrollTop();
+    $('.about-image').each(function(){
+      var offset = $(this).offset().top;
+
+      // スクロール位置が画像の位置より上にある場合、ふわっと表示させる
+      if (scrollPosition > offset - $(window).height() + 200) {
+        $(this).addClass('fade-in');
+      }
+    });
+  });
+});
+</script>

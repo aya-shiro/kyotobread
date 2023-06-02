@@ -16,6 +16,10 @@ FactoryBot.define do
     end
   end
   
+  factory :comment do 
+    comment { Faker::Lorem.characters(number:20) }
+  end
+  
   factory :feedback do
     opinion { Faker::Lorem.characters(number:40) }
   end
