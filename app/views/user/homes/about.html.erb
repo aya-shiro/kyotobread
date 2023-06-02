@@ -2,32 +2,37 @@
   <div class="col-md-8 mx-auto">
 
     <div class="row">
-      <p class="mx-auto" style="font-size: 28px;">京都でパンを探そう。</p>
+      <p class="mx-auto mt-3" style="font-size: 28px;">京都でパンを探そう。</p>
 
-      <div class="col-md-12 mt-3" style="font-size: 13px;">
+      <div class="col-md-12 my-3" style="font-size: 13px;">
         <p>KyotoBreadは、京都で食べた美味しいパンを共有・記録するサイトです。</p>
-        <p>京都ならではの素材を使ったパンや地元で愛されているパン屋さんのパンなど、ひとつひとつの出会いをより良いものにするためにこのサイトは生まれました。</p>
+        <p>京都ならではの素材を使ったパンや地元で愛されているベーカリーのパンなど、ひとつひとつの出会いをより良いものにするためにこのサイトは生まれました。</p>
+        <p>例えば、偶然通りかかったベーカリーでパンを買った経験はありませんか？</p>
+        <p>京都に来て初めて降りた駅の近くにあったベーカリーに、なんとなく寄ってみたことは？</p>
+        <p>車でいつも通っていた道沿いや、いつも歩いている道の一本隣の通りにあったとか、<br>
+        普段は気づかないだけで、知っているだけで広がるパンの世界というものは案外奥深いものです。</p>
+        <p>京都には、京都市内を中心に様々なベーカリーが点在していますので、このサイトを使用して、ぜひとも新しいパンとの出会いを楽しんでいただければと思います。</p>
         <p>パン屋さんの発見・下見・共有など、様々なニーズに密着した地域型のパンサイトKyotoBreadを、ぜひご利用ください。</p>
       </div>
     </div>
 
     <%= image_tag('about_image640.jpg', class: "resize-image about-image") %>
 
+    <script>
+      $(function(){
+        $(window).scroll(function(){
+          var scrollPosition = $(this).scrollTop();
+          $('.about-image').each(function(){
+            var offset = $(this).offset().top;
+    
+            // スクロール位置が画像の位置より上にある場合、ふわっと表示させる
+            if (scrollPosition > offset - $(window).height() + 400) {
+              $(this).addClass('fade-in');
+            }
+          });
+        });
+      });
+    </script>
+
   </div>
 </div>
-
-<script>
-$(function(){
-  $(window).scroll(function(){
-    var scrollPosition = $(this).scrollTop();
-    $('.about-image').each(function(){
-      var offset = $(this).offset().top;
-
-      // スクロール位置が画像の位置より上にある場合、ふわっと表示させる
-      if (scrollPosition > offset - $(window).height() + 200) {
-        $(this).addClass('fade-in');
-      }
-    });
-  });
-});
-</script>
