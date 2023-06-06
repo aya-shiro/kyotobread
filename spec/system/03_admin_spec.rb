@@ -9,7 +9,7 @@ describe '管理者画面のテスト' do
   let!(:other_bread) { create(:bread, user: other_user) }
   let!(:feedback) { create(:feedback, user: user) }
   let!(:feedback) { create(:feedback, user: other_user) }
-  
+
   describe 'アドミンログイン前のテスト' do
     before do
       visit new_admin_session_path
@@ -30,7 +30,7 @@ describe '管理者画面のテスト' do
       end
     end
   end
-  
+
   describe 'ヘッダーのテスト: ログインしている場合' do
     before do
       visit admin_session_path
@@ -67,7 +67,7 @@ describe '管理者画面のテスト' do
       end
     end
   end
-  
+
   describe '画面のテスト' do
     before do
       visit admin_session_path
@@ -75,7 +75,7 @@ describe '管理者画面のテスト' do
       fill_in 'admin[password]', with: admin.password
       click_button 'Log in'
     end
-    
+
     context '管理者トップページの確認' do
       before do
         visit admin_root_path
@@ -92,7 +92,7 @@ describe '管理者画面のテスト' do
         expect(page).to have_link '', href: admin_bread_path(other_bread)
       end
     end
-    
+
     context 'ユーザー投稿内容の確認' do
       let!(:comment) { create(:bread, user: user) }
 
@@ -112,21 +112,40 @@ describe '管理者画面のテスト' do
         expect(page).to have_link '削除', href: admin_bread_path(bread)
       end
       it 'コメントの削除リンクが表示される' do
-        # expect(page).to have_link '削除', href: admin_bread_comment_path(comment.bread, comment)
         expect(page).to have_link '削除', href: admin_bread_comment_path(comment.bread_id, comment)
+      end
+    end
 
+    context 'ユーザー一覧の確認' do
+      before do
+        visit admin_users_path
+      end
+      it 'ユーザーのidが表示される' do
+        expect(page).to have_content user.id
+      end
+      it 'ユーザーのnameが表示される' do
+        expect(page).to have_content user.name
+      end
+      it 'ユーザーのemailが表示される' do
+        expect(page).to have_content user.email
+      end
+      it 'ユーザーが投稿したbreadの投稿数が表示される' do
+        expect(page).to have_content(user.bread.count)
+      end
+      it 'ユーザーの会員statusが表示される' do
+        expect(page).to have_content user.is_delete
       end
     end
   end
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
   describe '管理者ログアウトのテスト' do
     before do
       visit admin_session_path
